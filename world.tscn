@@ -1,20 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=6 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://UI/Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
 [ext_resource type="PackedScene" uid="uid://dwxjjohjchd2y" path="res://Units/unit.tscn" id="2_m4rc3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcah2"]
-bg_color = Color(0, 0.992157, 0.529412, 0.45098)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_blend = true
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[ext_resource type="PackedScene" uid="uid://c1a2a0l022gxh" path="res://UI/UI.tscn" id="3_3g7ud"]
+[ext_resource type="PackedScene" uid="uid://bva7gppgy6wj8" path="res://Resources/Tree.tscn" id="4_pba7t"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_bmh88")
@@ -26,10 +16,7 @@ limit_left = 0
 limit_top = 0
 script = ExtResource("1_2gtrv")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="UI"]
-theme_override_styles/panel = SubResource("StyleBoxFlat_xcah2")
+[node name="UI" parent="." instance=ExtResource("3_3g7ud")]
 
 [node name="Units" type="Node2D" parent="."]
 
@@ -44,6 +31,11 @@ position = Vector2(28, 62)
 
 [node name="Unit4" parent="Units" instance=ExtResource("2_m4rc3")]
 position = Vector2(78, 35)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Tree" parent="Objects" instance=ExtResource("4_pba7t")]
+position = Vector2(101, 76)
 
 [connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]
 [connection signal="input_event" from="Units/Unit2" to="Camera" method="_on_unit_input_event"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dwxjjohjchd2y"]
 
 [ext_resource type="Script" path="res://Units/unit.gd" id="1_a328n"]
-[ext_resource type="Texture2D" uid="uid://4kg1ad22xupg" path="res://UI/Arthax.png" id="1_j6wm2"]
+[ext_resource type="Texture2D" uid="uid://4kg1ad22xupg" path="res://Units/Arthax.png" id="2_2lac6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xtgyf"]
 size = Vector2(15, 14)
@@ -61,7 +61,7 @@ shape = SubResource("RectangleShape2D_xtgyf")
 
 [node name="Arthax" type="Sprite2D" parent="."]
 position = Vector2(8, -8)
-texture = ExtResource("1_j6wm2")
+texture = ExtResource("2_2lac6")
 hframes = 5
 vframes = 8
 
