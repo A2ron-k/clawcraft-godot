@@ -21,7 +21,7 @@ script = ExtResource("1_bmh88")
 
 [node name="Camera" type="Camera2D" parent="."]
 ignore_rotation = false
-zoom = Vector2(3, 3)
+zoom = Vector2(5, 5)
 limit_left = 0
 limit_top = 0
 script = ExtResource("1_2gtrv")
@@ -33,17 +33,17 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_xcah2")
 
 [node name="Units" type="Node2D" parent="."]
 
-[node name="Unit" parent="Units" groups=["units"] instance=ExtResource("2_m4rc3")]
-position = Vector2(28, 28)
+[node name="Unit" parent="Units" instance=ExtResource("2_m4rc3")]
+position = Vector2(12, 27)
 
-[node name="Unit2" parent="Units" groups=["units"] instance=ExtResource("2_m4rc3")]
-position = Vector2(25, 102)
+[node name="Unit2" parent="Units" instance=ExtResource("2_m4rc3")]
+position = Vector2(60, 80)
 
-[node name="Unit3" parent="Units" groups=["units"] instance=ExtResource("2_m4rc3")]
-position = Vector2(118, 24)
+[node name="Unit3" parent="Units" instance=ExtResource("2_m4rc3")]
+position = Vector2(28, 62)
 
-[node name="Unit4" parent="Units" groups=["units"] instance=ExtResource("2_m4rc3")]
-position = Vector2(94, 54)
+[node name="Unit4" parent="Units" instance=ExtResource("2_m4rc3")]
+position = Vector2(78, 35)
 
 [connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]
 [connection signal="input_event" from="Units/Unit2" to="Camera" method="_on_unit_input_event"]
