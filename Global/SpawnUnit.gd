@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var unit = preload("res://Units/unit.tscn")
 var buildingPosition
-var randomiser = RandomNumberGenerator.new()
 
 func _on_yes_pressed():
 	var unitPath = get_tree().get_root().get_node("World/Units")
@@ -10,13 +9,18 @@ func _on_yes_pressed():
 	var newUnit = unit.instantiate()
 	
 	# Randomise Unit Spawning location around building
-	randomiser.randomize()
-	var randomPosX = randomiser.randi_range(-50,50)
-	var randomPosY = randomiser.randi_range(-50,50)
+	var randomPosX = randi_range(-50,50)
+	var randomPosY = randi_range(-50,50)
 	newUnit.position = buildingPosition + Vector2(randomPosX, randomPosY)
+	newUnit.name = "Unit"
+	
+	print(newUnit.name)
 	
 	# Add unit to the unit group
 	unitPath.add_child(newUnit)
+	
+	for i in unitPath.get_child_count():
+		unitPath.get_child(i).name = "Unit"
 	
 	# Add unit to the world units
 	worldPath.getUnits()
