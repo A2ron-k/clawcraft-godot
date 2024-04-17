@@ -44,13 +44,13 @@ func _process(delta):
 	## Edge scrolling by mouse position
 	var screenSize = get_viewport_rect().size
 	if mousePosition.x < edgeScrollMargin:
-		inputX -= 1 
+		inputX -= 1
 	elif mousePosition.x > screenSize.x - edgeScrollMargin:
 		inputX += 1
 	if mousePosition.y < edgeScrollMargin:
-		inputY -= 1 
+		inputY -= 1
 	elif mousePosition.y > screenSize.y - edgeScrollMargin:
-		inputY += 1 
+		inputY += 1
 	
 	position.x += inputX * edgeSpeed * delta * zoom.x
 	position.y += inputY * edgeSpeed * delta * zoom.y
@@ -96,7 +96,7 @@ func _input(event):
 	if event is InputEventMouseButton or InputEventKey:
 		if event.is_pressed():
 			isZooming = true
-			print("test")
+			
 			if event.is_action("WheelDown"):
 				position = get_global_mouse_position() 
 				zoomFactor -= 0.01 * zoomSpeed

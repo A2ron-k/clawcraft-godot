@@ -1,16 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=7 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://UI/Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
 [ext_resource type="PackedScene" uid="uid://dwxjjohjchd2y" path="res://Units/unit.tscn" id="2_m4rc3"]
+[ext_resource type="Texture2D" uid="uid://h5v7lr0ln4c4" path="res://UI/TexturedGrass.png" id="2_v0j34"]
 [ext_resource type="PackedScene" uid="uid://c1a2a0l022gxh" path="res://UI/UI.tscn" id="3_3g7ud"]
 [ext_resource type="PackedScene" uid="uid://bva7gppgy6wj8" path="res://Resources/Tree.tscn" id="4_pba7t"]
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_bmh88")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 2329.0
+offset_bottom = 1400.0
+texture = ExtResource("2_v0j34")
+stretch_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Camera" type="Camera2D" parent="."]
 ignore_rotation = false
+zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
 script = ExtResource("1_2gtrv")
@@ -18,6 +28,7 @@ script = ExtResource("1_2gtrv")
 [node name="UI" parent="." instance=ExtResource("3_3g7ud")]
 
 [node name="Units" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Unit" parent="Units" instance=ExtResource("2_m4rc3")]
 position = Vector2(266, 202)
@@ -32,6 +43,7 @@ position = Vector2(428, 247)
 position = Vector2(635, 245)
 
 [node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Tree" parent="Objects" instance=ExtResource("4_pba7t")]
 position = Vector2(569, 185)
