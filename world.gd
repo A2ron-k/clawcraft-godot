@@ -4,6 +4,9 @@ var units = []
 
 func _ready():
 	#whenever game is loaded units are added to array
+	getUnits()
+
+func getUnits():
 	units = get_tree().get_nodes_in_group("units")
 
 func _onAreaSelected(object):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=8 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://UI/Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://h5v7lr0ln4c4" path="res://UI/TexturedGrass.png" id="2_v0j34"]
 [ext_resource type="PackedScene" uid="uid://c1a2a0l022gxh" path="res://UI/UI.tscn" id="3_3g7ud"]
 [ext_resource type="PackedScene" uid="uid://bva7gppgy6wj8" path="res://Resources/Tree.tscn" id="4_pba7t"]
+[ext_resource type="PackedScene" uid="uid://crn8702foxvu2" path="res://Buildings/Barrack.tscn" id="7_05das"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -33,22 +34,17 @@ y_sort_enabled = true
 [node name="Unit" parent="Units" instance=ExtResource("2_m4rc3")]
 position = Vector2(266, 202)
 
-[node name="Unit2" parent="Units" instance=ExtResource("2_m4rc3")]
-position = Vector2(173, 297)
-
-[node name="Unit3" parent="Units" instance=ExtResource("2_m4rc3")]
-position = Vector2(428, 247)
-
-[node name="Unit4" parent="Units" instance=ExtResource("2_m4rc3")]
-position = Vector2(635, 245)
-
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Tree" parent="Objects" instance=ExtResource("4_pba7t")]
 position = Vector2(569, 185)
 
+[node name="Buildings" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Barrack" parent="Buildings" instance=ExtResource("7_05das")]
+position = Vector2(355, 210)
+input_pickable = true
+
 [connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]
-[connection signal="input_event" from="Units/Unit2" to="Camera" method="_on_unit_input_event"]
-[connection signal="input_event" from="Units/Unit3" to="Camera" method="_on_unit_input_event"]
-[connection signal="input_event" from="Units/Unit4" to="Camera" method="_on_unit_input_event"]
