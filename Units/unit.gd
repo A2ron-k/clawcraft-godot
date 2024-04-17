@@ -20,7 +20,10 @@ func setSelected(value):
 	
 
 # Handles input
-func _input(event):	
+func _input(event):
+	if event.is_action_pressed("LeftClick"):
+		setSelected(!selected)
+	
 	if(event.is_action_pressed("RightClick")):
 		followCursor = true
 	
