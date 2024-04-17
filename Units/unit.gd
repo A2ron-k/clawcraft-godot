@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var animation = get_node("AnimationPlayer")
 
 var followCursor = false
-var speed = 50
+var speed = 100
 
 
 func _ready():
@@ -36,7 +36,7 @@ func _physics_process(delta):
 	
 	velocity = position.direction_to(target) * speed
 	
-	if position.distance_to(target) > 20:
+	if position.distance_to(target) > 15:
 		move_and_slide()
 	else:
 		animation.stop()
