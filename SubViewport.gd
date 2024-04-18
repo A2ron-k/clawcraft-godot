@@ -26,7 +26,7 @@ func _process(delta):
 	var allUnits = get_node("Units")
 
 	for i in unitsPath.get_child_count():
-		allUnits.get_child(i).position = unitsPath.get_child(i).position
+		allUnits.get_child(i).position = unitsPath.get_child(i).position/2
 
 func updateMap():
 	# Clear all the existing nodes that are not units
@@ -45,7 +45,6 @@ func updateMap():
 	for i in unitsPath.get_child_count():
 		var aUnit = unit.instantiate()
 		get_node("Units").add_child(aUnit)
-		aUnit.position = unitsPath.get_child(i).position/2
 	
 	for i in treePath.get_child_count():
 		var aTree = tree.instantiate()

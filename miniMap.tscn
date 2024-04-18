@@ -48,8 +48,8 @@ ignore_rotation = false
 zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
-limit_right = 999999
-limit_bottom = 999999
+limit_right = 1280
+limit_bottom = 720
 
 [node name="Units" type="Node2D" parent="SubViewportContainer/SubViewport"]
 y_sort_enabled = true

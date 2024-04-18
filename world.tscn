@@ -25,8 +25,8 @@ ignore_rotation = false
 zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
-limit_right = 99999
-limit_bottom = 99999
+limit_right = 1280
+limit_bottom = 720
 script = ExtResource("1_2gtrv")
 zoomMinimum = 0.5
 
