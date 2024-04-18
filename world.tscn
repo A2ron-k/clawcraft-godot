@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=9 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://UI/Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c1a2a0l022gxh" path="res://UI/UI.tscn" id="3_3g7ud"]
 [ext_resource type="PackedScene" uid="uid://bva7gppgy6wj8" path="res://Resources/Tree.tscn" id="4_pba7t"]
 [ext_resource type="PackedScene" uid="uid://crn8702foxvu2" path="res://Buildings/Barrack.tscn" id="7_05das"]
+[ext_resource type="PackedScene" uid="uid://bf7mp2fiecevg" path="res://Resources/coinHouse.tscn" id="7_sc5jh"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -32,19 +33,22 @@ script = ExtResource("1_2gtrv")
 y_sort_enabled = true
 
 [node name="Unit" parent="Units" instance=ExtResource("2_m4rc3")]
-position = Vector2(266, 202)
+position = Vector2(163, 172)
 
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Tree" parent="Objects" instance=ExtResource("4_pba7t")]
-position = Vector2(569, 185)
+position = Vector2(341, 163)
 
 [node name="Buildings" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="coinHouse" parent="Buildings" instance=ExtResource("7_sc5jh")]
+position = Vector2(179, 77)
+
 [node name="Barrack" parent="Buildings" instance=ExtResource("7_05das")]
-position = Vector2(355, 210)
+position = Vector2(235, 113)
 input_pickable = true
 
 [connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]

@@ -2,6 +2,7 @@ extends Node
 
 @onready var spawner = preload("res://Global/SpawnUnit.tscn")
 var Catnip = 0
+var Coin = 0
 
 func spawnUnit(position):
 	var path = get_tree().get_root().get_node("World/UI")

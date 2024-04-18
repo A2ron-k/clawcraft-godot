@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf7mp2fiecevg"]
+
+[ext_resource type="Texture2D" uid="uid://bdlkk11f36mgj" path="res://Resources/Resources.png" id="1_7b0oe"]
+[ext_resource type="Script" path="res://Resources/coinHouse.gd" id="1_jfpd5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6k40"]
+size = Vector2(20, 14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1mne"]
+bg_color = Color(0.796078, 0.796078, 0.796078, 0.447059)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfom7"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="coinHouse" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_jfpd5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_m6k40")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -30.0
+offset_right = 11.0
+offset_bottom = -26.0
+theme_override_styles/background = SubResource("StyleBoxFlat_b1mne")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lfom7")
+value = 50.0
+show_percentage = false
+
+[node name="Resources" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_7b0oe")
+hframes = 3
+vframes = 5
+frame = 10
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
