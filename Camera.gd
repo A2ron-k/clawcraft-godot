@@ -5,8 +5,8 @@ extends Camera2D
 @export var edgeSpeed = 50.0
 @export var zoomSpeed = 20.0
 @export var zoomMargin = 0.1
-@export var zoomMinimum = 1.0
-@export var zoomMaximum = 3.0
+@export var zoomMinimum = 2.568
+@export var zoomMaximum = 5
 var zoomFactor = 1
 var zoomPosition = Vector2()
 var isZooming = false

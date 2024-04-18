@@ -29,7 +29,6 @@ limit_top = 0
 limit_right = 1280
 limit_bottom = 720
 script = ExtResource("1_2gtrv")
-zoomMinimum = 0.5
 
 [node name="UI" parent="." instance=ExtResource("3_3g7ud")]
 
