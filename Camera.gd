@@ -5,7 +5,7 @@ extends Camera2D
 @export var edgeSpeed = 50.0
 @export var zoomSpeed = 20.0
 @export var zoomMargin = 0.1
-@export var zoomMinimum = 0.5
+@export var zoomMinimum = 1.0
 @export var zoomMaximum = 3.0
 var zoomFactor = 1
 var zoomPosition = Vector2()
@@ -122,3 +122,6 @@ func drawArea(s=true):
 	
 	box.position = pos
 	box.size *= int(s)
+	
+	var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
+	MinimapPath._ready()

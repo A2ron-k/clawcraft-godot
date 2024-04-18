@@ -8,6 +8,9 @@ func _on_yes_pressed():
 	var worldPath = get_tree().get_root().get_node("World")
 	var newUnit = unit.instantiate()
 	
+	var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
+	MinimapPath._ready()
+	
 	# Randomise Unit Spawning location around building
 	var randomPosX = randi_range(-50,50)
 	var randomPosY = randi_range(-50,50)

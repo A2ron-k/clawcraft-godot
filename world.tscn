@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cim5uwnkpr2ou"]
 
-[ext_resource type="Script" path="res://UI/Camera.gd" id="1_2gtrv"]
+[ext_resource type="Script" path="res://Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
 [ext_resource type="PackedScene" uid="uid://dwxjjohjchd2y" path="res://Units/unit.tscn" id="2_m4rc3"]
 [ext_resource type="Texture2D" uid="uid://h5v7lr0ln4c4" path="res://UI/TexturedGrass.png" id="2_v0j34"]
@@ -14,8 +14,8 @@ y_sort_enabled = true
 script = ExtResource("1_bmh88")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 2329.0
-offset_bottom = 1400.0
+offset_right = 1280.0
+offset_bottom = 720.0
 texture = ExtResource("2_v0j34")
 stretch_mode = 1
 metadata/_edit_lock_ = true
@@ -25,7 +25,10 @@ ignore_rotation = false
 zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
+limit_right = 99999
+limit_bottom = 99999
 script = ExtResource("1_2gtrv")
+zoomMinimum = 0.5
 
 [node name="UI" parent="." instance=ExtResource("3_3g7ud")]
 
@@ -44,11 +47,13 @@ position = Vector2(341, 163)
 [node name="Buildings" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="coinHouse" parent="Buildings" instance=ExtResource("7_sc5jh")]
-position = Vector2(179, 77)
-
 [node name="Barrack" parent="Buildings" instance=ExtResource("7_05das")]
 position = Vector2(235, 113)
 input_pickable = true
+
+[node name="CoinHouses" type="Node2D" parent="."]
+
+[node name="coinHouse" parent="CoinHouses" instance=ExtResource("7_sc5jh")]
+position = Vector2(179, 77)
 
 [connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]

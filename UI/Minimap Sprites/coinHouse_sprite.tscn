@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl8yv3meyltd5"]
+
+[ext_resource type="Texture2D" uid="uid://bdlkk11f36mgj" path="res://Resources/Resources.png" id="1_3jb1k"]
+
+[node name="coinHouse" type="Sprite2D"]
+position = Vector2(0, -12)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_3jb1k")
+hframes = 3
+vframes = 5
+frame = 10

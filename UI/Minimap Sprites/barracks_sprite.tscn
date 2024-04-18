@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1vs7d674mv72"]
+
+[ext_resource type="Texture2D" uid="uid://be6cdhvgyqi15" path="res://Buildings/Barracks.png" id="1_r36du"]
+
+[node name="Barracks" type="Sprite2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_r36du")
+hframes = 4
+vframes = 5
