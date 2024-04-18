@@ -31,4 +31,9 @@ offset_bottom = 23.0
 grow_horizontal = 0
 
 [node name="MiniMap" parent="." instance=ExtResource("2_416ht")]
-metadata/_edit_lock_ = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -440.0
+offset_bottom = -440.0
+grow_vertical = 0

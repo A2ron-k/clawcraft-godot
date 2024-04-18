@@ -12,7 +12,7 @@ var zoomPosition = Vector2()
 var isZooming = false
 
 # Edge Scrolling
-var edgeScrollMargin = 20
+var edgeScrollMargin = 200
 
 # Mouse Tracking
 var mousePosition = Vector2()

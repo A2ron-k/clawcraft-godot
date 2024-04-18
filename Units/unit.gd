@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var mouseEntered = false
 @export var selected = false
 @onready var box = get_node("Box")
 @onready var target = position
@@ -22,7 +23,8 @@ func setSelected(value):
 # Handles input
 func _input(event):
 	if event.is_action_pressed("LeftClick"):
-		setSelected(!selected)
+		if mouseEntered:
+			setSelected(!selected)
 	
 	if(event.is_action_pressed("RightClick")):
 		followCursor = true
@@ -44,5 +46,10 @@ func _physics_process(delta):
 		move_and_slide()
 	else:
 		animation.stop()
-	
 
+func _on_unit_mouse_entered():
+	mouseEntered = true
+
+
+func _on_unit_mouse_exited():
+	mouseEntered = false
