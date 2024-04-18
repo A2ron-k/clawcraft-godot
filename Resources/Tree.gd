@@ -21,7 +21,6 @@ func _process(delta):
 	pass
 
 func _on_collect_area_body_entered(body):
-	print(body.name)
 	
 	if "Unit" in body.name:
 		units += 1

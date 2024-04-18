@@ -4,5 +4,5 @@ extends CanvasLayer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	label.text = "Catnips " + str(Game.Catnip) + "      Coins " + str(Game.Coin)
+	label.text = "Catnips: " + str(Game.Catnip) + "      Coins: " + str(Game.Coin)
 	
