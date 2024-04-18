@@ -7,7 +7,7 @@ extends Node2D
 var tile_size = 16
 var numberOfTreeSpawns = 20
 
-var grid_size = Vector2(80,45)
+var grid_size = Vector2(80,80)
 var grid = []
 
 
