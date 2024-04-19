@@ -9,10 +9,17 @@ var mouseEntered = false
 var followCursor = false
 var speed = 100
 
+const move_threshold = 100 #How much closer to the target
+var lastDistanceToTarget = Vector2.ZERO
+var currentDistanceToTarget = Vector2.ZERO
+@onready var stopTimer = $StopTimer
+
+
 
 func _ready():
 	setSelected(selected)
 	add_to_group("units", true)
+	
 	
 
 func setSelected(value): 
@@ -27,6 +34,8 @@ func _input(event):
 			setSelected(!selected)
 	
 	if(event.is_action_pressed("RightClick")):
+		var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
+		MinimapPath._ready()
 		followCursor = true
 	
 	if(event.is_action_released("RightClick")):
@@ -46,6 +55,10 @@ func _physics_process(delta):
 		move_and_slide()
 	else:
 		animation.stop()
+		
+	if get_slide_collision_count() and stopTimer.is_stopped():
+		stopTimer.start()
+		lastDistanceToTarget = position.distance_to(target) 
 
 func _on_unit_mouse_entered():
 	mouseEntered = true
@@ -53,3 +66,13 @@ func _on_unit_mouse_entered():
 
 func _on_unit_mouse_exited():
 	mouseEntered = false
+
+
+func _on_stop_timer_timeout():
+	if get_slide_collision_count():
+		currentDistanceToTarget = position.distance_to(target)
+		print(lastDistanceToTarget)
+		print(currentDistanceToTarget)
+		if lastDistanceToTarget < currentDistanceToTarget + move_threshold:
+			target = position
+			animation.stop()

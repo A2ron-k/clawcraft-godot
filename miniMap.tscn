@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7aw3kye4mi33"]
 
 [ext_resource type="Script" path="res://SubViewport.gd" id="1_dmc4l"]
-[ext_resource type="Texture2D" uid="uid://h5v7lr0ln4c4" path="res://UI/TexturedGrass.png" id="1_yqthm"]
+[ext_resource type="Texture2D" uid="uid://dp6ahly4f7y8h" path="res://UI/grass.png" id="1_inm64"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4iuc"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -39,9 +39,7 @@ script = ExtResource("1_dmc4l")
 offset_right = 1280.0
 offset_bottom = 720.0
 scale = Vector2(2, 2)
-texture = ExtResource("1_yqthm")
-stretch_mode = 1
-metadata/_edit_lock_ = true
+texture = ExtResource("1_inm64")
 
 [node name="Camera" type="Camera2D" parent="SubViewportContainer/SubViewport"]
 ignore_rotation = false

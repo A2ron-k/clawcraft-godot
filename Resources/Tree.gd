@@ -18,15 +18,12 @@ func _process(delta):
 	bar.value = currentTime
 	if currentTime <= 0:
 		resourceGathered()
-	pass
 
 func _on_collect_area_body_entered(body):
 	
 	if "Unit" in body.name:
 		units += 1
 		startGathering()
-		
-	pass # Replace with function body.
 
 
 func _on_collect_area_body_exited(body):
@@ -51,5 +48,6 @@ func startGathering():
 func resourceGathered():
 	Game.Catnip += 1 #Add Amount of Resource 
 	queue_free()
-	pass
+	var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
+	MinimapPath._ready()
 
