@@ -2,6 +2,11 @@ extends CharacterBody2D
 
 var mouseEntered = false
 @export var selected = false
+
+@export var noOfCatnipCarrying = 1
+@export var lastResourcePosition = Vector2.ZERO
+@onready var homeBasePosition = get_tree().get_root().get_node("World/HomeBase/Base").position
+
 @onready var box = get_node("Box")
 @onready var target = position
 @onready var animation = get_node("AnimationPlayer")
@@ -76,3 +81,35 @@ func _on_stop_timer_timeout():
 		if lastDistanceToTarget < currentDistanceToTarget + move_threshold:
 			target = position
 			animation.stop()
+
+func goBackToResource(lastResourcePosition):
+	target = lastResourcePosition
+	animation.play("WalkDown")
+	
+	velocity = position.direction_to(target) * speed
+	
+	if position.distance_to(target) > 15:
+		move_and_slide()
+	else:
+		animation.stop()
+		
+	if get_slide_collision_count() and stopTimer.is_stopped():
+		stopTimer.start()
+		lastDistanceToTarget = position.distance_to(target) 
+
+func goBackToBase():
+	target = homeBasePosition
+	animation.play("WalkDown")
+	
+	velocity = position.direction_to(target) * speed
+	
+	if position.distance_to(target) > 15:
+		move_and_slide()
+	else:
+		animation.stop()
+		
+	if get_slide_collision_count() and stopTimer.is_stopped():
+		stopTimer.start()
+		lastDistanceToTarget = position.distance_to(target) 
+	
+

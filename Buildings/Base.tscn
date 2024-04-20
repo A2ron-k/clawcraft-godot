@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3uwrlh7d1cp"]
+
+[ext_resource type="Script" path="res://Buildings/Base.gd" id="1_5u42t"]
+[ext_resource type="Texture2D" uid="uid://bktec74gs8woo" path="res://Buildings/Base.png" id="1_p32c2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwf7s"]
+size = Vector2(30, 27)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xq27n"]
+radius = 23.0
+height = 46.0
+
+[node name="Base" type="StaticBody2D"]
+script = ExtResource("1_5u42t")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_p32c2")
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_dwf7s")
+
+[node name="ContactZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactZone"]
+shape = SubResource("CapsuleShape2D_xq27n")
+
+[connection signal="body_entered" from="ContactZone" to="." method="_on_contact_zone_body_entered"]
+[connection signal="body_exited" from="ContactZone" to="." method="_on_contact_zone_body_exited"]

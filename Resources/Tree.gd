@@ -12,18 +12,22 @@ func _ready():
 	currentTime = totalTime
 	
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	bar.value = currentTime
 	if currentTime <= 0:
 		resourceGathered()
+		currentTime = totalTime
 
 func _on_collect_area_body_entered(body):
-	
 	if "Unit" in body.name:
 		units += 1
-		startGathering()
+		startGathering(body)
+		print("Start waiting")
+		await get_tree().create_timer(5.0).timeout
+		print("Wait Over")
+		body.noOfCatnipCarrying += 1
+		body.goBackToBase()
 
 
 func _on_collect_area_body_exited(body):
@@ -33,21 +37,23 @@ func _on_collect_area_body_exited(body):
 			timer.stop()
 	
 
-
 func _on_timer_timeout():
 	var gatherSpeed = 1 * units # More units = Faster Gathering Time
 	var tween = get_tree().create_tween()
 	
 	currentTime -= gatherSpeed
-	tween.tween_property(bar, "value", currentTime,0.8).set_trans(Tween.TRANS_QUAD) # Animate Value in the Bar
+	tween.tween_property(bar, "value", currentTime,1).set_trans(Tween.TRANS_QUAD) # Animate Value in the Bar
 
-func startGathering():
+func startGathering(body):
 	timer.start()
+	body.lastResourcePosition = self.position
+	
 
 
 func resourceGathered():
-	Game.Catnip += 1 #Add Amount of Resource 
-	queue_free()
-	var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
-	MinimapPath._ready()
+	pass
+	#Game.Catnip += 1 #Add Amount of Resource
+	#queue_free()
+	#var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
+	#MinimapPath._ready()
 

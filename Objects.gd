@@ -5,7 +5,7 @@ extends Node2D
 @onready var tree = preload("res://Resources/Tree.tscn")
 
 var tile_size = 16
-var numberOfTreeSpawns = 20
+var numberOfTreeSpawns = 10
 
 var grid_size = Vector2(80,80)
 var grid = []

@@ -1,7 +1,7 @@
 extends Camera2D
 
 # Camera Control
-@export var speed = 20.0
+@export var speed = 5.0
 @export var edgeSpeed = 50.0
 @export var zoomSpeed = 20.0
 @export var zoomMargin = 0.1
