@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://2nhl36r3044k"]
+[gd_scene load_steps=12 format=3 uid="uid://2nhl36r3044k"]
 
 [ext_resource type="Texture2D" uid="uid://ddwfimryeqkwd" path="res://Units/SwordsmanTemplate.png" id="1_kbn1b"]
 [ext_resource type="Script" path="res://Units/MeleeAttacker.gd" id="1_v8s4w"]
+[ext_resource type="PackedScene" uid="uid://dwhpy3b35ip4h" path="res://Global/unitStateMachine.tscn" id="3_t8cbd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1cita"]
 radius = 2.99998
@@ -136,5 +137,8 @@ libraries = {
 
 [node name="StopTimer" type="Timer" parent="."]
 
+[node name="UnitStateMachine" parent="." instance=ExtResource("3_t8cbd")]
+
 [connection signal="mouse_entered" from="." to="." method="_on_meleeAttacker_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_meleeAttacker_mouse_exited"]
+[connection signal="timeout" from="StopTimer" to="UnitStateMachine" method="_on_stop_timer_timeout"]
