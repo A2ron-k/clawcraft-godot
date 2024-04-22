@@ -8,7 +8,7 @@ func _ready():
 
 func getUnits():
 	units = get_tree().get_nodes_in_group("units")
-	units += get_tree().get_nodes_in_group("meleeAttackers")
+	units.append(get_tree().get_nodes_in_group("meleeAttackers"))
 
 func _onAreaSelected(object):
 	#object is the camera
