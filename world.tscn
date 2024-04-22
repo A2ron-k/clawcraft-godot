@@ -407,6 +407,10 @@ position = Vector2(228, 155)
 y_sort_enabled = true
 
 [node name="meleeAttacker" parent="meleeAttackers" instance=ExtResource("12_8jwll")]
-position = Vector2(105, 126)
+position = Vector2(145, 148)
+
+[node name="meleeAttacker2" parent="meleeAttackers" instance=ExtResource("12_8jwll")]
+position = Vector2(49, 151)
+unitOwner = 1
 
 [connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]

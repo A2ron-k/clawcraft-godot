@@ -36,7 +36,8 @@ func _getUnitsInArea(area):
 		#Check if unit is inside the area
 		if (unit.position.x > area[0].x) and (unit.position.y < area[1].x):
 			if (unit.position.y > area[0].y) and (unit.position.y < area[1].y):
-				unitsInArea.append(unit)
+				if unit.unitOwner == 0:
+					unitsInArea.append(unit)
 
 	return unitsInArea
 	

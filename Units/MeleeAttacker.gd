@@ -8,20 +8,25 @@ var mouseEntered = false
 @onready var target = position
 @onready var animation = get_node("AnimationPlayer")
 
+# Unit Owner
+@export var unitOwner := 0
+
 # Unit Movement
 var followCursor = false
 var speed = 100
-
 const move_threshold = 100 #How much closer to the target
 var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
 @onready var stopTimer = $StopTimer
 
 
-
 func _ready():
 	setSelected(selected)
 	add_to_group("meleeAttackers", true)
+	
+	# Sets the enemy units to red
+	if unitOwner == 1:
+		modulate = Color(1, 0.29, 0.165,1)
 	
 
 func setSelected(value): 
