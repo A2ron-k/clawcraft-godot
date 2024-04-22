@@ -1,5 +1,14 @@
 extends StateMachine
 
+enum Commands {
+	NONE,
+	MOVE,
+	ATTACK_MOVE,
+	HOLD
+}
+
+var command = Commands.NONE
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	addState("idle")
@@ -32,8 +41,6 @@ func performStateLogic(delta):
 			pass
 
 func enterState(newState, previousState):
-
-	
 	match state:
 		states.idle:
 			parent.animation.stop()
@@ -58,6 +65,19 @@ func enterState(newState, previousState):
 			var dy = abs(parent.position.y - parent.attackTarget.get_ref().position.y)
 			if dx > dy: 
 				if parent.position.x < parent.attackTarget.get_ref().position.x:
+					parent.animation.play("WalkRight")
+				elif parent.position.x > parent.attackTarget.get_ref().position.x:
+					parent.animation.play("WalkLeft")
+			else: 
+				if parent.position.y < parent.attackTarget.get_ref().position.y:
+					parent.animation.play("WalkDown")
+				elif parent.position.y > parent.attackTarget.get_ref().position.y:
+					parent.animation.play("WalkUp")
+		states.attacking:
+			var dx = abs(parent.position.x - parent.attackTarget.get_ref().position.x)
+			var dy = abs(parent.position.y - parent.attackTarget.get_ref().position.y)
+			if dx > dy: 
+				if parent.position.x < parent.attackTarget.get_ref().position.x:
 					parent.animation.play("attackRight")
 				elif parent.position.x > parent.attackTarget.get_ref().position.x:
 					parent.animation.play("attackLeft")
@@ -66,8 +86,6 @@ func enterState(newState, previousState):
 					parent.animation.play("attackDown")
 				elif parent.position.y > parent.attackTarget.get_ref().position.y:
 					parent.animation.play("attackUp")
-		states.attacking:
-			pass
 		states.dying:
 			pass
 
@@ -86,9 +104,12 @@ func getTransition(delta):
 				parent.attackTarget  = weakref(parent.closestEnemy())
 				setState(states.attacking)
 		states.attacking:
-			pass
+			if !parent.attackTarget.get_ref():
+				setState(states.idle)
+				parent.attackTarget = null
 		states.dying:
-			pass	
+			parent.removeNode()
+			parent.queue_free()
 	pass
 
 func _on_stop_timer_timeout():
@@ -97,3 +118,25 @@ func _on_stop_timer_timeout():
 		if parent.lastDistanceToTarget < parent.currentDistanceToTarget + parent.move_threshold:
 			parent.movementTarget = parent.position
 			setState(states.idle)
+
+func died():
+	setState(states.dying)
+	
+func _on_animation_player_animation_finished(anim_name):
+	match state:
+		states.attacking:
+			if parent.attackTarget.get_ref():
+				if parent.attackTarget.get_ref().takeDamage(parent.damage):
+					if parent.targetWithinRange():
+						parent.animation.play()
+					else:
+						setState(states.engaging)
+				else:
+					setState(states.idle)
+			else:
+				setState(states.idle)
+		states.dying:
+			parent.queue_free()
+	pass # Replace with function body.
+	
+

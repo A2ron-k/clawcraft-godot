@@ -8,6 +8,9 @@ var mouseEntered = false
 @onready var box = get_node("Box")
 @onready var movementTarget = position
 @onready var animation = get_node("AnimationPlayer")
+@onready var stateMachine = get_node("UnitStateMachine")
+@onready var collisionShape = get_node("CollisionShape2D")
+
 
 # Unit Owner
 @export var unitOwner := 0
@@ -22,11 +25,10 @@ var currentDistanceToTarget = Vector2.ZERO
 
 # Attacking Logic
 var attackRange = 20
-var health = 20
+var health = 10
 var damage = 2
 var possibleTargets = []
 var attackTarget = null
-
 
 
 func _ready():
@@ -100,7 +102,7 @@ func compareDistance(target_a, target_b):
 		return true
 	return false
 
-func closestEnemy() -> MeleeAttacker:
+func closestEnemy():
 	if possibleTargets.size() > 0:
 		possibleTargets.sort_custom(compareDistance)
 		return possibleTargets[0]
@@ -108,8 +110,32 @@ func closestEnemy() -> MeleeAttacker:
 		return null
 		
 
-func closestEnemyWithinRange() -> MeleeAttacker:
+func closestEnemyWithinRange():
 	if closestEnemy().position.distance_to(position) < attackRange:
 		return closestEnemy()
 	return null
 	
+
+func targetWithinRange() -> bool:
+	if attackTarget.get_ref().position.distance_to(position) < attackRange:
+		return true
+	else:
+		return false
+
+func takeDamage(amount) -> bool:
+	health -= amount
+	print(health)
+	if health <= 0:
+		stateMachine.died()
+		print("died")
+		collisionShape.disabled = true
+		return false
+	else:
+		return true
+	
+func removeNode():
+	var path = get_tree().get_root().get_node("World")
+	print(self)
+	print(path.units.find(self))
+	print(path.units)
+	path.units.remove_at(path.units.find(self))
