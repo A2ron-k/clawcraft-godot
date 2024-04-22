@@ -8,6 +8,7 @@ func _ready():
 
 func getUnits():
 	units = get_tree().get_nodes_in_group("units")
+	units.append(get_tree().get_nodes_in_group("meleeAttackers"))
 
 func _onAreaSelected(object):
 	#object is the camera
@@ -22,7 +23,8 @@ func _onAreaSelected(object):
 	var unitsInArea = _getUnitsInArea(area)
 	
 	for unit in units:
-		unit.setSelected(false)
+		if is_instance_valid(unit):
+			unit.setSelected(false)
 	
 	for unit in unitsInArea:
 		unit.setSelected(!unit.selected)
@@ -32,10 +34,17 @@ func _getUnitsInArea(area):
 	var unitsInArea = []
 	
 	for unit in units:
-		#Check if unit is inside the area
-		if (unit.position.x > area[0].x) and (unit.position.y < area[1].x):
-			if (unit.position.y > area[0].y) and (unit.position.y < area[1].y):
-				unitsInArea.append(unit)
+		if is_instance_valid(unit):
+			#Check if unit is inside the area
+			if (unit.position.x > area[0].x) and (unit.position.y < area[1].x):
+				if (unit.position.y > area[0].y) and (unit.position.y < area[1].y):
+					if unit.unitOwner == 0:
+						unitsInArea.append(unit)
+		else:
+			# Handle invalid or freed units
+			print("Invalid unit found:", unit)
+			units.erase(unit)
+			# You might want to remove the invalid unit from the units array here
 
 	return unitsInArea
 	

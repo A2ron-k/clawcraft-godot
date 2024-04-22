@@ -19,6 +19,8 @@ var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
 @onready var stopTimer = $StopTimer
 
+@export var unitOwner := 0
+
 
 
 func _ready():
