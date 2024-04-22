@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name MeleeAttacker
 
 # Unit Selection
 var mouseEntered = false
@@ -19,9 +20,18 @@ var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
 @onready var stopTimer = $StopTimer
 
+# Attacking Logic
+var attackRange = 20
+var health = 20
+var damage = 2
+var possibleTargets = []
+var attackTarget = null
+
+
 
 func _ready():
 	setSelected(selected)
+	add_to_group("units", true)
 	add_to_group("meleeAttackers", true)
 	
 	# Sets the enemy units to red
@@ -37,7 +47,7 @@ func setSelected(value):
 # Handles input
 func _input(event):
 	if event.is_action_pressed("LeftClick"):
-		if mouseEntered:
+		if mouseEntered && unitOwner == 0:
 			setSelected(!selected)
 	
 	if(event.is_action_pressed("RightClick")):
@@ -53,20 +63,12 @@ func _input(event):
 func moveToTarget(delta, target):
 	if followCursor:
 		if selected:
-			movementTarget = get_global_mouse_position()
+			target = get_global_mouse_position()
 			
-	velocity = position.direction_to(movementTarget) * speed
+	velocity = position.direction_to(target) * speed
 	
 	move_and_slide()
-	#if velocity.x > 10:
-		#animation.play("WalkRight")
-	#elif velocity.x < -10:
-		#animation.play("WalkLeft")
-	#elif velocity.y < 0:
-		#animation.play("WalkUp")
-	#else:
-		#animation.play("WalkDown")
-
+	
 	if get_slide_collision_count() and stopTimer.is_stopped():
 		stopTimer.start()
 		lastDistanceToTarget = position.distance_to(movementTarget)
@@ -78,3 +80,36 @@ func _on_meleeAttacker_mouse_entered():
 
 func _on_meleeAttacker_mouse_exited():
 	mouseEntered = false
+
+
+func _on_vision_range_body_entered(body):
+	if body.is_in_group("units"):
+		print("Possible unit sighted")
+		if body.unitOwner != unitOwner:
+			print("It is an enemy")
+			possibleTargets.append(body)
+
+
+func _on_vision_range_body_exited(body):
+	if possibleTargets.has(body):
+		print("Loss vision on Unit")
+		possibleTargets.erase(body)
+
+func compareDistance(target_a, target_b):
+	if position.distance_to(target_a.position) < position.distance_to(target_b.position):
+		return true
+	return false
+
+func closestEnemy() -> MeleeAttacker:
+	if possibleTargets.size() > 0:
+		possibleTargets.sort_custom(compareDistance)
+		return possibleTargets[0]
+	else:
+		return null
+		
+
+func closestEnemyWithinRange() -> MeleeAttacker:
+	if closestEnemy().position.distance_to(position) < attackRange:
+		return closestEnemy()
+	return null
+	

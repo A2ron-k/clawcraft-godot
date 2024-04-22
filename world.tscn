@@ -406,10 +406,10 @@ position = Vector2(228, 155)
 [node name="meleeAttackers" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="meleeAttacker" parent="meleeAttackers" instance=ExtResource("12_8jwll")]
-position = Vector2(145, 148)
+[node name="meleeAttacker" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
+position = Vector2(244, 218)
 
-[node name="meleeAttacker2" parent="meleeAttackers" instance=ExtResource("12_8jwll")]
+[node name="meleeAttacker2" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
 position = Vector2(49, 151)
 unitOwner = 1
 

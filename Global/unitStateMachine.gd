@@ -24,15 +24,15 @@ func performStateLogic(delta):
 		states.moving:
 			parent.moveToTarget(delta, parent.movementTarget)
 		states.engaging:
-			pass
+			print(parent.attackTarget.get_ref().position)
+			parent.moveToTarget(delta, parent.attackTarget.get_ref().movementTarget)
 		states.attacking:
 			pass
 		states.dying:
 			pass
 
 func enterState(newState, previousState):
-	var dx = abs(parent.position.x - parent.movementTarget.x)
-	var dy = abs(parent.position.y - parent.movementTarget.y)
+
 	
 	match state:
 		states.idle:
@@ -41,6 +41,8 @@ func enterState(newState, previousState):
 			pass
 		states.moving:
 			print("Entering Move")
+			var dx = abs(parent.position.x - parent.movementTarget.x)
+			var dy = abs(parent.position.y - parent.movementTarget.y)
 			if dx > dy: 
 				if parent.position.x < parent.movementTarget.x:
 					parent.animation.play("WalkRight")
@@ -52,7 +54,18 @@ func enterState(newState, previousState):
 				elif parent.position.y > parent.movementTarget.y:
 					parent.animation.play("WalkUp")
 		states.engaging:
-			pass
+			var dx = abs(parent.position.x - parent.attackTarget.get_ref().position.x)
+			var dy = abs(parent.position.y - parent.attackTarget.get_ref().position.y)
+			if dx > dy: 
+				if parent.position.x < parent.attackTarget.get_ref().position.x:
+					parent.animation.play("attackRight")
+				elif parent.position.x > parent.attackTarget.get_ref().position.x:
+					parent.animation.play("attackLeft")
+			else: 
+				if parent.position.y < parent.attackTarget.get_ref().position.y:
+					parent.animation.play("attackDown")
+				elif parent.position.y > parent.attackTarget.get_ref().position.y:
+					parent.animation.play("attackUp")
 		states.attacking:
 			pass
 		states.dying:
@@ -61,13 +74,17 @@ func enterState(newState, previousState):
 func getTransition(delta):
 	match state:
 		states.idle:
-			pass
+			if parent.closestEnemy() != null:
+				parent.attackTarget  = weakref(parent.closestEnemy())
+				setState(states.engaging)
 		states.moving:
 			if parent.position.distance_to(parent.movementTarget) < 15:
 				parent.movementTarget = parent.position
 				setState(states.idle)
 		states.engaging:
-			pass
+			if parent.closestEnemyWithinRange() != null:
+				parent.attackTarget  = weakref(parent.closestEnemy())
+				setState(states.attacking)
 		states.attacking:
 			pass
 		states.dying:
