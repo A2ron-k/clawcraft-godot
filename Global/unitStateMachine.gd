@@ -9,6 +9,14 @@ enum Commands {
 
 var command = Commands.NONE
 
+# Attack Move Modifier
+enum CommandModifiers {
+	NONE,
+	ATTACK_MOVE
+}
+
+var commandModifier
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	addState("idle")
@@ -20,11 +28,22 @@ func _ready():
 
 func _input(event):
 	if parent.selected and state!= states.dying:
-		if Input.is_action_just_released("RightClick"):
+		if Input.is_action_pressed("AttackMove"):
+			commandModifier = CommandModifiers.ATTACK_MOVE
+			
+		if Input.is_action_pressed("Hold"):
+			command = Commands.HOLD
 			setState(states.idle)
+			
+		if Input.is_action_just_released("RightClick"):
 			parent.movementTarget = parent.get_global_mouse_position()
 			setState(states.moving)
-
+			
+			match commandModifier:
+				CommandModifiers.NONE:
+					command = Commands.MOVE
+				CommandModifiers.ATTACK_MOVE:
+					command = Commands.ATTACK_MOVE
 
 func performStateLogic(delta):
 	match state:
@@ -33,8 +52,10 @@ func performStateLogic(delta):
 		states.moving:
 			parent.moveToTarget(delta, parent.movementTarget)
 		states.engaging:
-			print(parent.attackTarget.get_ref().position)
-			parent.moveToTarget(delta, parent.attackTarget.get_ref().movementTarget)
+			if parent.attackTarget.get_ref():
+				parent.moveToTarget(delta, parent.attackTarget.get_ref().movementTarget)
+			else:
+				setState(states.idle)
 		states.attacking:
 			pass
 		states.dying:
@@ -92,32 +113,61 @@ func enterState(newState, previousState):
 func getTransition(delta):
 	match state:
 		states.idle:
-			if parent.closestEnemy() != null:
-				parent.attackTarget  = weakref(parent.closestEnemy())
-				setState(states.engaging)
+			match command:
+				Commands.HOLD:
+					if parent.closestEnemyWithinRange() != null:
+						parent.attackTarget = weakref(parent.closestEnemyWithinRange())
+						setState(states.attacking)
+				
+				Commands.ATTACK_MOVE:
+					setState(states.moving)
+				
+				Commands.NONE:
+					if parent.closestEnemy() != null:
+						parent.attackTarget = weakref(parent.closestEnemy())
+						setState(states.engaging)
+
 		states.moving:
+			#if command == Commands.MOVE:
+				#if parent.position.distance_to(parent.movementTarget) < 15:
+					#parent.movementTarget = parent.position
+					#command = Commands.NONE
+					#setState(states.idle)
+					
+					
+			if command == Commands.ATTACK_MOVE:
+				if parent.closestEnemy() != null:
+					parent.attackTarget  = weakref(parent.closestEnemy())
+					setState(states.engaging)
+					
 			if parent.position.distance_to(parent.movementTarget) < 15:
-				parent.movementTarget = parent.position
-				setState(states.idle)
+					parent.movementTarget = parent.position
+					command = Commands.NONE
+					setState(states.idle)
+					
 		states.engaging:
 			if parent.closestEnemyWithinRange() != null:
 				parent.attackTarget  = weakref(parent.closestEnemy())
 				setState(states.attacking)
+				
 		states.attacking:
 			if !parent.attackTarget.get_ref():
 				setState(states.idle)
 				parent.attackTarget = null
+				
 		states.dying:
 			parent.removeNode()
 			parent.queue_free()
 	pass
 
 func _on_stop_timer_timeout():
-	if parent.get_slide_collision_count():
-		parent.currentDistanceToTarget = parent.position.distance_to(parent.movementTarget)
-		if parent.lastDistanceToTarget < parent.currentDistanceToTarget + parent.move_threshold:
-			parent.movementTarget = parent.position
-			setState(states.idle)
+	if state != states.dying:
+		if parent.get_slide_collision_count():
+			parent.currentDistanceToTarget = parent.position.distance_to(parent.movementTarget)
+			if parent.lastDistanceToTarget < parent.currentDistanceToTarget + parent.move_threshold:
+				parent.movementTarget = parent.position
+				setState(states.idle)
+				command = Commands.NONE
 
 func died():
 	setState(states.dying)
@@ -137,6 +187,5 @@ func _on_animation_player_animation_finished(anim_name):
 				setState(states.idle)
 		states.dying:
 			parent.queue_free()
-	pass # Replace with function body.
 	
 

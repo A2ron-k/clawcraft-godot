@@ -111,10 +111,12 @@ func closestEnemy():
 		
 
 func closestEnemyWithinRange():
-	if closestEnemy().position.distance_to(position) < attackRange:
-		return closestEnemy()
+	if closestEnemy():
+		if closestEnemy().position.distance_to(position) < attackRange:
+			return closestEnemy()
+		return null
 	return null
-	
+
 
 func targetWithinRange() -> bool:
 	if attackTarget.get_ref().position.distance_to(position) < attackRange:
