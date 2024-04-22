@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=15 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://crn8702foxvu2" path="res://Buildings/Barrack.tscn" id="7_05das"]
 [ext_resource type="PackedScene" uid="uid://bf7mp2fiecevg" path="res://Resources/coinHouse.tscn" id="7_sc5jh"]
 [ext_resource type="PackedScene" uid="uid://d3uwrlh7d1cp" path="res://Buildings/Base.tscn" id="11_w86o5"]
+[ext_resource type="PackedScene" uid="uid://2nhl36r3044k" path="res://Units/MeleeAttacker.tscn" id="12_8jwll"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gj07c"]
 texture = ExtResource("2_mi50q")
@@ -401,5 +402,11 @@ position = Vector2(179, 77)
 
 [node name="Base" parent="HomeBase" instance=ExtResource("11_w86o5")]
 position = Vector2(228, 155)
+
+[node name="meleeAttackers" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="meleeAttacker" parent="meleeAttackers" instance=ExtResource("12_8jwll")]
+position = Vector2(105, 126)
 
 [connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]
