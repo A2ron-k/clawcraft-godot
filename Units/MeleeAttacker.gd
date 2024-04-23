@@ -5,12 +5,13 @@ class_name MeleeAttacker
 var mouseEntered = false
 @export var selected = false
 
+# Children
 @onready var box = get_node("Box")
 @onready var movementTarget = position
 @onready var animation = get_node("AnimationPlayer")
 @onready var stateMachine = get_node("UnitStateMachine")
 @onready var collisionShape = get_node("CollisionShape2D")
-
+@onready var navAgent = get_node("NavigationNode/NavigationAgent2D")
 
 # Unit Owner
 @export var unitOwner := 0
@@ -22,6 +23,9 @@ const move_threshold = 100 #How much closer to the target
 var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
 @onready var stopTimer = $StopTimer
+
+# Unit Navigation/ Pathfinding
+var navTarget
 
 # Attacking Logic
 var attackRange = 20
@@ -63,11 +67,16 @@ func _input(event):
 
 
 func moveToTarget(delta, target):
+	var direction = Vector2.ZERO
 	if followCursor:
 		if selected:
 			target = get_global_mouse_position()
-			
-	velocity = position.direction_to(target) * speed
+	
+	navTarget = target
+	direction = navAgent.get_next_path_position() - position
+	direction = direction.normalized()
+	
+	velocity = direction * speed
 	
 	move_and_slide()
 	
@@ -90,7 +99,6 @@ func _on_vision_range_body_entered(body):
 		if body.unitOwner != unitOwner:
 			print("It is an enemy")
 			possibleTargets.append(body)
-
 
 func _on_vision_range_body_exited(body):
 	if possibleTargets.has(body):
@@ -141,3 +149,12 @@ func removeNode():
 	print(path.units.find(self))
 	print(path.units)
 	path.units.remove_at(path.units.find(self))
+
+
+func _on_nav_timer_timeout():
+	if navTarget:
+		navAgent.target_position = navTarget
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	pass # Replace with function body.
