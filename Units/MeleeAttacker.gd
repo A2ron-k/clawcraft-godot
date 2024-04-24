@@ -12,6 +12,8 @@ var mouseEntered = false
 @onready var stateMachine = get_node("UnitStateMachine")
 @onready var collisionShape = get_node("CollisionShape2D")
 @onready var navAgent = get_node("NavigationNode/NavigationAgent2D")
+@onready var healthBar = get_node("HealthBar")
+
 
 # Unit Owner
 @export var unitOwner := 0
@@ -43,10 +45,13 @@ func _ready():
 	# Sets the enemy units to red
 	if unitOwner == 1:
 		modulate = Color(1, 0.29, 0.165,1)
+
+	healthBar.max_value = health
 	
 
 func setSelected(value): 
 	box.visible = value
+	healthBar.visible = value
 	selected = value
 	
 
@@ -133,11 +138,14 @@ func targetWithinRange() -> bool:
 		return false
 
 func takeDamage(amount) -> bool:
+	healthBar.visible = true
+	
+	var tween = get_tree().create_tween()
 	health -= amount
-	print(health)
+	tween.tween_property(healthBar, "value", health,0.1).set_trans(Tween.TRANS_QUAD)
+	
 	if health <= 0:
 		stateMachine.died()
-		print("died")
 		collisionShape.disabled = true
 		return false
 	else:

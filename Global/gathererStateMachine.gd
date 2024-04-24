@@ -35,7 +35,7 @@ func _input(event):
 			print("Return")
 			command = Commands.RETURN
 			setState(states.returning)
-			
+		
 		if Input.is_action_just_released("RightClick"):
 			parent.movementTarget = parent.get_global_mouse_position()
 			setState(states.moving)
