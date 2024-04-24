@@ -54,12 +54,14 @@ func performStateLogic(delta):
 			parent.moveToTarget(delta, parent.movementTarget)
 		states.gathering:
 			 # Logic for gathering resources
+			#parent.collisionShape.disabled = true
 			if parent.gatherTarget.get_ref():
 				parent.moveToTarget(delta, parent.gatherTarget.get_ref().position)
 			else:
 				setState(states.idle)
 		states.returning:
 			# Logic for returning to base
+			#parent.collisionShape.disabled = false
 			parent.moveToTarget(delta, parent.homeBasePosition)
 			
 			pass

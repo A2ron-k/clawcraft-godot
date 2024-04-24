@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ci55a"]
 radius = 2.99998
-height = 15.9999
+height = 7.99995
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_td8u0"]
 bg_color = Color(1, 1, 1, 0)
@@ -67,7 +67,7 @@ input_pickable = true
 script = ExtResource("1_f1tal")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 6)
+position = Vector2(0, 6)
 rotation = -1.56731
 shape = SubResource("CapsuleShape2D_ci55a")
 

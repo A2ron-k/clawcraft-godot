@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-
+var pop = preload("res://Global/Pop.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,7 +23,8 @@ func _on_contact_zone_body_entered(body):
 		body.goBackToResource(body.lastResourcePosition)
 	
 	if "Gatherer" in body.name:
-		depositResource(body, body.noOfCatnipCarrying)
+		if body.noOfCatnipCarrying > 0:
+			depositResource(body, body.noOfCatnipCarrying)
 		
 	
 	pass # Replace with function body.
@@ -36,5 +37,9 @@ func depositResource(unit, noOfCatnip):
 	Game.Catnip += noOfCatnip
 	unit.noOfCatnipCarrying -= noOfCatnip
 	print("1.3 Worker deposited Catnip")
+	var popLabel = pop.instantiate()
+	
+	add_child(popLabel)
+	popLabel.showValue(str(1),false)
 	
 	
