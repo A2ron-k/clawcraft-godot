@@ -128,13 +128,6 @@ func getTransition(delta):
 						setState(states.engaging)
 
 		states.moving:
-			#if command == Commands.MOVE:
-				#if parent.position.distance_to(parent.movementTarget) < 15:
-					#parent.movementTarget = parent.position
-					#command = Commands.NONE
-					#setState(states.idle)
-					
-					
 			if command == Commands.ATTACK_MOVE:
 				if parent.closestEnemy() != null:
 					parent.attackTarget  = weakref(parent.closestEnemy())

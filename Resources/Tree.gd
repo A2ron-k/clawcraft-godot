@@ -28,6 +28,11 @@ func _on_collect_area_body_entered(body):
 		print("Wait Over")
 		body.noOfCatnipCarrying += 1
 		body.goBackToBase()
+	
+	if "Gatherer" in body.name:
+		await get_tree().create_timer(5.0).timeout
+		body.noOfCatnipCarrying += 1
+		
 
 
 func _on_collect_area_body_exited(body):

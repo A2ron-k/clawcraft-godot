@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtfm5ce0cimoi"]
+
+[ext_resource type="Script" path="res://Units/gatherer.gd" id="1_f1tal"]
+[ext_resource type="Texture2D" uid="uid://4kg1ad22xupg" path="res://Units/Arthax.png" id="2_s50tn"]
+[ext_resource type="PackedScene" uid="uid://dwomim3537ypd" path="res://Global/gathererStateMachine.tscn" id="3_r3ffq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ci55a"]
+radius = 2.99998
+height = 7.99995
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_td8u0"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.862745, 0.819608, 0.313726, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Animation" id="Animation_53rcq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arthax:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_1ver7"]
+resource_name = "walkTop"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arthax:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jhu3h"]
+_data = {
+"RESET": SubResource("Animation_53rcq"),
+"WalkDown": SubResource("Animation_1ver7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6x16"]
+radius = 88.0511
+
+[node name="Gatherer" type="CharacterBody2D"]
+input_pickable = true
+script = ExtResource("1_f1tal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+rotation = -1.56731
+shape = SubResource("CapsuleShape2D_ci55a")
+
+[node name="Box" type="Panel" parent="."]
+offset_left = -10.0
+offset_right = 9.0
+offset_bottom = 10.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_td8u0")
+
+[node name="Arthax" type="Sprite2D" parent="."]
+texture = ExtResource("2_s50tn")
+hframes = 5
+vframes = 8
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jhu3h")
+}
+
+[node name="StopTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="VisionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_x6x16")
+
+[node name="gathererStateMachine" parent="." instance=ExtResource("3_r3ffq")]
+
+[node name="NavigationNode" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavigationNode"]
+avoidance_enabled = true
+radius = 16.0
+avoidance_mask = 2
+debug_enabled = true
+
+[node name="NavTimer" type="Timer" parent="NavigationNode"]
+wait_time = 0.1
+autostart = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_gatherer_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_gatherer_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="gathererStateMachine" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="StopTimer" to="gathererStateMachine" method="_on_stop_timer_timeout"]
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
+[connection signal="timeout" from="NavigationNode/NavTimer" to="." method="_on_nav_timer_timeout"]

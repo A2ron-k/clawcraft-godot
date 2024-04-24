@@ -1,56 +1,62 @@
 extends CharacterBody2D
-class_name MeleeAttacker
-
-# Unit Selection
-var mouseEntered = false
-@export var selected = false
+class_name Gatherer
 
 # Children
 @onready var box = get_node("Box")
 @onready var movementTarget = position
 @onready var animation = get_node("AnimationPlayer")
-@onready var stateMachine = get_node("UnitStateMachine")
 @onready var collisionShape = get_node("CollisionShape2D")
+@onready var stateMachine = get_node("gathererStateMachine")
 @onready var navAgent = get_node("NavigationNode/NavigationAgent2D")
 
 # Unit Owner
 @export var unitOwner := 0
 
+# Unit Selection
+var mouseEntered = false
+@export var selected = false
+
 # Unit Movement
 var followCursor = false
-var speed = 100
+var speed = 30
 const move_threshold = 100 #How much closer to the target
 var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
 @onready var stopTimer = $StopTimer
 
-# Unit Navigation/ Pathfinding
+## Unit Navigation/ Pathfinding
 var navTarget
 
-# Attacking Logic
-var attackRange = 20
-var health = 10
-var damage = 2
+# Unit Stats
+var health = 4
+var gatherRange = 20
+
+# Unit Logic
 var possibleTargets = []
-var attackTarget = null
+var gatherTarget = null
+@export var noOfCatnipCarrying = 0
+@onready var homeBasePosition = get_tree().get_root().get_node("World/HomeBase/Base").position
 
 
+
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	setSelected(selected)
 	add_to_group("units", true)
-	add_to_group("meleeAttackers", true)
+	add_to_group("gatherers", true)
 	
 	# Sets the enemy units to red
 	if unitOwner == 1:
 		modulate = Color(1, 0.29, 0.165,1)
-	
 
+
+# Toggle unit selection and selection marker
 func setSelected(value): 
 	box.visible = value
 	selected = value
-	
 
-# Handles input
+
+# Handles player input
 func _input(event):
 	if event.is_action_pressed("LeftClick"):
 		if mouseEntered && unitOwner == 0:
@@ -66,6 +72,7 @@ func _input(event):
 	pass
 
 
+# Handles unit movement to target
 func moveToTarget(delta, target):
 	var direction = Vector2.ZERO
 	if followCursor:
@@ -85,53 +92,56 @@ func moveToTarget(delta, target):
 		lastDistanceToTarget = position.distance_to(movementTarget)
 
 
-func _on_meleeAttacker_mouse_entered():
+func _on_gatherer_mouse_entered():
 	mouseEntered = true
 
 
-func _on_meleeAttacker_mouse_exited():
+func _on_gatherer_mouse_exited():
 	mouseEntered = false
 
 
 func _on_vision_range_body_entered(body):
-	if body.is_in_group("units"):
-		print("Possible unit sighted")
-		if body.unitOwner != unitOwner:
-			print("It is an enemy")
-			possibleTargets.append(body)
+	if body.is_in_group("resources"):
+		print("Possible resources sighted")
+		possibleTargets.append(body)
+
 
 func _on_vision_range_body_exited(body):
 	if possibleTargets.has(body):
-		print("Loss vision on Unit")
+		print("Loss vision on resources")
 		possibleTargets.erase(body)
+
 
 func compareDistance(target_a, target_b):
 	if position.distance_to(target_a.position) < position.distance_to(target_b.position):
 		return true
 	return false
+	
 
-func closestEnemy():
+func closestResource():
 	if possibleTargets.size() > 0:
 		possibleTargets.sort_custom(compareDistance)
 		return possibleTargets[0]
 	else:
 		return null
-		
 
-func closestEnemyWithinRange():
-	if closestEnemy():
-		if closestEnemy().position.distance_to(position) < attackRange:
-			return closestEnemy()
+
+func closestResourceWithinRange():
+	if closestResource():
+		if closestResource().position.distance_to(position) < gatherRange:
+			return closestResource()
 		return null
 	return null
 
 
 func targetWithinRange() -> bool:
-	if attackTarget.get_ref().position.distance_to(position) < attackRange:
+	if gatherTarget.get_ref().position.distance_to(position) < gatherRange:
 		return true
 	else:
 		return false
 
+
+# Handles taking damage logic
 func takeDamage(amount) -> bool:
 	health -= amount
 	print(health)
@@ -142,7 +152,9 @@ func takeDamage(amount) -> bool:
 		return false
 	else:
 		return true
-	
+
+
+# Handles Dying of the Node
 func removeNode():
 	var path = get_tree().get_root().get_node("World")
 	path.units.remove_at(path.units.find(self))
