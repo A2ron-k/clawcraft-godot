@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Gatherer
 
+
 # Children
 @onready var box = get_node("Box")
 @onready var movementTarget = position
@@ -25,7 +26,7 @@ var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
 @onready var stopTimer = $StopTimer
 
-## Unit Navigation/ Pathfinding
+# Unit Navigation/ Pathfinding
 var navTarget
 
 # Unit Stats
@@ -39,7 +40,6 @@ var gatherTarget = null
 @onready var homeBasePosition = get_tree().get_root().get_node("World/HomeBase/Base").position
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setSelected(selected)
@@ -50,33 +50,39 @@ func _ready():
 	if unitOwner == 1:
 		modulate = Color(1, 0.29, 0.165,1)
 	
+	# Sets the healthbar value
 	healthBar.max_value = health
 
-
-# Toggle unit selection and selection marker
-func setSelected(value): 
-	box.visible = value
-	healthBar.visible = value
-	selected = value
-
-
-# Handles player input
+# Handles user input
 func _input(event):
 	if event.is_action_pressed("LeftClick"):
 		if mouseEntered && unitOwner == 0:
 			setSelected(!selected)
 	
-	if(event.is_action_pressed("RightClick")):
-		#var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
-		#MinimapPath._ready()
-		followCursor = true
-	
-	if(event.is_action_released("RightClick")):
-		followCursor = false
-	pass
+	# TODO - Remove when finish updating Minimap feature
+	#if(event.is_action_pressed("RightClick")):
+		##var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
+		##MinimapPath._ready()
+		#followCursor = true
+	#
+	#if(event.is_action_released("RightClick")):
+		#followCursor = false
+	#pass
 
+# Handles variables that are related to being selected
+func setSelected(value): 
+	box.visible = value
+	healthBar.visible = value
+	selected = value
 
-# Handles unit movement to target
+# Mouse detection
+func _on_gatherer_mouse_entered():
+	mouseEntered = true
+
+func _on_gatherer_mouse_exited():
+	mouseEntered = false
+
+# Handle Movement to Target
 func moveToTarget(delta, target):
 	var direction = Vector2.ZERO
 	if followCursor:
@@ -95,41 +101,16 @@ func moveToTarget(delta, target):
 		stopTimer.start()
 		lastDistanceToTarget = position.distance_to(movementTarget)
 
-
-func _on_gatherer_mouse_entered():
-	mouseEntered = true
-
-
-func _on_gatherer_mouse_exited():
-	mouseEntered = false
-
-
+# Handles Vision Range of Unit
 func _on_vision_range_body_entered(body):
 	if body.is_in_group("resources"):
-		print("Possible resources sighted")
 		possibleTargets.append(body)
-
 
 func _on_vision_range_body_exited(body):
 	if possibleTargets.has(body):
-		print("Loss vision on resources")
 		possibleTargets.erase(body)
 
-
-func compareDistance(target_a, target_b):
-	if position.distance_to(target_a.position) < position.distance_to(target_b.position):
-		return true
-	return false
-	
-
-func closestResource():
-	if possibleTargets.size() > 0:
-		possibleTargets.sort_custom(compareDistance)
-		return possibleTargets[0]
-	else:
-		return null
-
-
+# Finds the closest Resource within range
 func closestResourceWithinRange():
 	if closestResource():
 		if closestResource().position.distance_to(position) < gatherRange:
@@ -137,15 +118,28 @@ func closestResourceWithinRange():
 		return null
 	return null
 
+# Finds the closest Resource
+func closestResource():
+	if possibleTargets.size() > 0:
+		possibleTargets.sort_custom(compareDistance)
+		return possibleTargets[0]
+	else:
+		return null
 
+# Handles Distance Comparision between two targets
+func compareDistance(target_a, target_b) -> bool:
+	if position.distance_to(target_a.position) < position.distance_to(target_b.position):
+		return true
+	return false
+
+# Checks if target has entered gathering range
 func targetWithinRange() -> bool:
 	if gatherTarget.get_ref().position.distance_to(position) < gatherRange:
 		return true
 	else:
 		return false
 
-
-# Handles taking damage logic
+# Handles Take Damage Logic for the unit
 func takeDamage(amount) -> bool:
 	var tween = get_tree().create_tween()
 	health -= amount
@@ -158,13 +152,12 @@ func takeDamage(amount) -> bool:
 	else:
 		return true
 
-
-# Handles Dying of the Node
+# Handles deletion of the unit from the Game Unit Array
 func removeNode():
 	var path = get_tree().get_root().get_node("World")
 	path.units.remove_at(path.units.find(self))
 
-
+# Prompts unit path recalculation 
 func _on_nav_timer_timeout():
 	if navTarget:
 		navAgent.target_position = navTarget

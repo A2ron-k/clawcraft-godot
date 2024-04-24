@@ -44,8 +44,5 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_lfom7")
 value = 50.0
 show_percentage = false
 
-[node name="Timer" type="Timer" parent="."]
-
 [connection signal="body_entered" from="collectArea" to="." method="_on_collect_area_body_entered"]
 [connection signal="body_exited" from="collectArea" to="." method="_on_collect_area_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

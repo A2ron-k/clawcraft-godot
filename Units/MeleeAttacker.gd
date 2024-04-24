@@ -1,9 +1,6 @@
 extends CharacterBody2D
 class_name MeleeAttacker
 
-# Unit Selection
-var mouseEntered = false
-@export var selected = false
 
 # Children
 @onready var box = get_node("Box")
@@ -14,29 +11,35 @@ var mouseEntered = false
 @onready var navAgent = get_node("NavigationNode/NavigationAgent2D")
 @onready var healthBar = get_node("HealthBar")
 
-
 # Unit Owner
 @export var unitOwner := 0
 
+# Unit Selection
+var mouseEntered = false
+@export var selected = false
+
 # Unit Movement
 var followCursor = false
-var speed = 100
+var speed = 100 
 const move_threshold = 100 #How much closer to the target
 var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
-@onready var stopTimer = $StopTimer
+@onready var stopTimer = get_node("StopTimer")
 
 # Unit Navigation/ Pathfinding
 var navTarget
 
-# Attacking Logic
-var attackRange = 20
+# Unit Stats
 var health = 10
 var damage = 2
+var attackRange = 20
+
+# Attacking Logic
 var possibleTargets = []
 var attackTarget = null
 
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	setSelected(selected)
 	add_to_group("units", true)
@@ -46,31 +49,39 @@ func _ready():
 	if unitOwner == 1:
 		modulate = Color(1, 0.29, 0.165,1)
 
+	# Sets the healthbar value
 	healthBar.max_value = health
-	
 
-func setSelected(value): 
-	box.visible = value
-	healthBar.visible = value
-	selected = value
-	
-
-# Handles input
+# Handles user input
 func _input(event):
 	if event.is_action_pressed("LeftClick"):
 		if mouseEntered && unitOwner == 0:
 			setSelected(!selected)
 	
-	if(event.is_action_pressed("RightClick")):
-		#var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
-		#MinimapPath._ready()
-		followCursor = true
-	
-	if(event.is_action_released("RightClick")):
-		followCursor = false
-	pass
+	# TODO - Remove when finish updating Minimap feature
+	#if(event.is_action_pressed("RightClick")):
+		##var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
+		##MinimapPath._ready()
+		#followCursor = true
+	#
+	#if(event.is_action_released("RightClick")):
+		#followCursor = false
+	#pass
 
+# Handles variables that are related to being selected
+func setSelected(value): 
+	box.visible = value
+	healthBar.visible = value
+	selected = value
 
+# Mouse detection
+func _on_meleeAttacker_mouse_entered():
+	mouseEntered = true
+
+func _on_meleeAttacker_mouse_exited():
+	mouseEntered = false
+
+# Handle Movement to Target
 func moveToTarget(delta, target):
 	var direction = Vector2.ZERO
 	if followCursor:
@@ -89,15 +100,7 @@ func moveToTarget(delta, target):
 		stopTimer.start()
 		lastDistanceToTarget = position.distance_to(movementTarget)
 
-
-func _on_meleeAttacker_mouse_entered():
-	mouseEntered = true
-
-
-func _on_meleeAttacker_mouse_exited():
-	mouseEntered = false
-
-
+# Handles Vision Range of Unit
 func _on_vision_range_body_entered(body):
 	if body.is_in_group("units"):
 		print("Possible unit sighted")
@@ -110,19 +113,7 @@ func _on_vision_range_body_exited(body):
 		print("Loss vision on Unit")
 		possibleTargets.erase(body)
 
-func compareDistance(target_a, target_b):
-	if position.distance_to(target_a.position) < position.distance_to(target_b.position):
-		return true
-	return false
-
-func closestEnemy():
-	if possibleTargets.size() > 0:
-		possibleTargets.sort_custom(compareDistance)
-		return possibleTargets[0]
-	else:
-		return null
-		
-
+# Finds the closest enemy within Attack Range
 func closestEnemyWithinRange():
 	if closestEnemy():
 		if closestEnemy().position.distance_to(position) < attackRange:
@@ -130,13 +121,28 @@ func closestEnemyWithinRange():
 		return null
 	return null
 
+# Handles Distance Comparision between two targets
+func compareDistance(target_a, target_b) -> bool:
+	if position.distance_to(target_a.position) < position.distance_to(target_b.position):
+		return true
+	return false
 
+# Finds the closest enemy
+func closestEnemy():
+	if possibleTargets.size() > 0:
+		possibleTargets.sort_custom(compareDistance)
+		return possibleTargets[0]
+	else:
+		return null
+
+# Checks if target is within range
 func targetWithinRange() -> bool:
 	if attackTarget.get_ref().position.distance_to(position) < attackRange:
 		return true
 	else:
 		return false
 
+# Handles Take Damage Logic for the unit
 func takeDamage(amount) -> bool:
 	healthBar.visible = true
 	
@@ -150,12 +156,13 @@ func takeDamage(amount) -> bool:
 		return false
 	else:
 		return true
-	
+
+# Handles deletion of the unit from the Game Unit Array
 func removeNode():
 	var path = get_tree().get_root().get_node("World")
 	path.units.remove_at(path.units.find(self))
 
-
+# Prompts unit path recalculation 
 func _on_nav_timer_timeout():
 	if navTarget:
 		navAgent.target_position = navTarget

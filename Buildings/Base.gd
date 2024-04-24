@@ -1,44 +1,30 @@
 extends StaticBody2D
 
+
 var pop = preload("res://Global/Pop.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
+# Area detection
 func _on_contact_zone_body_entered(body):
-	
 	# Deposit resource
-	# TODO - Check if the node that entered is a "Unit"
-	if "Unit" in body.name:
-		print("1.1 Worker unit detected")
-		print("1.2 Unit is carrying: " + str(body.noOfCatnipCarrying))
-		depositResource(body, body.noOfCatnipCarrying)
-		body.goBackToResource(body.lastResourcePosition)
-	
 	if "Gatherer" in body.name:
 		if body.noOfCatnipCarrying > 0:
 			depositResource(body, body.noOfCatnipCarrying)
-		
-	
-	pass # Replace with function body.
-
 
 func _on_contact_zone_body_exited(body):
 	pass # Replace with function body.
 
+# Handle updating of resource on UI and on Gatherer
 func depositResource(unit, noOfCatnip):
+	# Update the stats
 	Game.Catnip += noOfCatnip
 	unit.noOfCatnipCarrying -= noOfCatnip
-	print("1.3 Worker deposited Catnip")
-	var popLabel = pop.instantiate()
 	
+	# Display the depositing indicator
+	var popLabel = pop.instantiate()
 	add_child(popLabel)
 	popLabel.showValue(str(1),false)
 	

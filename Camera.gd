@@ -1,5 +1,9 @@
 extends Camera2D
 
+
+# Children
+@onready var box = get_node("../UI/Panel")
+
 # Camera Control
 @export var speed = 5.0
 @export var edgeSpeed = 50.0
@@ -23,14 +27,11 @@ var end = Vector2()
 var endVector = Vector2()
 var isDragging = false
 
-
-
 signal areaSelected
 signal startMoveSelection
 
 
-@onready var box = get_node("../UI/Panel")
-
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("areaSelected", Callable(get_parent(), "_onAreaSelected"))
 
@@ -87,6 +88,7 @@ func _process(delta):
 			isDragging = false
 			drawArea(false)
 
+# Tracks the user's mouse
 func _input(event):
 	if abs(zoomPosition.x - get_global_mouse_position().x) > zoomMargin:
 		zoomFactor = 1.0
@@ -112,7 +114,7 @@ func _input(event):
 		mousePosition = event.position
 		mousePositionGlobal = get_global_mouse_position()
 
-
+# Handles the drawing of the selection rectangle
 func drawArea(s=true):
 	box.size = Vector2(abs(startVector.x - endVector.x), abs(startVector.y - endVector.y))
 	

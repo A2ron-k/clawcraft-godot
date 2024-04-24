@@ -1094,6 +1094,7 @@ zoomMaximum = 7
 [node name="UI" parent="." instance=ExtResource("3_3g7ud")]
 
 [node name="Units" type="Node2D" parent="."]
+visible = false
 y_sort_enabled = true
 metadata/_edit_lock_ = true
 

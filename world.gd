@@ -1,15 +1,18 @@
 extends Node2D
 
-var units = []
+var units = [] # !VERY IMPORTANT - This tracks all the units in the game
 
+
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	#whenever game is loaded units are added to array
-	getUnits()
+	getUnits() # Whenever game is loaded units are added to array
 
+# Retrieves all the units that are in the entire game that has been pre-spawned
 func getUnits():
 	units = get_tree().get_nodes_in_group("units")
 	units.append(get_tree().get_nodes_in_group("meleeAttackers"))
 
+# Toggles the units's selected variable in an area
 func _onAreaSelected(object):
 	#object is the camera
 	
@@ -28,9 +31,9 @@ func _onAreaSelected(object):
 	
 	for unit in unitsInArea:
 		unit.setSelected(!unit.selected)
-	
 
-func _getUnitsInArea(area):
+# Retrieves all the friendly units Array in the selected area
+func _getUnitsInArea(area) -> Array:
 	var unitsInArea = []
 	
 	for unit in units:
@@ -42,9 +45,6 @@ func _getUnitsInArea(area):
 						unitsInArea.append(unit)
 		else:
 			# Handle invalid or freed units
-			print("Invalid unit found:", unit)
 			units.erase(unit)
-			# You might want to remove the invalid unit from the units array here
-
 	return unitsInArea
-	
+
