@@ -90,18 +90,19 @@ func enterState(newState, previousState):
 					parent.animation.play("WalkUp")
 		states.gathering:
 			print("Entering Gathering")
-			var dx = abs(parent.position.x - parent.gatherTarget.get_ref().position.x)
-			var dy = abs(parent.position.y - parent.gatherTarget.get_ref().position.y)
-			if dx > dy: 
-				if parent.position.x < parent.gatherTarget.get_ref().position.x:
-					parent.animation.play("GatherRight")
-				elif parent.position.x > parent.gatherTarget.get_ref().position.x:
-					parent.animation.play("GatherLeft")
-			else: 
-				if parent.position.y < parent.gatherTarget.get_ref().position.y:
-					parent.animation.play("GatherDown")
-				elif parent.position.y > parent.gatherTarget.get_ref().position.y:
-					parent.animation.play("GatherUp")
+			if parent.gatherTarget.get_ref() != null:
+				var dx = abs(parent.position.x - parent.gatherTarget.get_ref().position.x)
+				var dy = abs(parent.position.y - parent.gatherTarget.get_ref().position.y)
+				if dx > dy: 
+					if parent.position.x < parent.gatherTarget.get_ref().position.x:
+						parent.animation.play("GatherRight")
+					elif parent.position.x > parent.gatherTarget.get_ref().position.x:
+						parent.animation.play("GatherLeft")
+				else: 
+					if parent.position.y < parent.gatherTarget.get_ref().position.y:
+						parent.animation.play("GatherDown")
+					elif parent.position.y > parent.gatherTarget.get_ref().position.y:
+						parent.animation.play("GatherUp")
 		states.returning:
 			print("Entering Return")
 			var dx = abs(parent.position.x - parent.homeBasePosition.x)
