@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=17 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bf7mp2fiecevg" path="res://Resources/coinHouse.tscn" id="7_sc5jh"]
 [ext_resource type="PackedScene" uid="uid://d3uwrlh7d1cp" path="res://Buildings/Base.tscn" id="11_w86o5"]
 [ext_resource type="PackedScene" uid="uid://2nhl36r3044k" path="res://Units/MeleeAttacker.tscn" id="12_8jwll"]
+[ext_resource type="PackedScene" uid="uid://dtfm5ce0cimoi" path="res://Units/Gatherer.tscn" id="13_i62eo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rcn7f"]
 vertices = PackedVector2Array(410, 490, 422, 490, 1065, 763, 966, 768, 88, 765, 374, 490, 1065, 47, 570, 490, 570, 406, 88, 41, 474, 342, 474, 410, 502, 406, 502, 490, 438, 342, 438, 374, 422, 374, 458, 490, 458, 410, 410, 422, 378, 422, 378, 374, 342, 442, 374, 442, 342, 374)
@@ -1104,7 +1105,7 @@ y_sort_enabled = true
 script = ExtResource("6_3txhf")
 metadata/_edit_lock_ = true
 
-[node name="Tree" parent="Objects" instance=ExtResource("4_pba7t")]
+[node name="Tree" parent="Objects" groups=["resources"] instance=ExtResource("4_pba7t")]
 position = Vector2(341, 163)
 
 [node name="Buildings" type="Node2D" parent="."]
@@ -1112,7 +1113,7 @@ y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="Barrack" parent="Buildings" instance=ExtResource("7_05das")]
-position = Vector2(235, 113)
+position = Vector2(306, 89)
 input_pickable = true
 
 [node name="CoinHouses" type="Node2D" parent="."]
@@ -1150,5 +1151,11 @@ unitOwner = 1
 [node name="meleeAttacker6" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
 position = Vector2(298, 476)
 unitOwner = 1
+
+[node name="Gatherers" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Gatherer" parent="Gatherers" groups=["units"] instance=ExtResource("13_i62eo")]
+position = Vector2(516, 121)
 
 [connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]

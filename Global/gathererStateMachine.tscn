@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwomim3537ypd"]
+
+[ext_resource type="Script" path="res://Global/gathererStateMachine.gd" id="1_j6a5j"]
+
+[node name="gathererStateMachine" type="Node"]
+script = ExtResource("1_j6a5j")

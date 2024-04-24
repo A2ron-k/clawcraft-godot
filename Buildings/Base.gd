@@ -22,6 +22,10 @@ func _on_contact_zone_body_entered(body):
 		depositResource(body, body.noOfCatnipCarrying)
 		body.goBackToResource(body.lastResourcePosition)
 	
+	if "Gatherer" in body.name:
+		depositResource(body, body.noOfCatnipCarrying)
+		
+	
 	pass # Replace with function body.
 
 
