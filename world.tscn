@@ -16,9 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://c16xfn7ajuhop" path="res://Units/RangeAttacker.tscn" id="14_d6o5j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rcn7f"]
-vertices = PackedVector2Array(410, 490, 422, 490, 1065, 763, 966, 768, 88, 765, 374, 490, 1065, 47, 570, 490, 570, 406, 88, 41, 474, 342, 474, 410, 502, 406, 502, 490, 438, 342, 438, 374, 422, 374, 458, 490, 458, 410, 410, 422, 378, 422, 378, 374, 342, 442, 374, 442, 342, 374)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 0, 4), PackedInt32Array(6, 2, 7, 8), PackedInt32Array(9, 6, 8, 10), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 15, 16), PackedInt32Array(17, 18, 11, 13), PackedInt32Array(19, 20, 21, 16), PackedInt32Array(22, 23, 5, 4), PackedInt32Array(22, 4, 9, 24), PackedInt32Array(8, 12, 10), PackedInt32Array(9, 10, 14), PackedInt32Array(24, 9, 14, 21), PackedInt32Array(21, 14, 16), PackedInt32Array(19, 16, 1, 0), PackedInt32Array(2, 1, 17), PackedInt32Array(2, 17, 13), PackedInt32Array(2, 13, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(78, 31, 79, 775, 967, 779, 1075, 773, 1075, 38), PackedVector2Array(224, 122, 223, 192, 293, 195, 300, 126, 300, 115)])
+vertices = PackedVector2Array(314, 538, 362, 506, 1250, 22, 1248, 1252, 30, 1246, 314, 458, 314, 390, 326, 438, 326, 506, 266, 490, 266, 422, 278, 470, 278, 538, 314, 470, 362, 438, 346, 378, 346, 294, 24, 21, 278, 294, 278, 378, 278, 390, 278, 458, 250, 358, 250, 422, 214, 426, 230, 426, 230, 490, 214, 358)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(8, 1, 0), PackedInt32Array(8, 0, 13), PackedInt32Array(5, 8, 13), PackedInt32Array(2, 1, 14), PackedInt32Array(2, 14, 15, 16), PackedInt32Array(12, 0, 4), PackedInt32Array(17, 2, 16, 18), PackedInt32Array(15, 14, 7, 6), PackedInt32Array(19, 15, 6, 20), PackedInt32Array(21, 5, 13, 11), PackedInt32Array(21, 11, 10), PackedInt32Array(20, 21, 10, 22), PackedInt32Array(10, 23, 22), PackedInt32Array(19, 20, 22), PackedInt32Array(18, 19, 22, 17), PackedInt32Array(24, 25, 26, 4), PackedInt32Array(26, 9, 12, 4), PackedInt32Array(17, 22, 27), PackedInt32Array(4, 17, 27, 24)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(14, 11, 21, 1256, 1258, 1263, 1261, 13)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gj07c"]
@@ -1065,7 +1065,7 @@ navigation_polygon = SubResource("NavigationPolygon_rcn7f")
 tile_set = SubResource("TileSet_i5ggs")
 format = 2
 layer_0/name = "obstacle"
-layer_0/tile_data = PackedInt32Array(1572886, 0, 18, 1638422, 0, 19, 1703958, 0, 20, 1769496, 0, 18, 1835032, 0, 19, 1900568, 0, 20, 1572891, 0, 18, 1638427, 0, 19, 1703963, 0, 20, 1769499, 0, 18, 1835035, 0, 19, 1900571, 0, 20, 1441820, 0, 18, 1507356, 0, 19, 1572892, 0, 20, 1703968, 983040, 6, 1769504, 983040, 7, 1835040, 983040, 8, 1900576, 983040, 9, 1703969, 1048576, 6, 1769505, 1048576, 7, 1835041, 1048576, 8, 1900577, 1048576, 9, 1703970, 1114112, 6, 1769506, 1114112, 7, 1835042, 1114112, 8, 1900578, 1114112, 9)
+layer_0/tile_data = PackedInt32Array(1507342, 0, 18, 1572878, 0, 19, 1638414, 0, 20, 1769487, 0, 18, 1835023, 0, 19, 1900559, 0, 20, 1638418, 0, 18, 1703954, 0, 19, 1769490, 0, 20, 1966098, 0, 18, 2031634, 0, 19, 2097170, 0, 20, 1835029, 0, 18, 1900565, 0, 19, 1966101, 0, 20, 1245202, 983040, 6, 1310738, 983040, 7, 1376274, 983040, 8, 1441810, 983040, 9, 1245203, 1048576, 6, 1310739, 1048576, 7, 1376275, 1048576, 8, 1441811, 1048576, 9, 1245204, 1114112, 6, 1310740, 1114112, 7, 1376276, 1114112, 8, 1441812, 1114112, 9)
 layer_1/name = "water"
 layer_1/z_index = -2
 layer_1/tile_data = PackedInt32Array()
@@ -1127,7 +1127,7 @@ y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="coinHouse" parent="CoinHouses" instance=ExtResource("7_sc5jh")]
-position = Vector2(531, 278)
+position = Vector2(500, 253)
 
 [node name="HomeBase" type="Node2D" parent="."]
 
@@ -1139,38 +1139,46 @@ scale = Vector2(2, 2)
 y_sort_enabled = true
 
 [node name="meleeAttacker" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
-position = Vector2(621, 501)
+position = Vector2(415, 517)
 
 [node name="meleeAttacker2" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
-position = Vector2(563, 372)
+position = Vector2(409, 358)
 
 [node name="meleeAttacker3" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
-position = Vector2(620, 404)
+position = Vector2(416, 431)
 
 [node name="meleeAttacker4" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
-position = Vector2(309, 528)
+position = Vector2(157, 423)
 unitOwner = 1
 
 [node name="meleeAttacker5" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
-position = Vector2(299, 422)
+position = Vector2(155, 362)
 unitOwner = 1
 
 [node name="meleeAttacker6" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
-position = Vector2(298, 476)
+position = Vector2(187, 393)
 unitOwner = 1
 
 [node name="Gatherers" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Gatherer" parent="Gatherers" groups=["units"] instance=ExtResource("13_i62eo")]
-position = Vector2(516, 121)
+position = Vector2(239, 233)
 
 [node name="Gatherer2" parent="Gatherers" groups=["units"] instance=ExtResource("13_i62eo")]
-position = Vector2(391, 149)
+position = Vector2(247, 73)
 
 [node name="RangeAttackers" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="rangeAttacker" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
-position = Vector2(202, 82)
+position = Vector2(467, 392)
+
+[node name="rangeAttacker2" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
+position = Vector2(473, 471)
+
+[node name="rangeAttacker3" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
+position = Vector2(142, 395)
+unitOwner = 1
 
 [connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]
