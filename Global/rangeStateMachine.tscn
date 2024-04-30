@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://v20f2mgdjv5i"]
+
+[ext_resource type="Script" path="res://rangeStateMachine.gd" id="1_gduk1"]
+
+[node name="rangeStateMachine" type="Node"]
+script = ExtResource("1_gduk1")
