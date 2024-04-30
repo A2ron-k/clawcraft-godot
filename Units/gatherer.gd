@@ -62,6 +62,7 @@ func _input(event):
 	if event.is_action_pressed("LeftClick"):
 		if mouseEntered && unitOwner == 0:
 			setSelected(!selected)
+			print("clicked")
 	
 	# TODO - Remove when finish updating Minimap feature
 	#if(event.is_action_pressed("RightClick")):
@@ -80,11 +81,13 @@ func setSelected(value):
 	selected = value
 
 # Mouse detection
-func _on_gatherer_mouse_entered():
+func _on_area_2d_mouse_shape_entered(shape_idx):
 	mouseEntered = true
+	print("entered")
 
-func _on_gatherer_mouse_exited():
+func _on_area_2d_mouse_shape_exited(shape_idx):
 	mouseEntered = false
+	print("leave")
 
 # Handle Movement to Target
 func moveToTarget(delta, target):
@@ -176,3 +179,5 @@ func removeNode():
 func _on_nav_timer_timeout():
 	if navTarget:
 		navAgent.target_position = navTarget
+
+

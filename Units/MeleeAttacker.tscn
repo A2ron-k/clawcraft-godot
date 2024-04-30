@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://2nhl36r3044k"]
+[gd_scene load_steps=20 format=3 uid="uid://2nhl36r3044k"]
 
 [ext_resource type="Texture2D" uid="uid://ddwfimryeqkwd" path="res://Units/SwordsmanTemplate.png" id="1_kbn1b"]
 [ext_resource type="Script" path="res://Units/MeleeAttacker.gd" id="1_v8s4w"]
@@ -199,6 +199,9 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 anti_aliasing_size = 0.2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hocqg"]
+size = Vector2(20, 6.80418)
+
 [node name="meleeAttacker" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -265,6 +268,15 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_thkyh")
 value = 50.0
 show_percentage = false
 
+[node name="TouchZone" type="Area2D" parent="."]
+position = Vector2(0, -11)
+scale = Vector2(1.70103, 3.57692)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TouchZone"]
+position = Vector2(0, 3.21505)
+scale = Vector2(0.618268, 0.945023)
+shape = SubResource("RectangleShape2D_hocqg")
+
 [connection signal="mouse_entered" from="." to="." method="_on_meleeAttacker_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_meleeAttacker_mouse_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="UnitStateMachine" method="_on_animation_player_animation_finished"]
@@ -272,3 +284,5 @@ show_percentage = false
 [connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
 [connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
 [connection signal="timeout" from="NavigationNode/NavTimer" to="." method="_on_nav_timer_timeout"]
+[connection signal="mouse_shape_entered" from="TouchZone" to="." method="_on_touch_zone_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="TouchZone" to="." method="_on_touch_zone_mouse_shape_exited"]

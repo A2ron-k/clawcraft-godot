@@ -79,10 +79,10 @@ func setSelected(value):
 	selected = value
 
 # Mouse detection
-func _on_meleeAttacker_mouse_entered():
+func _on_touch_zone_mouse_shape_entered(shape_idx):
 	mouseEntered = true
 
-func _on_meleeAttacker_mouse_exited():
+func _on_touch_zone_mouse_shape_exited(shape_idx):
 	mouseEntered = false
 
 # Handle Movement to Target
@@ -179,3 +179,6 @@ func removeNode():
 func _on_nav_timer_timeout():
 	if navTarget:
 		navAgent.target_position = navTarget
+
+
+
