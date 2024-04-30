@@ -147,7 +147,7 @@ func targetWithinRange() -> bool:
 		return false
 
 # Handles Take Damage Logic for the unit
-func takeDamage(attackDamage, bonusModifier, armorModifier) -> bool:
+func takeDamage(attackDamage, bonusModifier, armorModifier, unitType) -> bool:
 	healthBar.visible = true
 	
 	# Damage Calculation 
