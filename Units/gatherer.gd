@@ -30,8 +30,12 @@ var currentDistanceToTarget = Vector2.ZERO
 var navTarget
 
 # Unit Stats
+var unitType = "gatherer"
+var typesWeakness = []
 var health = 4
 var gatherRange = 20
+var armor = 0
+var bonusDamage = 0
 
 # Unit Logic
 var possibleTargets = []
@@ -140,9 +144,20 @@ func targetWithinRange() -> bool:
 		return false
 
 # Handles Take Damage Logic for the unit
-func takeDamage(amount) -> bool:
+func takeDamage(attackDamage, bonusModifier, armorModifier) -> bool:
+	healthBar.visible = true
+	
+	# Damage Calculation 
+	var finalDamage = attackDamage - armorModifier
+	
+	# Bonus Modifier
+	if unitType in typesWeakness:
+		finalDamage += bonusModifier
+	
+	health -= finalDamage
+	
+	# Healthbar animation
 	var tween = get_tree().create_tween()
-	health -= amount
 	tween.tween_property(healthBar, "value", health,0.1).set_trans(Tween.TRANS_QUAD)
 	
 	if health <= 0:

@@ -30,9 +30,13 @@ var currentDistanceToTarget = Vector2.ZERO
 var navTarget
 
 # Unit Stats
+var unitType = "lightArmor"
+var typesWeakness = ["lightArmor"]
 var health = 6
 var damage = 2
 var attackRange = 200
+var armor = 2
+var bonusDamage = 1
 
 # Attacking Logic
 var possibleTargets = []
@@ -143,11 +147,20 @@ func targetWithinRange() -> bool:
 		return false
 
 # Handles Take Damage Logic for the unit
-func takeDamage(amount) -> bool:
+func takeDamage(attackDamage, bonusModifier, armorModifier) -> bool:
 	healthBar.visible = true
 	
+	# Damage Calculation 
+	var finalDamage = attackDamage - armorModifier
+	
+	# Bonus Modifier
+	if unitType in typesWeakness:
+		finalDamage += bonusModifier
+	
+	health -= finalDamage
+	
+	# Healthbar animation
 	var tween = get_tree().create_tween()
-	health -= amount
 	tween.tween_property(healthBar, "value", health,0.1).set_trans(Tween.TRANS_QUAD)
 	
 	if health <= 0:
