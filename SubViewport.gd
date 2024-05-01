@@ -25,16 +25,16 @@ func _process(delta):
 	
 	var allUnits = get_node("Units")
 
-	for i in unitsPath.get_child_count():
-		allUnits.get_child(i).position = unitsPath.get_child(i).position/2
+	#for i in unitsPath.get_child_count():
+		#allUnits.get_child(i).position = unitsPath.get_child(i).position/2
 
 func updateMap():
 	# Clear all the existing nodes that are not units
 	for i in get_child_count()-3:
 		get_child(i+3).queue_free()
 	#
-	for i in get_node("Units").get_child_count():
-		get_node("Units").get_child(i).queue_free()
+	#for i in get_node("Units").get_child_count():
+		#get_node("Units").get_child(i).queue_free()
 	
 	# Put everything that exisit in the main world into the minimap world
 	for i in buildingPath.get_child_count():
@@ -42,9 +42,9 @@ func updateMap():
 		add_child(aBarrack)
 		aBarrack.position = buildingPath.get_child(i).position/2
 	
-	for i in unitsPath.get_child_count():
-		var aUnit = unit.instantiate()
-		get_node("Units").add_child(aUnit)
+	#for i in unitsPath.get_child_count():
+		#var aUnit = unit.instantiate()
+		#get_node("Units").add_child(aUnit)
 	
 	for i in treePath.get_child_count():
 		var aTree = tree.instantiate()

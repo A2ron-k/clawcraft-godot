@@ -18,7 +18,10 @@ func _input(event):
 		if mouseEntered:
 			selected = !selected
 			if selected:
-				Game.spawnUnit(position)
+				#Game.spawnUnit(position)
+				pass
+			else:
+				pass
 
 # Mouse Detection
 func _on_barrack_mouse_entered():

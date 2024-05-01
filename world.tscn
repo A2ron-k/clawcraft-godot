@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=17 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
-[ext_resource type="PackedScene" uid="uid://dwxjjohjchd2y" path="res://Units/unit.tscn" id="2_m4rc3"]
 [ext_resource type="Texture2D" uid="uid://btsqo3d4boajb" path="res://tilemap1.png" id="2_mi50q"]
 [ext_resource type="Texture2D" uid="uid://h5v7lr0ln4c4" path="res://UI/TexturedGrass.png" id="2_v0j34"]
 [ext_resource type="PackedScene" uid="uid://c1a2a0l022gxh" path="res://UI/UI.tscn" id="3_3g7ud"]
@@ -1083,7 +1082,7 @@ metadata/_edit_lock_ = true
 
 [node name="Camera" type="Camera2D" parent="."]
 ignore_rotation = false
-zoom = Vector2(10, 10)
+zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = 0
 limit_right = 1280
@@ -1093,15 +1092,6 @@ script = ExtResource("1_2gtrv")
 zoomMaximum = 7
 
 [node name="UI" parent="." instance=ExtResource("3_3g7ud")]
-
-[node name="Units" type="Node2D" parent="."]
-visible = false
-y_sort_enabled = true
-metadata/_edit_lock_ = true
-
-[node name="Unit" parent="Units" instance=ExtResource("2_m4rc3")]
-visible = false
-position = Vector2(163, 172)
 
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -1180,5 +1170,3 @@ position = Vector2(473, 471)
 [node name="rangeAttacker3" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
 position = Vector2(142, 395)
 unitOwner = 1
-
-[connection signal="input_event" from="Units/Unit" to="Camera" method="_on_unit_input_event"]

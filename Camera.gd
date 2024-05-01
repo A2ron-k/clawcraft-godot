@@ -125,5 +125,5 @@ func drawArea(s=true):
 	box.position = pos
 	box.size *= int(s)
 	
-	var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
-	MinimapPath._ready()
+	#var MinimapPath = get_tree().get_root().get_node("World/UI/HBoxContainer/MiniMap/SubViewportContainer/SubViewport")
+	#MinimapPath._ready()
