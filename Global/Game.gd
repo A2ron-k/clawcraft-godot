@@ -11,21 +11,11 @@ func spawnUnit():
 	var UIpath = get_tree().get_root().get_node("World/UI/RTSPanel/CenterSplit/RightPanel")
 	
 	var spawnUnit = spawnerUI.instantiate()
-	UIpath.add_child(spawnUnit)
-	pass
+	
+	var hasSpawn = false
+	
+	if UIpath.has_node("UnitSpawner"):
+		hasSpawn = true
 
-#func spawnUnit(position):
-	#var path = get_tree().get_root().get_node("World/UI")
-	#
-	#var spawnUnit = spawner.instantiate()
-	#spawnUnit.buildingPosition = position
-	#
-	#var hasSpawn = false
-	#
-	#for i in path.get_child_count():
-		#if path.has_node("SpawnUnit"):
-			#hasSpawn = true
-#
-	#if hasSpawn == false:
-			#path.add_child(spawnUnit) 
-	#
+	if hasSpawn == false:
+			UIpath.add_child(spawnUnit) 
