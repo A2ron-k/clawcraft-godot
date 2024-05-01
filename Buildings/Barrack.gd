@@ -19,11 +19,15 @@ func _input(event):
 		if mouseEntered:
 			selected = !selected
 			if selected:
-				Game.spawnUnit()
+				if rtsRightPanel.has_node("UnitSpawner"):
+					var spawnPanelPath = rtsRightPanel.get_node("UnitSpawner")
+					spawnPanelPath.visible = true
+				else:
+					Game.spawnUnit()
 			else:
 				if rtsRightPanel.has_node("UnitSpawner"):
 					var spawnPanelPath = rtsRightPanel.get_node("UnitSpawner")
-					spawnPanelPath.queue_free()
+					spawnPanelPath.visible = false
 
 # Mouse Detection
 func _on_barrack_mouse_entered():
