@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://08xdspy2y0hf"
-path="res://.godot/imported/cat_worker.png-4697714f74f546e06f59b0a6f0033d5e.ctex"
+uid="uid://uphisyvatrxy"
+path="res://.godot/imported/CatGatherer.png-a8ac9cda72ac86f06228394f508a9556.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Units/cat_worker.png"
-dest_files=["res://.godot/imported/cat_worker.png-4697714f74f546e06f59b0a6f0033d5e.ctex"]
+source_file="res://Units/CatGatherer.png"
+dest_files=["res://.godot/imported/CatGatherer.png-a8ac9cda72ac86f06228394f508a9556.ctex"]
 
 [params]
 

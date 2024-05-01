@@ -56,7 +56,9 @@ func performStateLogic(delta):
 			 # Logic for gathering resources
 			#parent.collisionShape.disabled = true
 			if parent.gatherTarget.get_ref():
-				parent.moveToTarget(delta, parent.gatherTarget.get_ref().position)
+				var randomPosX = randi_range(-2,2)
+				var randomPosY = randi_range(0,5)
+				parent.moveToTarget(delta, parent.gatherTarget.get_ref().position + Vector2(randomPosX, randomPosY))
 			else:
 				setState(states.idle)
 		states.returning:
@@ -108,15 +110,27 @@ func enterState(newState, previousState):
 			var dx = abs(parent.position.x - parent.homeBasePosition.x)
 			var dy = abs(parent.position.y - parent.homeBasePosition.y)
 			if dx > dy: 
-				if parent.position.x < parent.homeBasePosition.x:
-					parent.animation.play("WalkRight")
-				elif parent.position.x > parent.homeBasePosition.x:
-					parent.animation.play("WalkLeft")
+				if parent.noOfCatnipCarrying > 0:
+					if parent.position.x < parent.homeBasePosition.x:
+						parent.animation.play("ReturnRight")
+					elif parent.position.x > parent.homeBasePosition.x:
+						parent.animation.play("ReturnLeft")
+				else:
+					if parent.position.x < parent.homeBasePosition.x:
+						parent.animation.play("WalkRight")
+					elif parent.position.x > parent.homeBasePosition.x:
+						parent.animation.play("WalkLeft")
 			else: 
-				if parent.position.y < parent.homeBasePosition.y:
-					parent.animation.play("WalkDown")
-				elif parent.position.y > parent.homeBasePosition.y:
-					parent.animation.play("WalkUp")
+				if parent.noOfCatnipCarrying > 0:
+					if parent.position.y < parent.homeBasePosition.y:
+						parent.animation.play("ReturnDown")
+					elif parent.position.y > parent.homeBasePosition.y:
+						parent.animation.play("ReturnUp")
+				else:
+					if parent.position.y < parent.homeBasePosition.y:
+						parent.animation.play("WalkDown")
+					elif parent.position.y > parent.homeBasePosition.y:
+						parent.animation.play("WalkUp")
 		#states.attacking:
 			#var dx = abs(parent.position.x - parent.attackTarget.get_ref().position.x)
 			#var dy = abs(parent.position.y - parent.attackTarget.get_ref().position.y)

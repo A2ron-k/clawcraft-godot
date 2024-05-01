@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=17 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1a2a0l022gxh" path="res://UI/UI.tscn" id="3_3g7ud"]
 [ext_resource type="PackedScene" uid="uid://bva7gppgy6wj8" path="res://Resources/Tree.tscn" id="4_pba7t"]
 [ext_resource type="Script" path="res://Objects.gd" id="6_3txhf"]
+[ext_resource type="PackedScene" uid="uid://p0qhx71c621p" path="res://Resources/Catnip.tscn" id="7_0m7iv"]
 [ext_resource type="PackedScene" uid="uid://crn8702foxvu2" path="res://Buildings/Barrack.tscn" id="7_05das"]
 [ext_resource type="PackedScene" uid="uid://bf7mp2fiecevg" path="res://Resources/coinHouse.tscn" id="7_sc5jh"]
 [ext_resource type="PackedScene" uid="uid://d3uwrlh7d1cp" path="res://Buildings/Base.tscn" id="11_w86o5"]
@@ -1090,10 +1091,14 @@ script = ExtResource("6_3txhf")
 metadata/_edit_lock_ = true
 
 [node name="Tree" parent="Objects" groups=["resources"] instance=ExtResource("4_pba7t")]
-position = Vector2(148, 139)
+position = Vector2(93, 210)
 
 [node name="Tree2" parent="Objects" groups=["resources"] instance=ExtResource("4_pba7t")]
 position = Vector2(145, 210)
+
+[node name="Catnip" parent="Objects" groups=["resources"] instance=ExtResource("7_0m7iv")]
+y_sort_enabled = true
+position = Vector2(127, 130)
 
 [node name="Buildings" type="Node2D" parent="."]
 y_sort_enabled = true

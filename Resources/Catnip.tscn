@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://p0qhx71c621p"]
+
+[ext_resource type="Script" path="res://Resources/Catnip.gd" id="1_td24o"]
+[ext_resource type="Texture2D" uid="uid://sywsoeoddudi" path="res://Resources/Bush.png" id="2_1acs7"]
+[ext_resource type="Texture2D" uid="uid://d0q8clafgxgv5" path="res://Resources/Trees.png" id="2_rxbmb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2woj"]
+size = Vector2(13.5, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5jql"]
+radius = 12.51
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1mne"]
+bg_color = Color(0.796078, 0.796078, 0.796078, 0.447059)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfom7"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="Catnip" type="StaticBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_td24o")
+
+[node name="Bush" type="Sprite2D" parent="."]
+position = Vector2(5.96046e-08, -10)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_1acs7")
+
+[node name="Trees" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -8)
+texture = ExtResource("2_rxbmb")
+hframes = 4
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_g2woj")
+
+[node name="collectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collectArea"]
+position = Vector2(-0.5, -3)
+shape = SubResource("CircleShape2D_q5jql")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -7.5
+offset_top = -25.0
+offset_right = 7.5
+offset_bottom = -21.0
+theme_override_styles/background = SubResource("StyleBoxFlat_b1mne")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lfom7")
+value = 50.0
+show_percentage = false
+
+[connection signal="body_entered" from="collectArea" to="." method="_on_collect_area_body_entered"]
+[connection signal="body_exited" from="collectArea" to="." method="_on_collect_area_body_exited"]
