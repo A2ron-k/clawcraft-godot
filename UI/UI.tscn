@@ -92,6 +92,7 @@ dragger_visibility = 2
 custom_minimum_size = Vector2(600, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="RTSPanel/CenterSplit/CenterPanel"]
 visible = false
@@ -117,4 +118,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.0024)
-color = Color(0.337255, 0.2, 0.0784314, 1)
+color = Color(0.192157, 0.0941176, 0.0117647, 1)
