@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m4qivgo26xjc"
-path="res://.godot/imported/Bush.png-d4714878a1bbd3fa2c86a3d3ce35945d.ctex"
+uid="uid://dmlohdoy01xs1"
+path="res://.godot/imported/chiwawa.png-bbf7d3b765fca95efbf3e88245ad7bd2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Bush.png"
-dest_files=["res://.godot/imported/Bush.png-d4714878a1bbd3fa2c86a3d3ce35945d.ctex"]
+source_file="res://UI/chiwawa.png"
+dest_files=["res://.godot/imported/chiwawa.png-bbf7d3b765fca95efbf3e88245ad7bd2.ctex"]
 
 [params]
 

@@ -1,15 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwll5y8qfdja1"]
+[gd_scene load_steps=3 format=3 uid="uid://bwll5y8qfdja1"]
 
-[ext_resource type="Script" path="res://Global/unitSpawner.gd" id="1_rum8x"]
+[ext_resource type="Script" path="res://Global/gathererSpawner.gd" id="1_di8cv"]
+[ext_resource type="Texture2D" uid="uid://b17c17l1lpdwt" path="res://UI/Front.png" id="2_vpjhv"]
 
 [node name="GathererSpawner" type="Node2D"]
 position = Vector2(-1, 0)
-script = ExtResource("1_rum8x")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 547.0
-offset_bottom = 178.0
-color = Color(0.278431, 0.333333, 0.258824, 1)
+script = ExtResource("1_di8cv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(50, 50)
@@ -29,7 +25,12 @@ size_flags_vertical = 3
 [node name="Gatherer" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-text = "Gatherer"
+icon_alignment = 1
+
+[node name="GathererSprite" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(46.1553, 51.5816)
+scale = Vector2(0.56287, 0.56067)
+texture = ExtResource("2_vpjhv")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

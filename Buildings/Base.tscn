@@ -3,6 +3,19 @@
 [ext_resource type="Script" path="res://Buildings/Base.gd" id="1_5u42t"]
 [ext_resource type="Texture2D" uid="uid://bktec74gs8woo" path="res://Buildings/Base.png" id="1_p32c2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm3id"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.862745, 0.819608, 0.313726, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwf7s"]
 size = Vector2(30, 27)
 
@@ -10,17 +23,16 @@ size = Vector2(30, 27)
 radius = 23.0
 height = 46.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tamxa"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_color = Color(0, 0.8, 0.8, 1)
-border_blend = true
-
 [node name="Base" type="StaticBody2D"]
 input_pickable = true
 script = ExtResource("1_5u42t")
+
+[node name="Selected" type="Panel" parent="."]
+offset_left = -20.0
+offset_top = -2.0
+offset_right = 19.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xm3id")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("1_p32c2")
@@ -35,14 +47,6 @@ shape = SubResource("RectangleShape2D_dwf7s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactZone"]
 shape = SubResource("CapsuleShape2D_xq27n")
-
-[node name="Selected" type="Panel" parent="."]
-offset_left = -17.0
-offset_top = -17.0
-offset_right = 16.0
-offset_bottom = 16.0
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_tamxa")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

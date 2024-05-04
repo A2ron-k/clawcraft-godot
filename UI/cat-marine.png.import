@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b17c17l1lpdwt"
-path="res://.godot/imported/Front.png-86d86884bf872a2cd5ffd3ea76ba43c4.ctex"
+uid="uid://ct2qqqt05p286"
+path="res://.godot/imported/cat-marine.png-f8fa89a27cd55faeeeab706d4c946cf8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Front.png"
-dest_files=["res://.godot/imported/Front.png-86d86884bf872a2cd5ffd3ea76ba43c4.ctex"]
+source_file="res://UI/cat-marine.png"
+dest_files=["res://.godot/imported/cat-marine.png-f8fa89a27cd55faeeeab706d4c946cf8.ctex"]
 
 [params]
 
