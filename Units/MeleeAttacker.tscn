@@ -253,6 +253,8 @@ avoidance_enabled = true
 radius = 16.0
 avoidance_mask = 2
 debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.972549, 0.756863, 0.301961, 1)
 
 [node name="NavTimer" type="Timer" parent="NavigationNode"]
 wait_time = 0.1

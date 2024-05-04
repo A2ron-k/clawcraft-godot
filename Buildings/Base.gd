@@ -106,19 +106,16 @@ func setSelected(value):
 # Handles Take Damage Logic for the unit
 func takeDamage(attackDamage, bonusModifier, armorModifier, unitType) -> bool:
 	healthBar.visible = true
-	print(attackDamage)
-	print(armorModifier)
+
 	# Damage Calculation 
 	var finalDamage = attackDamage - armorModifier
-	print(finalDamage)
 	
 	# Bonus Modifier
 	if unitType in typesWeakness:
 		finalDamage += bonusModifier
 	
 	health -= finalDamage
-	print("finalDamage: ", finalDamage)
-	print("health: ", health)
+	
 	# Healthbar animation
 	var tween = get_tree().create_tween()
 	tween.tween_property(healthBar, "value", health,0.1).set_trans(Tween.TRANS_QUAD)

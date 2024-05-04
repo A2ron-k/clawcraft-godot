@@ -180,5 +180,4 @@ func removeNode():
 func _on_nav_timer_timeout():
 	if navTarget:
 		navAgent.target_position = navTarget
-
-
+	

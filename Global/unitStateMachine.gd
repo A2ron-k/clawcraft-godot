@@ -84,6 +84,7 @@ func enterState(newState, previousState):
 					parent.animation.play("WalkDown")
 				elif parent.position.y > parent.movementTarget.y:
 					parent.animation.play("WalkUp")
+
 		states.engaging:
 			var dx = abs(parent.position.x - parent.attackTarget.get_ref().position.x)
 			var dy = abs(parent.position.y - parent.attackTarget.get_ref().position.y)
