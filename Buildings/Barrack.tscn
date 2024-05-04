@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://crn8702foxvu2"]
+[gd_scene load_steps=7 format=3 uid="uid://crn8702foxvu2"]
 
 [ext_resource type="Script" path="res://Buildings/Barrack.gd" id="1_mmypc"]
 [ext_resource type="Texture2D" uid="uid://be6cdhvgyqi15" path="res://Buildings/Barracks.png" id="2_ekspb"]
@@ -17,27 +17,54 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4lad"]
-size = Vector2(22, 23)
+size = Vector2(14, 13)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lqit"]
+bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.447059)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udya1"]
+bg_color = Color(0, 0.729412, 0.0980392, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing_size = 0.2
 
 [node name="Barrack" type="StaticBody2D"]
 script = ExtResource("1_mmypc")
 
 [node name="Selected" type="Panel" parent="."]
 offset_left = -16.0
-offset_top = -4.0
+offset_top = -12.0
 offset_right = 16.0
-offset_bottom = 15.0
+offset_bottom = 7.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lbjot")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_c4lad")
-
 [node name="Barracks" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_ekspb")
 hframes = 4
 vframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_c4lad")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -8.0
+offset_top = -25.0
+offset_right = 7.0
+offset_bottom = -23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4lqit")
+theme_override_styles/fill = SubResource("StyleBoxFlat_udya1")
+value = 50.0
+show_percentage = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_barrack_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_barrack_mouse_exited"]

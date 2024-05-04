@@ -1103,8 +1103,15 @@ y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="Barrack" parent="Buildings" groups=["buildings"] instance=ExtResource("7_05das")]
+y_sort_enabled = true
 position = Vector2(306, 89)
 input_pickable = true
+
+[node name="Barrack2" parent="Buildings" groups=["buildings"] instance=ExtResource("7_05das")]
+y_sort_enabled = true
+position = Vector2(633, 83)
+input_pickable = true
+unitOwner = 1
 
 [node name="CoinHouses" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -1118,6 +1125,11 @@ position = Vector2(500, 253)
 [node name="Base" parent="HomeBase" groups=["buildings"] instance=ExtResource("11_w86o5")]
 position = Vector2(259, 153)
 scale = Vector2(2, 2)
+
+[node name="EnemyBase" parent="HomeBase" groups=["buildings"] instance=ExtResource("11_w86o5")]
+position = Vector2(718, 91)
+scale = Vector2(2, 2)
+unitOwner = 1
 
 [node name="meleeAttackers" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -1164,3 +1176,6 @@ position = Vector2(473, 471)
 [node name="rangeAttacker3" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
 position = Vector2(142, 395)
 unitOwner = 1
+
+[node name="rangeAttacker4" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
+position = Vector2(463, 96)

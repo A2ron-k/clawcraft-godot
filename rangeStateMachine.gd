@@ -175,7 +175,7 @@ func _on_animation_player_animation_finished(anim_name):
 	match state:
 		states.attacking:
 			if parent.attackTarget.get_ref():
-				if parent.attackTarget.get_ref().takeDamage(parent.damage, parent.bonusDamage, parent.armor, parent.unitType):
+				if parent.attackTarget.get_ref().takeDamage(parent.damage, parent.bonusDamage, parent.attackTarget.get_ref().armor, parent.attackTarget.get_ref().unitType):
 					if parent.targetWithinRange():
 						parent.animation.play()
 					else:

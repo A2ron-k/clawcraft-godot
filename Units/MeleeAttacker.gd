@@ -34,7 +34,7 @@ var unitType = "lightArmor"
 var typesWeakness = ["lightArmor"]
 var health = 10
 var damage = 2
-var attackRange = 20
+var attackRange = 15
 var armor = 2
 var bonusDamage = 1
 
@@ -107,7 +107,7 @@ func moveToTarget(delta, target):
 
 # Handles Vision Range of Unit
 func _on_vision_range_body_entered(body):
-	if body.is_in_group("units"):
+	if body.is_in_group("units") || body.is_in_group("buildings"):
 		print("Possible unit sighted")
 		if body.unitOwner != unitOwner:
 			print("It is an enemy")

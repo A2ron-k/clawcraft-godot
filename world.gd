@@ -12,6 +12,7 @@ func getUnits():
 	units = get_tree().get_nodes_in_group("units")
 	units.append(get_tree().get_nodes_in_group("meleeAttackers"))
 	units.append(get_tree().get_nodes_in_group("rangeAttackers"))
+	units.append(get_tree().get_nodes_in_group("buildings"))
 
 # Toggles the units's selected variable in an area
 func _onAreaSelected(object):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3uwrlh7d1cp"]
+[gd_scene load_steps=8 format=3 uid="uid://d3uwrlh7d1cp"]
 
 [ext_resource type="Script" path="res://Buildings/Base.gd" id="1_5u42t"]
 [ext_resource type="Texture2D" uid="uid://bktec74gs8woo" path="res://Buildings/Base.png" id="1_p32c2"]
@@ -17,11 +17,26 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwf7s"]
-size = Vector2(30, 27)
+size = Vector2(17, 16)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xq27n"]
 radius = 23.0
 height = 46.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrrar"]
+bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.447059)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2fdb"]
+bg_color = Color(0, 0.729412, 0.0980392, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing_size = 0.2
 
 [node name="Base" type="StaticBody2D"]
 input_pickable = true
@@ -29,24 +44,38 @@ script = ExtResource("1_5u42t")
 
 [node name="Selected" type="Panel" parent="."]
 offset_left = -20.0
-offset_top = -2.0
+offset_top = -6.0
 offset_right = 19.0
-offset_bottom = 18.0
+offset_bottom = 14.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xm3id")
+metadata/_edit_use_anchors_ = true
 
 [node name="Base" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
 texture = ExtResource("1_p32c2")
 hframes = 3
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_dwf7s")
 
 [node name="ContactZone" type="Area2D" parent="."]
+position = Vector2(0, -7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactZone"]
 shape = SubResource("CapsuleShape2D_xq27n")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -15.0
+offset_top = -27.0
+offset_right = 15.0
+offset_bottom = -25.0
+theme_override_styles/background = SubResource("StyleBoxFlat_yrrar")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q2fdb")
+value = 50.0
+show_percentage = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

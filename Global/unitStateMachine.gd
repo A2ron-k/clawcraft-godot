@@ -53,7 +53,10 @@ func performStateLogic(delta):
 			parent.moveToTarget(delta, parent.movementTarget)
 		states.engaging:
 			if parent.attackTarget.get_ref():
-				parent.moveToTarget(delta, parent.attackTarget.get_ref().movementTarget)
+				if parent.attackTarget.get_ref().unitType == "building":
+					parent.moveToTarget(delta, parent.attackTarget.get_ref().position)
+				else:
+					parent.moveToTarget(delta, parent.attackTarget.get_ref().movementTarget)
 			else:
 				setState(states.idle)
 		states.attacking:
@@ -169,7 +172,7 @@ func _on_animation_player_animation_finished(anim_name):
 	match state:
 		states.attacking:
 			if parent.attackTarget.get_ref():
-				if parent.attackTarget.get_ref().takeDamage(parent.damage, parent.bonusDamage, parent.armor, parent.unitType):
+				if parent.attackTarget.get_ref().takeDamage(parent.damage, parent.bonusDamage, parent.attackTarget.get_ref().armor, parent.attackTarget.get_ref().unitType):
 					if parent.targetWithinRange():
 						parent.animation.play()
 					else:
