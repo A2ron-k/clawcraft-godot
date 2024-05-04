@@ -13,12 +13,11 @@ var currentTime = 0
 # Units & Buttons
 @onready var gatherer = preload("res://Units/Gatherer.tscn")
 @onready var spawnGathererBtn = $HBoxContainer/Gatherer
-@onready var spawnMeleeBtn = $HBoxContainer/Melee
 
 var gathererUnitSpawnCost = 2
-var meleeUnitSpawnCost = 4
-var rangeUnitSpawnCost = 5
-var heavyUnitSpawnCost = 5
+#var meleeUnitSpawnCost = 4
+#var rangeUnitSpawnCost = 5
+#var heavyUnitSpawnCost = 5
 
 func _process(delta):
 	enableButtons()
@@ -53,17 +52,10 @@ func _on_gatherer_pressed():
 		await get_tree().create_timer(3.0).timeout
 		Game.notification = ""
 
-func _on_melee_pressed():
-	pass # Replace with function body.
-
-func _on_range_pressed():
-	pass # Replace with function body.
 	
 # Disables all buttons
 func disableAllButtons():
-	# TODO - Add any new buttons
 	spawnGathererBtn.disabled = true
-	spawnMeleeBtn.disabled = true
 
 # Enables all buttons if they meet the conditions
 func enableButtons():
@@ -73,11 +65,6 @@ func enableButtons():
 			spawnGathererBtn.disabled = false
 		else:
 			spawnGathererBtn.disabled = true
-		
-		if Game.Catnip >= gathererUnitSpawnCost:
-			spawnMeleeBtn.disabled = false
-		else:
-			spawnMeleeBtn.disabled = true
 
 # Handles the "when" to disable of button
 func startTimer():

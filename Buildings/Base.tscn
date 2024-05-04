@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3uwrlh7d1cp"]
+[gd_scene load_steps=6 format=3 uid="uid://d3uwrlh7d1cp"]
 
 [ext_resource type="Script" path="res://Buildings/Base.gd" id="1_5u42t"]
 [ext_resource type="Texture2D" uid="uid://bktec74gs8woo" path="res://Buildings/Base.png" id="1_p32c2"]
@@ -10,7 +10,16 @@ size = Vector2(30, 27)
 radius = 23.0
 height = 46.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tamxa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0, 0.8, 0.8, 1)
+border_blend = true
+
 [node name="Base" type="StaticBody2D"]
+input_pickable = true
 script = ExtResource("1_5u42t")
 
 [node name="Base" type="Sprite2D" parent="."]
@@ -27,5 +36,15 @@ shape = SubResource("RectangleShape2D_dwf7s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactZone"]
 shape = SubResource("CapsuleShape2D_xq27n")
 
+[node name="Selected" type="Panel" parent="."]
+offset_left = -17.0
+offset_top = -17.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_tamxa")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="body_entered" from="ContactZone" to="." method="_on_contact_zone_body_entered"]
 [connection signal="body_exited" from="ContactZone" to="." method="_on_contact_zone_body_exited"]

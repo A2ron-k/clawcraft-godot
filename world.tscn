@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=16 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
 [ext_resource type="Texture2D" uid="uid://btsqo3d4boajb" path="res://tilemap1.png" id="2_mi50q"]
 [ext_resource type="PackedScene" uid="uid://c1a2a0l022gxh" path="res://UI/UI.tscn" id="3_3g7ud"]
-[ext_resource type="PackedScene" uid="uid://bva7gppgy6wj8" path="res://Resources/Tree.tscn" id="4_pba7t"]
 [ext_resource type="Script" path="res://Objects.gd" id="6_3txhf"]
 [ext_resource type="PackedScene" uid="uid://p0qhx71c621p" path="res://Resources/Catnip.tscn" id="7_0m7iv"]
 [ext_resource type="PackedScene" uid="uid://crn8702foxvu2" path="res://Buildings/Barrack.tscn" id="7_05das"]
@@ -1054,6 +1053,7 @@ sources/0 = SubResource("TileSetAtlasSource_gj07c")
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(-1, 0)
 script = ExtResource("1_bmh88")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -1090,21 +1090,19 @@ y_sort_enabled = true
 script = ExtResource("6_3txhf")
 metadata/_edit_lock_ = true
 
-[node name="Tree" parent="Objects" groups=["resources"] instance=ExtResource("4_pba7t")]
-position = Vector2(93, 210)
-
-[node name="Tree2" parent="Objects" groups=["resources"] instance=ExtResource("4_pba7t")]
-position = Vector2(145, 210)
-
 [node name="Catnip" parent="Objects" groups=["resources"] instance=ExtResource("7_0m7iv")]
 y_sort_enabled = true
-position = Vector2(127, 130)
+position = Vector2(127, 107)
+
+[node name="Catnip2" parent="Objects" groups=["resources"] instance=ExtResource("7_0m7iv")]
+y_sort_enabled = true
+position = Vector2(128, 211)
 
 [node name="Buildings" type="Node2D" parent="."]
 y_sort_enabled = true
 metadata/_edit_lock_ = true
 
-[node name="Barrack" parent="Buildings" instance=ExtResource("7_05das")]
+[node name="Barrack" parent="Buildings" groups=["buildings"] instance=ExtResource("7_05das")]
 position = Vector2(306, 89)
 input_pickable = true
 
@@ -1117,8 +1115,8 @@ position = Vector2(500, 253)
 
 [node name="HomeBase" type="Node2D" parent="."]
 
-[node name="Base" parent="HomeBase" instance=ExtResource("11_w86o5")]
-position = Vector2(263, 156)
+[node name="Base" parent="HomeBase" groups=["buildings"] instance=ExtResource("11_w86o5")]
+position = Vector2(259, 153)
 scale = Vector2(2, 2)
 
 [node name="meleeAttackers" type="Node2D" parent="."]
