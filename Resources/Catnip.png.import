@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fvw6hq4nmwyk"
-path="res://.godot/imported/PineTrees.png-4c42e21461a7fc8baa95f5255b4ca001.ctex"
+uid="uid://c7tnhx4gmt0f"
+path="res://.godot/imported/Catnip.png-afce066920d8e3fc717890f2ed790635.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/PineTrees.png"
-dest_files=["res://.godot/imported/PineTrees.png-4c42e21461a7fc8baa95f5255b4ca001.ctex"]
+source_file="res://Resources/Catnip.png"
+dest_files=["res://.godot/imported/Catnip.png-afce066920d8e3fc717890f2ed790635.ctex"]
 
 [params]
 
