@@ -83,15 +83,18 @@ func _input(event):
 					if rtsRightPanel.has_node("GathererSpawner"):
 						var spawnPanelPath = rtsRightPanel.get_node("GathererSpawner")
 						spawnPanelPath.visible = true
+						rtsRightPanel.visible = true
 					else:
 						Game.spawnUnit()
 						rtsRightPanel.get_node("GathererSpawner").visible = true
+						rtsRightPanel.visible = true
 						
 				else:
 					healthBar.visible = selected
 					if rtsRightPanel.has_node("UnitSpawner"):
 						var spawnPanelPath = rtsRightPanel.get_node("GathererSpawner")
 						spawnPanelPath.visible = false
+						rtsRightPanel.visible = false
 
 func setSelected(value):
 	selected = value

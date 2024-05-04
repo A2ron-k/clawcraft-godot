@@ -55,6 +55,7 @@ func _input(event):
 						if rtsRightPanel.has_node("UnitSpawner"):
 							var spawnPanelPath = rtsRightPanel.get_node("UnitSpawner")
 							spawnPanelPath.visible = true
+							rtsRightPanel.visible = true
 						else:
 							Game.spawnUnit()
 							rtsRightPanel.get_node("UnitSpawner").visible = true
@@ -63,6 +64,7 @@ func _input(event):
 						if rtsRightPanel.has_node("UnitSpawner"):
 							var spawnPanelPath = rtsRightPanel.get_node("UnitSpawner")
 							spawnPanelPath.visible = false
+							rtsRightPanel.visible = false
 
 # Mouse Detection
 func _on_barrack_mouse_entered():
@@ -76,6 +78,7 @@ func setSelected(value):
 	healthBar.visible = false
 	if rtsRightPanel.has_node("UnitSpawner"):
 		var spawnPanelPath = rtsRightPanel.get_node("UnitSpawner")
+		rtsRightPanel.visible = false
 		spawnPanelPath.visible = false
 
 # Handles Take Damage Logic for the unit

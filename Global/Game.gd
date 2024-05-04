@@ -15,7 +15,6 @@ func spawnUnit():
 	var spawnGatherer = gathererSpawnerUI.instantiate()
 	var spawnUnit = unitSpawnerUI.instantiate()
 	
-	
 	var hasSpawn = false
 	
 	if UIpath.has_node("UnitSpawner"):
