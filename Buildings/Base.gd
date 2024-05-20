@@ -122,11 +122,17 @@ func takeDamage(attackDamage, bonusModifier, armorModifier, unitType) -> bool:
 	
 	if health <= 0:
 		queue_free()
+		Game.isGameOver = true
+		
+		if unitOwner == 0:
+			Game.victoryState = "win"
 		return false
 	else:
 		return true
 
-# Handles deletion of the unit from the Game Unit Array
-func removeNode():
-	var path = get_tree().get_root().get_node("World")
-	path.units.remove_at(path.units.find(self))
+## Handles deletion of the unit from the Game Unit Array
+#func removeNode():
+	#var path = get_tree().get_root().get_node("World")
+	#path.units.remove_at(path.units.find(self))
+	#Game.isGameOver = true
+	#print("done")

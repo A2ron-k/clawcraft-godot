@@ -8,6 +8,14 @@ extends Node
 var Catnip = 0
 var Coin = 0
 var notification = ""
+var isGameOver = false
+var victoryState
+
+func _process(delta):
+	if isGameOver == true:
+		print("Game Over")
+	else:
+		pass
 
 func spawnUnit():
 	var UIpath = get_tree().get_root().get_node("World/UI/RTSPanel/CenterSplit/RightPanel")

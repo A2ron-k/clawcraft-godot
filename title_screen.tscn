@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwex7v7kf0d0y"]
+
+[ext_resource type="Script" path="res://title_screen.gd" id="1_10r66"]
+[ext_resource type="Texture2D" uid="uid://cyt1y1mbelvoq" path="res://Global/chiwawa.png" id="1_ey5q1"]
+[ext_resource type="Texture2D" uid="uid://ck3wmspy1xtpl" path="res://Global/cat-marine.png" id="2_714b6"]
+[ext_resource type="Texture2D" uid="uid://mwc8ywrw8jwt" path="res://Global/cat-worker.png" id="3_3ew4s"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_10r66")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+color = Color(0, 0.0705882, 0.00392157, 1)
+
+[node name="Chiwawa" type="Sprite2D" parent="."]
+position = Vector2(1589, 885)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_ey5q1")
+
+[node name="Cat-marine" type="Sprite2D" parent="."]
+position = Vector2(2130, 761)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_714b6")
+
+[node name="Cat-worker" type="Sprite2D" parent="."]
+position = Vector2(1934, 1060)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_3ew4s")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 316.0
+offset_right = 930.0
+offset_bottom = 513.0
+theme_override_colors/background_color = Color(0, 0.0705882, 0.00392157, 1)
+theme_override_font_sizes/font_size = 128
+text = "ClawCraft"
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 1391.0
+offset_right = 1708.0
+offset_bottom = 1674.0
+theme_override_colors/background_color = Color(0, 0.0705882, 0.00392157, 1)
+theme_override_font_sizes/font_size = 60
+text = "Controls:
+Left Click to select units
+Right Click to perform actions/ Move units"
+
+[node name="level1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 627.0
+offset_right = 762.0
+offset_bottom = 745.0
+theme_override_font_sizes/font_size = 48
+text = "Level 1.1"
+
+[node name="level2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 797.0
+offset_right = 762.0
+offset_bottom = 915.0
+theme_override_font_sizes/font_size = 48
+text = "Level 1.2"
+
+[node name="level3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 959.0
+offset_right = 762.0
+offset_bottom = 1077.0
+theme_override_font_sizes/font_size = 48
+text = "Level 1.3"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 1123.0
+offset_right = 761.0
+offset_bottom = 1241.0
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[connection signal="pressed" from="level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
