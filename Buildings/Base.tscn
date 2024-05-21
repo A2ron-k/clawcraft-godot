@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3uwrlh7d1cp"]
 
 [ext_resource type="Script" path="res://Buildings/Base.gd" id="1_5u42t"]
-[ext_resource type="Texture2D" uid="uid://bktec74gs8woo" path="res://Buildings/Base.png" id="1_p32c2"]
+[ext_resource type="Texture2D" uid="uid://du34wc6n4hfdf" path="res://Buildings/Base.png" id="1_p32c2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm3id"]
 bg_color = Color(1, 1, 1, 0)
@@ -51,10 +51,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_xm3id")
 metadata/_edit_use_anchors_ = true
 
 [node name="Base" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(-1, -11)
+scale = Vector2(0.0743698, 0.0743698)
 texture = ExtResource("1_p32c2")
-hframes = 3
-vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
@@ -69,9 +68,9 @@ shape = SubResource("CapsuleShape2D_xq27n")
 [node name="HealthBar" type="ProgressBar" parent="."]
 visible = false
 offset_left = -15.0
-offset_top = -27.0
+offset_top = -37.0
 offset_right = 15.0
-offset_bottom = -25.0
+offset_bottom = -35.0
 theme_override_styles/background = SubResource("StyleBoxFlat_yrrar")
 theme_override_styles/fill = SubResource("StyleBoxFlat_q2fdb")
 value = 50.0

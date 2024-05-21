@@ -15,6 +15,7 @@ func _process(delta):
 	if isGameOver == true:
 		print("Game Over")
 		get_tree().change_scene_to_file("res://game_over.tscn")
+		isGameOver = false
 	else:
 		pass
 

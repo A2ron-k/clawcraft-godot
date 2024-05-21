@@ -114,10 +114,10 @@ tracks/0/path = NodePath("CatMarine:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [16, 17, 16, 17]
+"values": [17, 16, 17, 16, 17]
 }
 
 [sub_resource type="Animation" id="Animation_7rfee"]
@@ -130,10 +130,10 @@ tracks/0/path = NodePath("CatMarine:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [28, 29, 28, 29]
+"values": [29, 28, 29, 28, 29]
 }
 
 [sub_resource type="Animation" id="Animation_5rilh"]
@@ -146,10 +146,10 @@ tracks/0/path = NodePath("CatMarine:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [24, 25, 24, 25]
+"values": [25, 24, 25, 24, 25]
 }
 
 [sub_resource type="Animation" id="Animation_bmpec"]
@@ -162,10 +162,10 @@ tracks/0/path = NodePath("CatMarine:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [20, 21, 20, 21]
+"values": [21, 20, 21, 20, 21]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iguak"]

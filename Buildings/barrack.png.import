@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du34wc6n4hfdf"
-path="res://.godot/imported/Base.png-43a77f6e61183a6c252adda56672aa58.ctex"
+uid="uid://i1118ad710ti"
+path="res://.godot/imported/barrack.png-438ecfae2bc44caa6d225727fbeb7125.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Buildings/Base.png"
-dest_files=["res://.godot/imported/Base.png-43a77f6e61183a6c252adda56672aa58.ctex"]
+source_file="res://Buildings/barrack.png"
+dest_files=["res://.godot/imported/barrack.png-438ecfae2bc44caa6d225727fbeb7125.ctex"]
 
 [params]
 

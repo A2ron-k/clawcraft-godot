@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://crn8702foxvu2"]
 
 [ext_resource type="Script" path="res://Buildings/Barrack.gd" id="1_mmypc"]
-[ext_resource type="Texture2D" uid="uid://be6cdhvgyqi15" path="res://Buildings/Barracks.png" id="2_ekspb"]
+[ext_resource type="Texture2D" uid="uid://i1118ad710ti" path="res://Buildings/barrack.png" id="3_e125u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbjot"]
 bg_color = Color(1, 1, 1, 0)
@@ -45,11 +45,9 @@ offset_bottom = 7.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lbjot")
 
 [node name="Barracks" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_ekspb")
-hframes = 4
-vframes = 5
+position = Vector2(0, -7)
+scale = Vector2(0.45082, 0.45082)
+texture = ExtResource("3_e125u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
