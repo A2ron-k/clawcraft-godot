@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://brv6i1l2llttn"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_4gh07"]
+[ext_resource type="Texture2D" uid="uid://cyt1y1mbelvoq" path="res://Global/chiwawa.png" id="2_ppov1"]
+[ext_resource type="Texture2D" uid="uid://ck3wmspy1xtpl" path="res://Global/cat-marine.png" id="3_615xd"]
+[ext_resource type="Texture2D" uid="uid://mwc8ywrw8jwt" path="res://Global/cat-worker.png" id="4_w2ws6"]
+
+[node name="gameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4gh07")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+color = Color(0, 0.0705882, 0.00392157, 1)
+
+[node name="Chiwawa" type="Sprite2D" parent="."]
+position = Vector2(1589, 885)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_ppov1")
+
+[node name="Cat-marine" type="Sprite2D" parent="."]
+position = Vector2(2130, 761)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_615xd")
+
+[node name="Cat-worker" type="Sprite2D" parent="."]
+position = Vector2(1934, 1060)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_w2ws6")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 316.0
+offset_right = 996.0
+offset_bottom = 513.0
+theme_override_colors/background_color = Color(0, 0.0705882, 0.00392157, 1)
+theme_override_font_sizes/font_size = 128
+text = "Game Over"
+
+[node name="restart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 627.0
+offset_right = 762.0
+offset_bottom = 745.0
+theme_override_font_sizes/font_size = 48
+text = "Restart"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 843.0
+offset_right = 764.0
+offset_bottom = 961.0
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

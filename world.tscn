@@ -1135,13 +1135,13 @@ unitOwner = 1
 y_sort_enabled = true
 
 [node name="meleeAttacker" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
-position = Vector2(415, 517)
+position = Vector2(360, 207)
 
 [node name="meleeAttacker2" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
-position = Vector2(409, 358)
+position = Vector2(354, 48)
 
 [node name="meleeAttacker3" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
-position = Vector2(416, 431)
+position = Vector2(361, 121)
 
 [node name="meleeAttacker4" parent="meleeAttackers" groups=["units"] instance=ExtResource("12_8jwll")]
 position = Vector2(157, 423)
@@ -1168,14 +1168,14 @@ position = Vector2(247, 73)
 y_sort_enabled = true
 
 [node name="rangeAttacker" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
-position = Vector2(467, 392)
+position = Vector2(412, 82)
 
 [node name="rangeAttacker2" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
-position = Vector2(473, 471)
+position = Vector2(418, 161)
 
 [node name="rangeAttacker3" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
 position = Vector2(142, 395)
 unitOwner = 1
 
 [node name="rangeAttacker4" parent="RangeAttackers" groups=["units"] instance=ExtResource("14_d6o5j")]
-position = Vector2(463, 96)
+position = Vector2(456, 118)

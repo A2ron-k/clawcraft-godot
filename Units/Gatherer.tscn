@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://dtfm5ce0cimoi"]
+[gd_scene load_steps=25 format=3 uid="uid://dtfm5ce0cimoi"]
 
 [ext_resource type="Script" path="res://Units/gatherer.gd" id="1_f1tal"]
 [ext_resource type="Texture2D" uid="uid://uphisyvatrxy" path="res://Units/CatGatherer.png" id="2_icpjf"]
 [ext_resource type="PackedScene" uid="uid://dwomim3537ypd" path="res://Global/gathererStateMachine.tscn" id="3_r3ffq"]
+[ext_resource type="AudioStream" uid="uid://b6nowsejmatcu" path="res://Units/Wah Flowers.wav" id="3_wdmtw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ci55a"]
 radius = 2.99998
@@ -71,7 +72,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bve6p"]
 resource_name = "GatherUp"
-length = 0.3
+length = 1.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,11 +80,26 @@ tracks/0/path = NodePath("CatGatherer:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [33, 37]
+"values": [33, 37, 33, 37, 33, 37, 37, 37, 33, 37, 33, 37]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.5559,
+"start_offset": 0.0,
+"stream": ExtResource("3_wdmtw")
+}],
+"times": PackedFloat32Array(-1.3)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_53rcq"]
 length = 0.001
@@ -300,6 +316,9 @@ vframes = 10
 libraries = {
 "": SubResource("AnimationLibrary_jhu3h")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+pitch_scale = 4.0
 
 [node name="StopTimer" type="Timer" parent="."]
 wait_time = 2.0
