@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://ck11ftkhc7rqb"]
 
-[ext_resource type="Script" path="res://Units/RangeAttacker.gd" id="1_8po16"]
+[ext_resource type="Script" path="res://Units/FlameRangeCat.gd" id="1_jxjjq"]
 [ext_resource type="Texture2D" uid="uid://du7wmcbhyp8tx" path="res://Units/catMarine.png" id="2_ooc3b"]
 [ext_resource type="PackedScene" uid="uid://v20f2mgdjv5i" path="res://Global/rangeStateMachine.tscn" id="3_ojyta"]
 
@@ -182,7 +182,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v46xs"]
-radius = 102.005
+radius = 68.3593
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltpar"]
 bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.447059)
@@ -202,8 +202,8 @@ anti_aliasing_size = 0.2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h15sj"]
 size = Vector2(20, 6.80418)
 
-[node name="rangeAttacker" type="CharacterBody2D"]
-script = ExtResource("1_8po16")
+[node name="FlameRangeCat" type="CharacterBody2D"]
+script = ExtResource("1_jxjjq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 5)
@@ -217,6 +217,7 @@ offset_bottom = 10.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uaqgl")
 
 [node name="CatMarine" type="Sprite2D" parent="."]
+modulate = Color(0.54902, 0.341176, 0, 1)
 position = Vector2(1, 1)
 scale = Vector2(0.229687, 0.229687)
 texture = ExtResource("2_ooc3b")

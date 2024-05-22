@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1a2a0l022gxh"]
+[gd_scene load_steps=4 format=3 uid="uid://c1a2a0l022gxh"]
 
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_csov7"]
-[ext_resource type="PackedScene" uid="uid://b7aw3kye4mi33" path="res://miniMap.tscn" id="2_416ht"]
 [ext_resource type="Texture2D" uid="uid://df85qq3vhlsq6" path="res://icon.svg" id="3_0hkpf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcah2"]
@@ -65,15 +64,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.998679, 1.00469)
 color = Color(0.254902, 0.698039, 0.356863, 1)
-
-[node name="MiniMap" parent="RTSPanel/LeftPanel" instance=ExtResource("2_416ht")]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="RTSPanel/LeftPanel"]
 visible = false

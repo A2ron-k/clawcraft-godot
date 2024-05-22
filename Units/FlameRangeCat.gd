@@ -1,13 +1,13 @@
 extends CharacterBody2D
-class_name Gatherer
+class_name FlameRangeAttacker
 
 
 # Children
 @onready var box = get_node("Box")
 @onready var movementTarget = position
 @onready var animation = get_node("AnimationPlayer")
+@onready var stateMachine = get_node("RangeStateMachine")
 @onready var collisionShape = get_node("CollisionShape2D")
-@onready var stateMachine = get_node("gathererStateMachine")
 @onready var navAgent = get_node("NavigationNode/NavigationAgent2D")
 @onready var healthBar = get_node("HealthBar")
 
@@ -20,40 +20,39 @@ var mouseEntered = false
 
 # Unit Movement
 var followCursor = false
-var speed = 30
+var speed = 100 
 const move_threshold = 100 #How much closer to the target
 var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
-@onready var stopTimer = $StopTimer
+@onready var stopTimer = get_node("StopTimer")
 
 # Unit Navigation/ Pathfinding
 var navTarget
 
 # Unit Stats
-var unitType = "gatherer"
-var typesWeakness = []
-var health = 4
-var gatherRange = 20
-var armor = 0
-var bonusDamage = 0
+var unitType = "lightArmor"
+var typesWeakness = ["lightArmor"]
+var health = 10
+var damage = 5
+var attackRange = 100
+var armor = 2
+var bonusDamage = 1
 
-# Unit Logic
+# Attacking Logic
 var possibleTargets = []
-var gatherTarget = null
-@export var noOfCatnipCarrying = 0
-@onready var homeBasePosition = get_tree().get_root().get_node("World/HomeBase/Base").position
+var attackTarget = null
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setSelected(selected)
 	add_to_group("units", true)
-	add_to_group("gatherers", true)
+	add_to_group("rangeAttackers", true)
 	
 	# Sets the enemy units to red
 	if unitOwner == 1:
 		modulate = Color(1, 0.29, 0.165,1)
-	
+
 	# Sets the healthbar value
 	healthBar.max_value = health
 
@@ -62,7 +61,16 @@ func _input(event):
 	if event.is_action_pressed("LeftClick"):
 		if mouseEntered && unitOwner == 0:
 			setSelected(!selected)
-			print("clicked")
+	
+	# TODO - Remove when finish updating Minimap feature
+	#if(event.is_action_pressed("RightClick")):
+		##var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
+		##MinimapPath._ready()
+		#followCursor = true
+	#
+	#if(event.is_action_released("RightClick")):
+		#followCursor = false
+	#pass
 
 # Handles variables that are related to being selected
 func setSelected(value): 
@@ -71,13 +79,11 @@ func setSelected(value):
 	selected = value
 
 # Mouse detection
-func _on_area_2d_mouse_shape_entered(shape_idx):
+func _on_touch_zone_mouse_shape_entered(shape_idx):
 	mouseEntered = true
-	print("entered")
 
-func _on_area_2d_mouse_shape_exited(shape_idx):
+func _on_touch_zone_mouse_shape_exited(shape_idx):
 	mouseEntered = false
-	print("leave")
 
 # Handle Movement to Target
 func moveToTarget(delta, target):
@@ -100,28 +106,24 @@ func moveToTarget(delta, target):
 
 # Handles Vision Range of Unit
 func _on_vision_range_body_entered(body):
-	if body.is_in_group("resources"):
-		possibleTargets.append(body)
+	if body.is_in_group("units") || body.is_in_group("buildings"):
+		print("Possible unit sighted")
+		if body.unitOwner != unitOwner:
+			print("It is an enemy")
+			possibleTargets.append(body)
 
 func _on_vision_range_body_exited(body):
 	if possibleTargets.has(body):
+		print("Loss vision on Unit")
 		possibleTargets.erase(body)
 
-# Finds the closest Resource within range
-func closestResourceWithinRange():
-	if closestResource():
-		if closestResource().position.distance_to(position) < gatherRange:
-			return closestResource()
+# Finds the closest enemy within Attack Range
+func closestEnemyWithinRange():
+	if closestEnemy():
+		if closestEnemy().position.distance_to(position) < attackRange:
+			return closestEnemy()
 		return null
 	return null
-
-# Finds the closest Resource
-func closestResource():
-	if possibleTargets.size() > 0:
-		possibleTargets.sort_custom(compareDistance)
-		return possibleTargets[0]
-	else:
-		return null
 
 # Handles Distance Comparision between two targets
 func compareDistance(target_a, target_b) -> bool:
@@ -129,9 +131,17 @@ func compareDistance(target_a, target_b) -> bool:
 		return true
 	return false
 
-# Checks if target has entered gathering range
+# Finds the closest enemy
+func closestEnemy():
+	if possibleTargets.size() > 0:
+		possibleTargets.sort_custom(compareDistance)
+		return possibleTargets[0]
+	else:
+		return null
+
+# Checks if target is within range
 func targetWithinRange() -> bool:
-	if gatherTarget.get_ref().position.distance_to(position) < gatherRange:
+	if attackTarget.get_ref().position.distance_to(position) < attackRange:
 		return true
 	else:
 		return false
@@ -169,5 +179,6 @@ func removeNode():
 func _on_nav_timer_timeout():
 	if navTarget:
 		navAgent.target_position = navTarget
+
 
 
