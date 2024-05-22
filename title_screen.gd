@@ -13,7 +13,6 @@ func _process(delta):
 
 func _on_level_1_pressed():
 	get_tree().change_scene_to_file("res://level_one.tscn")
-	pass # Replace with function body.
 
 
 func _on_level_2_pressed():
@@ -21,8 +20,7 @@ func _on_level_2_pressed():
 
 
 func _on_level_3_pressed():
-	get_tree().change_scene_to_file("res://world.tscn")
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://level_three.tscn")
 
 
 func _on_quit_pressed():
