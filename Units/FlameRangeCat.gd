@@ -174,6 +174,7 @@ func takeDamage(attackDamage, bonusModifier, armorModifier, unitType) -> bool:
 func removeNode():
 	var path = get_tree().get_root().get_node("World")
 	path.units.remove_at(path.units.find(self))
+	path.playerUnits.remove_at(path.playerUnits.find(self))
 
 # Prompts unit path recalculation 
 func _on_nav_timer_timeout():
