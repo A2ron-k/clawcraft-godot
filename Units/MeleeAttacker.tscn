@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://2nhl36r3044k"]
+[gd_scene load_steps=21 format=3 uid="uid://2nhl36r3044k"]
 
 [ext_resource type="Texture2D" uid="uid://ddwfimryeqkwd" path="res://Units/SwordsmanTemplate.png" id="1_kbn1b"]
 [ext_resource type="Script" path="res://Units/MeleeAttacker.gd" id="1_v8s4w"]
 [ext_resource type="PackedScene" uid="uid://dwhpy3b35ip4h" path="res://Global/unitStateMachine.tscn" id="3_t8cbd"]
+[ext_resource type="AudioStream" uid="uid://dboao3q0tvlep" path="res://Audio/flame_sound.mp3" id="4_68bil"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1cita"]
 radius = 2.99998
@@ -280,6 +281,9 @@ scale = Vector2(1.70103, 3.57692)
 position = Vector2(0, 3.21505)
 scale = Vector2(0.618268, 0.945023)
 shape = SubResource("RectangleShape2D_hocqg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_68bil")
 
 [connection signal="mouse_entered" from="." to="." method="_on_meleeAttacker_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_meleeAttacker_mouse_exited"]

@@ -10,6 +10,7 @@ class_name FlameRangeAttacker
 @onready var collisionShape = get_node("CollisionShape2D")
 @onready var navAgent = get_node("NavigationNode/NavigationAgent2D")
 @onready var healthBar = get_node("HealthBar")
+@onready var attackAudioPlayer = get_node("AudioStreamPlayer2D")
 
 # Unit Owner
 @export var unitOwner := 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cim5uwnkpr2ou"]
+[gd_scene load_steps=17 format=3 uid="uid://cim5uwnkpr2ou"]
 
 [ext_resource type="Script" path="res://Camera.gd" id="1_2gtrv"]
 [ext_resource type="Script" path="res://world.gd" id="1_bmh88"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d3uwrlh7d1cp" path="res://Buildings/Base.tscn" id="11_w86o5"]
 [ext_resource type="PackedScene" uid="uid://2nhl36r3044k" path="res://Units/MeleeAttacker.tscn" id="12_8jwll"]
 [ext_resource type="PackedScene" uid="uid://dtfm5ce0cimoi" path="res://Units/Gatherer.tscn" id="13_i62eo"]
+[ext_resource type="AudioStream" uid="uid://bvqhmuwp4f2r7" path="res://Audio/level_sound.mp3" id="14_1o1rb"]
 [ext_resource type="PackedScene" uid="uid://c16xfn7ajuhop" path="res://Units/RangeAttacker.tscn" id="14_d6o5j"]
 [ext_resource type="PackedScene" uid="uid://ck11ftkhc7rqb" path="res://Units/FlameRangeCat.tscn" id="15_qvt42"]
 
@@ -186,3 +187,6 @@ position = Vector2(916, 88)
 
 [node name="FlameRangeCat" parent="RangeAttackers" instance=ExtResource("15_qvt42")]
 position = Vector2(876, 215)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_1o1rb")

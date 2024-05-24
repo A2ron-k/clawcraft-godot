@@ -176,6 +176,7 @@ func _on_animation_player_animation_finished(anim_name):
 				if parent.attackTarget.get_ref().takeDamage(parent.damage, parent.bonusDamage, parent.attackTarget.get_ref().armor, parent.attackTarget.get_ref().unitType):
 					if parent.targetWithinRange():
 						parent.animation.play()
+						parent.attackAudioPlayer.play()
 					else:
 						setState(states.engaging)
 				else:

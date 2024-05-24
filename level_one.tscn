@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b3i67c5no0s7y"]
+[gd_scene load_steps=30 format=3 uid="uid://b3i67c5no0s7y"]
 
 [ext_resource type="Script" path="res://Camera.gd" id="1_4lwxk"]
 [ext_resource type="Texture2D" uid="uid://dgneg65ffov8w" path="res://Environment/TopDown/TX Tileset Wall.png" id="1_i287h"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://2nhl36r3044k" path="res://Units/MeleeAttacker.tscn" id="12_exi82"]
 [ext_resource type="PackedScene" uid="uid://crjbg8tqdjbeg" path="res://Buildings/resource_building.tscn" id="12_fo3f1"]
 [ext_resource type="PackedScene" uid="uid://c16xfn7ajuhop" path="res://Units/RangeAttacker.tscn" id="14_65wnm"]
+[ext_resource type="AudioStream" uid="uid://bvqhmuwp4f2r7" path="res://Audio/level_sound.mp3" id="15_x6aer"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y3smv"]
 vertices = PackedVector2Array(742, 11, 742, 150, 594, 150, 594, 143, 598, 139, 598, 118, 26, 11, 522, 118, 26, 150, 522, 150, 1147, 150, 922, 150, 922, 11, 1145, 11, 554, 630, 308, 630, 316, 627, 327, 618, 554, 598, 1147, 234, 1152, 630, 919, 522, 919, 502, 886, 234, 876, 502, 281, 617, 287, 630, 10, 630, 278, 598, 5, 234, 778, 234, 327, 598, 630, 598, 871, 518, 882, 530, 886, 530, 886, 532, 626, 630, 626, 623, 630, 619, 778, 11, 886, 11, 907, 532)
@@ -6373,7 +6374,6 @@ zoomMinimum = 4.0
 zoomMaximum = 7
 
 [node name="UI" parent="." instance=ExtResource("2_ldsyg")]
-visible = false
 
 [node name="HomeBase" type="Node2D" parent="."]
 
@@ -6424,5 +6424,8 @@ position = Vector2(789, 52)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport"]
 position = Vector2(44, 32)
 shape = SubResource("RectangleShape2D_ac33s")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_x6aer")
 
 [connection signal="body_entered" from="Teleport" to="." method="_on_teleport_body_entered"]
