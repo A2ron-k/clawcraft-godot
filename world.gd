@@ -1,12 +1,14 @@
 extends Node2D
 
 var units = [] # !VERY IMPORTANT - This tracks all the units in the game
+var playerUnits = []
 
 @onready var levelAudioPlayer = get_node("AudioStreamPlayer2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	getUnits() # Whenever game is loaded units are added to array
+	getPlayerUnits()
 	levelAudioPlayer.play()
 
 # Retrieves all the units that are in the entire game that has been pre-spawned
@@ -16,6 +18,11 @@ func getUnits():
 	units.append(get_tree().get_nodes_in_group("rangeAttackers"))
 	units.append(get_tree().get_nodes_in_group("buildings"))
 
+func getPlayerUnits():
+	for unit in units:
+		if unit.unitOwner == 0:
+			playerUnits.append(unit)
+			
 # Toggles the units's selected variable in an area
 func _onAreaSelected(object):
 	#object is the camera

@@ -14,6 +14,7 @@ func _process(delta):
 	if playerUnits.size() <= 0:
 		Game.isGameOver = true
 	
+			
 # Retrieves all the units that are in the entire game that has been pre-spawned
 func getUnits():
 	units = get_tree().get_nodes_in_group("units")
@@ -65,5 +66,5 @@ func _getUnitsInArea(area) -> Array:
 
 
 func _on_teleport_body_entered(body):
-	get_tree().change_scene_to_file("res://lecel_two.tscn")
+	get_tree().change_scene_to_file("res://level_two.tscn")
 	pass # Replace with function body.

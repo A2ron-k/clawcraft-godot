@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnhccjo2os4wx"]
+
+[ext_resource type="Script" path="res://fow.gd" id="1_8608r"]
+[ext_resource type="Texture2D" uid="uid://c34q4qm6mw8kg" path="res://fow.png" id="2_xfr4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcljk"]
+size = Vector2(48, 47)
+
+[node name="fow" type="Area2D"]
+y_sort_enabled = true
+position = Vector2(-24, -23)
+script = ExtResource("1_8608r")
+
+[node name="Fow" type="Sprite2D" parent="."]
+position = Vector2(24, 23)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("2_xfr4g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, 23.5)
+shape = SubResource("RectangleShape2D_dcljk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

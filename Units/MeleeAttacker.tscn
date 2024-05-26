@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ddwfimryeqkwd" path="res://Units/SwordsmanTemplate.png" id="1_kbn1b"]
 [ext_resource type="Script" path="res://Units/MeleeAttacker.gd" id="1_v8s4w"]
 [ext_resource type="PackedScene" uid="uid://dwhpy3b35ip4h" path="res://Global/unitStateMachine.tscn" id="3_t8cbd"]
-[ext_resource type="AudioStream" uid="uid://dboao3q0tvlep" path="res://Audio/flame_sound.mp3" id="4_68bil"]
+[ext_resource type="AudioStream" uid="uid://4vnujhru4y4j" path="res://Audio/gun_burst.wav" id="4_5xqgn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1cita"]
 radius = 2.99998
@@ -283,7 +283,7 @@ scale = Vector2(0.618268, 0.945023)
 shape = SubResource("RectangleShape2D_hocqg")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_68bil")
+stream = ExtResource("4_5xqgn")
 
 [connection signal="mouse_entered" from="." to="." method="_on_meleeAttacker_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_meleeAttacker_mouse_exited"]
