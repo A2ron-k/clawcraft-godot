@@ -50,4 +50,6 @@ func takeDamage(attackDamage, bonusModifier, armorModifier, unitType) -> bool:
 func removeNode():
 	var path = get_tree().get_root().get_node("World")
 	path.units.remove_at(path.units.find(self))
+	path.units.erase(self)
+	path.enemyBuildings.erase(self)
 

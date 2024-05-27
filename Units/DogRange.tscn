@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://c16xfn7ajuhop"]
+[gd_scene load_steps=21 format=3 uid="uid://bn2vxomiq6dna"]
 
-[ext_resource type="Script" path="res://Units/RangeAttacker.gd" id="1_d7tcx"]
-[ext_resource type="Texture2D" uid="uid://du7wmcbhyp8tx" path="res://Units/catMarine.png" id="2_i53o3"]
-[ext_resource type="PackedScene" uid="uid://v20f2mgdjv5i" path="res://Global/rangeStateMachine.tscn" id="3_m4a16"]
-[ext_resource type="AudioStream" uid="uid://4vnujhru4y4j" path="res://Audio/gun_burst.wav" id="4_m17u1"]
+[ext_resource type="Script" path="res://Units/DogRange.gd" id="1_w0r8w"]
+[ext_resource type="Texture2D" uid="uid://dskn3hbmrec0m" path="res://Units/DogRange.png" id="2_j2ee2"]
+[ext_resource type="PackedScene" uid="uid://v20f2mgdjv5i" path="res://Global/rangeStateMachine.tscn" id="3_m72gq"]
+[ext_resource type="AudioStream" uid="uid://drrcj0mcqje3s" path="res://Audio/dogheavy.mp3" id="4_6escv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wau8h"]
 radius = 2.99998
@@ -27,7 +27,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("DogRange:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,7 +44,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("DogRange:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -61,7 +61,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("DogRange:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +78,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("DogRange:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -95,7 +95,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("DogRange:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -111,14 +111,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("DogRange:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [17, 16, 17, 16, 17]
+"values": [16, 17, 16, 17]
 }
 
 [sub_resource type="Animation" id="Animation_7rfee"]
@@ -127,14 +127,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("DogRange:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [29, 28, 29, 28, 29]
+"values": [24, 25, 24, 25]
 }
 
 [sub_resource type="Animation" id="Animation_5rilh"]
@@ -143,14 +143,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("DogRange:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [25, 24, 25, 24, 25]
+"values": [28, 29, 28, 29]
 }
 
 [sub_resource type="Animation" id="Animation_bmpec"]
@@ -159,14 +159,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("DogRange:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [21, 20, 21, 20, 21]
+"values": [20, 21, 20, 21]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iguak"]
@@ -183,7 +183,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v46xs"]
-radius = 94.0053
+radius = 67.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltpar"]
 bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.447059)
@@ -203,12 +203,12 @@ anti_aliasing_size = 0.2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h15sj"]
 size = Vector2(20, 6.80418)
 
-[node name="rangeAttacker" type="CharacterBody2D"]
+[node name="dogRange" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_d7tcx")
+script = ExtResource("1_w0r8w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 5)
+position = Vector2(-9.53674e-07, 5)
 rotation = -1.56731
 shape = SubResource("CapsuleShape2D_wau8h")
 
@@ -218,10 +218,10 @@ offset_right = 9.0
 offset_bottom = 10.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uaqgl")
 
-[node name="CatMarine" type="Sprite2D" parent="."]
-position = Vector2(1, 1)
-scale = Vector2(0.229687, 0.229687)
-texture = ExtResource("2_i53o3")
+[node name="DogRange" type="Sprite2D" parent="."]
+position = Vector2(1, -4)
+scale = Vector2(0.2875, 0.2875)
+texture = ExtResource("2_j2ee2")
 hframes = 4
 vframes = 8
 frame = 1
@@ -234,7 +234,7 @@ libraries = {
 [node name="StopTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="RangeStateMachine" parent="." instance=ExtResource("3_m4a16")]
+[node name="RangeStateMachine" parent="." instance=ExtResource("3_m72gq")]
 
 [node name="VisionRange" type="Area2D" parent="."]
 metadata/_edit_lock_ = true
@@ -257,17 +257,17 @@ wait_time = 0.1
 autostart = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -8.0
-offset_top = -10.0
-offset_right = 7.0
-offset_bottom = -8.0
+offset_left = -7.0
+offset_top = -18.0
+offset_right = 8.0
+offset_bottom = -16.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ltpar")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ruf1s")
 value = 50.0
 show_percentage = false
 
 [node name="TouchZone" type="Area2D" parent="."]
-position = Vector2(0, -11)
+position = Vector2(0, -15)
 scale = Vector2(1.70103, 3.57692)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TouchZone"]
@@ -276,7 +276,7 @@ scale = Vector2(0.618268, 0.945023)
 shape = SubResource("RectangleShape2D_h15sj")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_m17u1")
+stream = ExtResource("4_6escv")
 volume_db = -3.37
 
 [connection signal="animation_finished" from="AnimationPlayer" to="RangeStateMachine" method="_on_animation_player_animation_finished"]

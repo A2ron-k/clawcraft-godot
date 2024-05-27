@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyv3a4leaxscw"]
+[gd_scene load_steps=18 format=3 uid="uid://dyv3a4leaxscw"]
 
 [ext_resource type="Script" path="res://level_two.gd" id="1_471qg"]
 [ext_resource type="TileSet" uid="uid://c340tboym8n4s" path="res://level_2.tres" id="2_aafeu"]
 [ext_resource type="Script" path="res://Camera.gd" id="3_cf08c"]
 [ext_resource type="PackedScene" uid="uid://c1a2a0l022gxh" path="res://UI/UI.tscn" id="4_6o2hg"]
+[ext_resource type="PackedScene" uid="uid://cnhccjo2os4wx" path="res://fow.tscn" id="4_khk3w"]
 [ext_resource type="Script" path="res://Objects.gd" id="5_3taph"]
 [ext_resource type="PackedScene" uid="uid://p0qhx71c621p" path="res://Resources/Catnip.tscn" id="6_7ls8f"]
 [ext_resource type="PackedScene" uid="uid://crn8702foxvu2" path="res://Buildings/Barrack.tscn" id="7_03287"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c16xfn7ajuhop" path="res://Units/RangeAttacker.tscn" id="12_kkf6w"]
 [ext_resource type="PackedScene" uid="uid://ck11ftkhc7rqb" path="res://Units/FlameRangeCat.tscn" id="13_3ibvt"]
 [ext_resource type="AudioStream" uid="uid://bvqhmuwp4f2r7" path="res://Audio/level_sound.mp3" id="13_e7qru"]
+[ext_resource type="PackedScene" uid="uid://bn2vxomiq6dna" path="res://Units/DogRange.tscn" id="13_wac0c"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bu46l"]
 vertices = PackedVector2Array(1206, -142, 1214, -142, 1214, 150, 863, 150, 758, 134, 762, 106, 1261, -189, 1271, 725, 1242, 234, 1242, -170, -244, 725, 490, 346, 502, 346, 166, 346, 698, -191, 1206, -170, 455, 140, 427, 140, 428, 138, 733, 10, 734, 10, 733, 22, 614, 22, 733, -86, 734, -86, 733, -70, 734, -70, 733, -54, 506, 22, 734, -54, 733, -38, 734, -38, 733, -22, 734, -22, 733, -6, 734, -6, 762, -138, 698, -138, 746, 165, 862, 166, 862, 262, 614, 262, 455, 167, 729, 165, 26, -170, 422, -192, 422, -138, 358, -138, 26, -142, 386, 22, 386, -110, 450, -110, 450, -174, 670, -174, 670, -166, 669, -150, 671, -150, 671, -129, 669, -110, 734, -110, 734, -102, 754, 153, 863, 166, 614, 310, 598, 310, 598, 346, 586, 346, 586, 310, 890, 346, 890, 234, 490, 310, 474, 310, 474, 262, 194, 262, 194, 182, 381, 159, 389, 167, 18, 182, 18, -142, 358, 106, -10, 266, 166, 266, -238, -195, -10, -170, 614, 106, 711, 134, 550, 310, 506, 106, 717, 157, 410, 139, 371, 139, 550, 346, 538, 346, 538, 310, 502, 310)
@@ -73,7 +75,7 @@ layer_1/z_index = -4
 layer_1/tile_data = PackedInt32Array(1703978, 0, 28, 1638443, 65536, 27, 1703979, 65536, 28, 1769515, 65536, 29, 1638444, 131072, 27, 1703980, 131072, 28, 1769516, 131072, 29, 1638445, 196608, 27, 1703981, 196608, 28, 1769517, 196608, 29, -196599, 0, 28, -262134, 65536, 27, -196598, 65536, 28, -131062, 65536, 29, -262133, 131072, 27, -196597, 131072, 28, -131061, 131072, 29, -262132, 196608, 27, -196596, 196608, 28, -131060, 196608, 29, 2949126, 655360, 30, 3014662, 655360, 31, 2949127, 720896, 30, 3014663, 720896, 31, 2359282, 655360, 30, 2424818, 655360, 31, 2359283, 720896, 30, 2424819, 720896, 31, 2031633, 655360, 30, 2097169, 655360, 31, 2031634, 720896, 30, 2097170, 720896, 31, 1245170, 655360, 30, 1310706, 655360, 31, 1245171, 720896, 30, 1310707, 720896, 31, 262131, 655360, 30, 327667, 655360, 31, 262132, 720896, 30, 327668, 720896, 31, 1835061, 655360, 30, 1900597, 655360, 31, 1835062, 720896, 30, 1900598, 720896, 31, 2752582, 655360, 30, 2818118, 655360, 31, 2752583, 720896, 30, 2818119, 720896, 31, 2949166, 655360, 30, 3014702, 655360, 31, 2949167, 720896, 30, 3014703, 720896, 31, 65607, 655360, 30, 131143, 655360, 31, 65608, 720896, 30, 131144, 720896, 31, 1114185, 524288, 30, 1179721, 524288, 31, 1114186, 589824, 30, 1179722, 589824, 31, 983091, 524288, 30, 1048627, 524288, 31, 983092, 589824, 30, 1048628, 589824, 31, -196587, 524288, 30, -131051, 524288, 31, -196586, 589824, 30, -131050, 589824, 31, -655328, 524288, 30, -589792, 524288, 31, -655327, 589824, 30, -589791, 589824, 31, 786445, 524288, 30, 851981, 524288, 31, 786446, 589824, 30, 851982, 589824, 31, 1507346, 524288, 30, 1572882, 524288, 31, 1507347, 589824, 30, 1572883, 589824, 31, 1048571, 524288, 30, 1114107, 524288, 31, 1048572, 589824, 30, 1114108, 589824, 31, -196619, 524288, 30, -131083, 524288, 31, -196618, 589824, 30, -131082, 589824, 31, 2162689, 393216, 30, 2228225, 393216, 31, 2162690, 458752, 30, 2228226, 458752, 31, 2883572, 524288, 30, 2949108, 524288, 31, 2883573, 589824, 30, 2949109, 589824, 31, 2293816, 393216, 30, 2359352, 393216, 31, 2293817, 458752, 30, 2359353, 458752, 31, 2162753, 524288, 30, 2228289, 524288, 31, 2162754, 589824, 30, 2228290, 589824, 31, 2424884, 0, 30, 2490420, 0, 31, 2424885, 65536, 30, 2490421, 65536, 31, 2818108, 0, 30, 2883644, 0, 31, 2818109, 65536, 30, 2883645, 65536, 31, 1835077, 0, 30, 1900613, 0, 31, 1835078, 65536, 30, 1900614, 65536, 31, 1572939, 131072, 30, 1638475, 131072, 31, 1572940, 196608, 30, 1638476, 196608, 31, 852044, 0, 30, 917580, 0, 31, 852045, 65536, 30, 917581, 65536, 31, 983105, 262144, 30, 1048641, 262144, 31, 983106, 327680, 30, 1048642, 327680, 31, 131074, 0, 30, 196610, 0, 31, 131075, 65536, 30, 196611, 65536, 31, 524275, 0, 30, 589811, 0, 31, 524276, 65536, 30, 589812, 65536, 31, 1441796, 786433, 13, 1507332, 0, 31, 1441797, 65536, 30, 1507333, 65536, 31, 2752507, 0, 30, 2818043, 0, 31, 2752508, 65536, 30, 2818044, 65536, 31, -655322, 393217, 12, -589786, 393217, 13, -655321, 458753, 12, -589785, 458753, 13, -65492, 393217, 12, 44, 393217, 13, -65491, 458753, 12, 45, 458753, 13, -393200, 393217, 12, -327664, 393217, 13, -393199, 458753, 12, -327663, 458753, 13, 5, 131073, 12, 65541, 131073, 13, 6, 196609, 12, 65542, 196609, 13, 589826, 393217, 12, 655362, 393217, 13, 589827, 458753, 12, 655363, 458753, 13, 851988, 655361, 12, 917524, 655361, 13, 851989, 720897, 12, 917525, 720897, 13, 917526, 786433, 13, 1376258, 655361, 12, 1441794, 655361, 13, 1376259, 720897, 12, 1441795, 720897, 13, 1376245, 655361, 12, 1441781, 655361, 13, 1376246, 720897, 12, 1441782, 720897, 13, 1441783, 786433, 13, 720886, 393217, 12, 786422, 393217, 13, 720887, 458753, 12, 786423, 458753, 13, 458741, 131073, 12, 524277, 131073, 13, 458742, 196609, 12, 524278, 196609, 13, 2031609, 393217, 12, 2097145, 393217, 13, 2031610, 458753, 12, 2097146, 458753, 13, 2031622, 655361, 12, 2097158, 655361, 13, 2031623, 720897, 12, 2097159, 720897, 13, 2097160, 786433, 13, 2883576, 655361, 12, 2949112, 655361, 13, 2883577, 720897, 12, 2949113, 720897, 13, 2949114, 786433, 13, 2818057, 131073, 12, 2883593, 131073, 13, 2818058, 196609, 12, 2883594, 196609, 13, 2818070, 393217, 12, 2883606, 393217, 13, 2818071, 458753, 12, 2883607, 458753, 13, 1900570, 393217, 12, 1966106, 393217, 13, 1900571, 458753, 12, 1966107, 458753, 13, 2752570, 393217, 12, 2818106, 393217, 13, 2752571, 458753, 12, 2818107, 458753, 13, 2949185, 131073, 12, 3014721, 131073, 13, 2949186, 196609, 12, 3014722, 196609, 13, 2031690, 131073, 12, 2097226, 131073, 13, 2031691, 196609, 12, 2097227, 196609, 13, 1703992, 131073, 12, 1769528, 131073, 13, 1703993, 196609, 12, 1769529, 196609, 13, 2162749, 393217, 12, 2228285, 393217, 13, 2162750, 458753, 12, 2228286, 458753, 13, 1114181, 131073, 12, 1179717, 131073, 13, 1114182, 196609, 12, 1179718, 196609, 13, 1441844, 655361, 12, 1507380, 655361, 13, 1441845, 720897, 12, 1507381, 720897, 13, 1507382, 786433, 13, 524360, 851969, 13, 589896, 851969, 14, 458825, 917505, 12, 524361, 917505, 13, 589897, 917505, 14, 458826, 983041, 12, 524362, 983041, 13, 589898, 983041, 14, 524363, 1048577, 13, 589899, 1048577, 14, -131046, 131073, 12, -65510, 131073, 13, -131045, 196609, 12, -65509, 196609, 13, 458792, 1179648, 2, 524328, 1179648, 3, 458793, 1245184, 2, 524329, 1245184, 3, 458794, 1310720, 2, 524330, 1310720, 3, 458795, 1376256, 2, 524331, 1376256, 3, 458796, 655360, 6, 393241, 655360, 1, 458777, 655360, 2, 524313, 720896, 10, 393242, 720896, 1, 458778, 720896, 2, 524314, 655360, 6, 393243, 786432, 1, 458779, 786432, 2, 524315, 720896, 6, 524332, 655360, 7, 458797, 720896, 6, 524333, 655360, 14, 458798, 786432, 6, 524334, 720896, 14, 589869, 655360, 15, 589870, 720896, 15, 524312, 655360, 10, 589848, 655360, 11, 589849, 720896, 11, 589850, 655360, 7, 393236, 131072, 1, 458772, 131072, 2, 524308, 131072, 3, 393237, 196608, 1, 458773, 196608, 2, 524309, 196608, 3, 393238, 262144, 1, 458774, 262144, 2, 524310, 262144, 3, -65543, 1376257, 12, -7, 1376257, 13, -65542, 1441793, 12, -6, 1441793, 13, 65530, 1441793, 14, -65541, 1507329, 12, -5, 1507329, 13, 65531, 1507329, 14, -65540, 1572865, 12, -4, 1572865, 13, 393284, 1441792, 13, 458820, 1441792, 14, 524356, 1441792, 15, 327749, 1507328, 12, 393285, 1507328, 13, 458821, 1507328, 14, 524357, 1507328, 15, 327750, 1572864, 12, 393286, 1572864, 13, 458822, 1572864, 14, -327612, 1703936, 13, -262076, 1703936, 14, -196540, 1703936, 15, -327611, 1769472, 13, -262075, 1769472, 14, -196539, 1769472, 15, -327610, 1835008, 13, -262074, 1835008, 14, 1835002, 262144, 30, 1900538, 262144, 31, 1835003, 327680, 30, 1900539, 327680, 31, 589851, 720896, 7, 524316, 786432, 6, 589852, 786432, 7)
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(949, 443)
+position = Vector2(340, 543)
 ignore_rotation = false
 zoom = Vector2(4, 4)
 limit_left = 0
@@ -83,6 +85,1569 @@ limit_bottom = 800
 limit_smoothed = true
 script = ExtResource("3_cf08c")
 zoomMaximum = 7
+
+[node name="FogOfWar" type="Node2D" parent="."]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(753, -67)
+
+[node name="fow" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 545)
+
+[node name="fow3" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 545)
+
+[node name="fow4" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 593)
+
+[node name="fow5" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 593)
+
+[node name="fow6" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 593)
+
+[node name="fow7" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 641)
+
+[node name="fow8" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 641)
+
+[node name="fow9" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 641)
+
+[node name="fow2" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 545)
+
+[node name="fow10" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 545)
+
+[node name="fow11" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 545)
+
+[node name="fow12" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 593)
+
+[node name="fow13" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 593)
+
+[node name="fow14" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 593)
+
+[node name="fow15" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 641)
+
+[node name="fow16" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 641)
+
+[node name="fow45" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 593)
+
+[node name="fow46" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 593)
+
+[node name="fow47" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 641)
+
+[node name="fow48" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 641)
+
+[node name="fow17" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 641)
+
+[node name="fow49" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 689)
+
+[node name="fow50" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 689)
+
+[node name="fow51" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 689)
+
+[node name="fow52" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 737)
+
+[node name="fow53" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 737)
+
+[node name="fow54" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 737)
+
+[node name="fow55" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 689)
+
+[node name="fow56" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 689)
+
+[node name="fow57" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 689)
+
+[node name="fow58" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 737)
+
+[node name="fow59" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 737)
+
+[node name="fow60" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 689)
+
+[node name="fow61" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 689)
+
+[node name="fow62" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 737)
+
+[node name="fow63" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 737)
+
+[node name="fow64" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 737)
+
+[node name="fow18" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 545)
+
+[node name="fow19" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 401)
+
+[node name="fow20" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 401)
+
+[node name="fow21" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 449)
+
+[node name="fow22" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 449)
+
+[node name="fow23" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 449)
+
+[node name="fow24" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 497)
+
+[node name="fow25" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 497)
+
+[node name="fow26" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 497)
+
+[node name="fow27" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 401)
+
+[node name="fow28" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 401)
+
+[node name="fow29" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 401)
+
+[node name="fow30" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 449)
+
+[node name="fow31" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 449)
+
+[node name="fow32" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 449)
+
+[node name="fow33" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 497)
+
+[node name="fow34" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 497)
+
+[node name="fow35" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 497)
+
+[node name="fow129" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 545)
+
+[node name="fow130" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 545)
+
+[node name="fow131" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 593)
+
+[node name="fow132" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 593)
+
+[node name="fow133" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 593)
+
+[node name="fow134" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 641)
+
+[node name="fow135" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 641)
+
+[node name="fow136" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 641)
+
+[node name="fow137" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 545)
+
+[node name="fow138" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 545)
+
+[node name="fow139" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 593)
+
+[node name="fow140" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 641)
+
+[node name="fow141" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 689)
+
+[node name="fow142" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 689)
+
+[node name="fow143" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 689)
+
+[node name="fow144" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 737)
+
+[node name="fow145" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 737)
+
+[node name="fow146" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 737)
+
+[node name="fow147" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 689)
+
+[node name="fow148" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 737)
+
+[node name="fow149" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 401)
+
+[node name="fow150" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-340, 401)
+
+[node name="fow151" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 449)
+
+[node name="fow152" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 449)
+
+[node name="fow153" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-340, 449)
+
+[node name="fow154" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 497)
+
+[node name="fow155" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 497)
+
+[node name="fow156" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 497)
+
+[node name="fow157" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 401)
+
+[node name="fow158" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 401)
+
+[node name="fow159" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 449)
+
+[node name="fow160" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 497)
+
+[node name="fow161" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 545)
+
+[node name="fow162" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 545)
+
+[node name="fow164" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 593)
+
+[node name="fow165" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 593)
+
+[node name="fow167" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 641)
+
+[node name="fow168" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 641)
+
+[node name="fow174" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 689)
+
+[node name="fow175" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 689)
+
+[node name="fow177" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 737)
+
+[node name="fow178" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 737)
+
+[node name="fow181" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 401)
+
+[node name="fow182" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 401)
+
+[node name="fow184" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 449)
+
+[node name="fow185" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 449)
+
+[node name="fow187" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 497)
+
+[node name="fow188" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 497)
+
+[node name="fow36" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 401)
+
+[node name="fow37" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 545)
+
+[node name="fow38" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 545)
+
+[node name="fow39" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 401)
+
+[node name="fow40" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 449)
+
+[node name="fow41" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 449)
+
+[node name="fow42" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 497)
+
+[node name="fow43" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 497)
+
+[node name="fow44" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 401)
+
+[node name="fow74" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 353)
+
+[node name="fow513" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 305)
+
+[node name="fow514" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 305)
+
+[node name="fow515" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 353)
+
+[node name="fow516" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 353)
+
+[node name="fow517" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(91, 305)
+
+[node name="fow65" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 545)
+
+[node name="fow73" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 545)
+
+[node name="fow66" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 545)
+
+[node name="fow67" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 593)
+
+[node name="fow68" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 593)
+
+[node name="fow69" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 593)
+
+[node name="fow70" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 641)
+
+[node name="fow71" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 641)
+
+[node name="fow72" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 641)
+
+[node name="fow75" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 545)
+
+[node name="fow76" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 593)
+
+[node name="fow77" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 593)
+
+[node name="fow80" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 545)
+
+[node name="fow78" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 593)
+
+[node name="fow79" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 641)
+
+[node name="fow81" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 593)
+
+[node name="fow82" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 593)
+
+[node name="fow83" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 641)
+
+[node name="fow84" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 641)
+
+[node name="fow85" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 641)
+
+[node name="fow86" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 689)
+
+[node name="fow87" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 689)
+
+[node name="fow88" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 689)
+
+[node name="fow89" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 737)
+
+[node name="fow90" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 737)
+
+[node name="fow91" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 737)
+
+[node name="fow92" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 689)
+
+[node name="fow93" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 689)
+
+[node name="fow511" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 641)
+
+[node name="fow94" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 689)
+
+[node name="fow95" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 737)
+
+[node name="fow96" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 737)
+
+[node name="fow97" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 689)
+
+[node name="fow98" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 689)
+
+[node name="fow99" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 737)
+
+[node name="fow100" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 737)
+
+[node name="fow101" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 737)
+
+[node name="fow102" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 545)
+
+[node name="fow103" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 401)
+
+[node name="fow104" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 401)
+
+[node name="fow105" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 449)
+
+[node name="fow106" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 449)
+
+[node name="fow107" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 449)
+
+[node name="fow108" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 497)
+
+[node name="fow109" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 497)
+
+[node name="fow110" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 497)
+
+[node name="fow111" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 401)
+
+[node name="fow112" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-149, 401)
+
+[node name="fow113" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 401)
+
+[node name="fow114" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-197, 449)
+
+[node name="fow116" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 449)
+
+[node name="fow117" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(-197, 497)
+
+[node name="fow118" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 497)
+
+[node name="fow512" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-149, 449)
+
+[node name="fow119" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 497)
+
+[node name="fow120" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-197, 401)
+
+[node name="fow121" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 545)
+
+[node name="fow122" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 545)
+
+[node name="fow123" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-245, 401)
+
+[node name="fow124" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-293, 449)
+
+[node name="fow125" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-245, 449)
+
+[node name="fow126" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(-293, 497)
+
+[node name="fow127" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(-245, 497)
+
+[node name="fow128" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(-293, 401)
+
+[node name="fow193" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 161)
+
+[node name="fow194" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 161)
+
+[node name="fow195" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 209)
+
+[node name="fow196" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 209)
+
+[node name="fow197" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 209)
+
+[node name="fow198" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 257)
+
+[node name="fow199" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 257)
+
+[node name="fow200" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 257)
+
+[node name="fow201" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 161)
+
+[node name="fow203" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 161)
+
+[node name="fow206" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 209)
+
+[node name="fow208" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 257)
+
+[node name="fow213" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 257)
+
+[node name="fow214" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 305)
+
+[node name="fow215" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 305)
+
+[node name="fow216" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 305)
+
+[node name="fow217" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 353)
+
+[node name="fow218" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 353)
+
+[node name="fow219" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 353)
+
+[node name="fow221" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 305)
+
+[node name="fow222" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 305)
+
+[node name="fow224" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 353)
+
+[node name="fow229" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 353)
+
+[node name="fow231" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 17)
+
+[node name="fow232" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 17)
+
+[node name="fow233" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 65)
+
+[node name="fow234" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 65)
+
+[node name="fow235" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 65)
+
+[node name="fow236" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 113)
+
+[node name="fow237" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(380, 113)
+
+[node name="fow238" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(428, 113)
+
+[node name="fow239" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(332, 17)
+
+[node name="fow240" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 17)
+
+[node name="fow241" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 17)
+
+[node name="fow242" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 65)
+
+[node name="fow243" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 65)
+
+[node name="fow244" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 65)
+
+[node name="fow245" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 113)
+
+[node name="fow246" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(236, 113)
+
+[node name="fow247" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(284, 113)
+
+[node name="fow248" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 161)
+
+[node name="fow249" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 161)
+
+[node name="fow250" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 209)
+
+[node name="fow251" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 209)
+
+[node name="fow252" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 209)
+
+[node name="fow253" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 257)
+
+[node name="fow254" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 257)
+
+[node name="fow255" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 257)
+
+[node name="fow256" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 161)
+
+[node name="fow257" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 161)
+
+[node name="fow258" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 209)
+
+[node name="fow259" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 257)
+
+[node name="fow260" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 305)
+
+[node name="fow261" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 305)
+
+[node name="fow262" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 305)
+
+[node name="fow263" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 353)
+
+[node name="fow264" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 353)
+
+[node name="fow265" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 353)
+
+[node name="fow266" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 305)
+
+[node name="fow267" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 353)
+
+[node name="fow268" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 17)
+
+[node name="fow269" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 17)
+
+[node name="fow270" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 65)
+
+[node name="fow271" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 65)
+
+[node name="fow272" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 65)
+
+[node name="fow273" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 113)
+
+[node name="fow274" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-388, 113)
+
+[node name="fow275" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-340, 113)
+
+[node name="fow276" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-436, 17)
+
+[node name="fow277" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 17)
+
+[node name="fow278" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 65)
+
+[node name="fow279" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-484, 113)
+
+[node name="fow280" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 161)
+
+[node name="fow281" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 161)
+
+[node name="fow283" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 209)
+
+[node name="fow284" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 209)
+
+[node name="fow286" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 257)
+
+[node name="fow287" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 257)
+
+[node name="fow293" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 305)
+
+[node name="fow294" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 305)
+
+[node name="fow296" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 353)
+
+[node name="fow297" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 353)
+
+[node name="fow300" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 17)
+
+[node name="fow301" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 17)
+
+[node name="fow302" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-628, 65)
+
+[node name="fow303" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 65)
+
+[node name="fow304" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 65)
+
+[node name="fow305" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-628, 113)
+
+[node name="fow306" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-580, 113)
+
+[node name="fow307" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-532, 113)
+
+[node name="fow308" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-628, 17)
+
+[node name="fow309" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 17)
+
+[node name="fow310" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 65)
+
+[node name="fow311" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 113)
+
+[node name="fow312" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(188, 17)
+
+[node name="fow315" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 17)
+
+[node name="fow316" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(92, 65)
+
+[node name="fow317" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 65)
+
+[node name="fow318" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(92, 113)
+
+[node name="fow319" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(140, 113)
+
+[node name="fow320" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(92, 17)
+
+[node name="fow321" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 161)
+
+[node name="fow322" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 161)
+
+[node name="fow323" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 209)
+
+[node name="fow324" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 209)
+
+[node name="fow325" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 209)
+
+[node name="fow326" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 257)
+
+[node name="fow327" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 257)
+
+[node name="fow328" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 257)
+
+[node name="fow329" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 161)
+
+[node name="fow330" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 161)
+
+[node name="fow331" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 161)
+
+[node name="fow332" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 209)
+
+[node name="fow333" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 209)
+
+[node name="fow334" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 209)
+
+[node name="fow335" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 257)
+
+[node name="fow336" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 257)
+
+[node name="fow337" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 209)
+
+[node name="fow338" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 209)
+
+[node name="fow339" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 257)
+
+[node name="fow340" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 257)
+
+[node name="fow341" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 257)
+
+[node name="fow342" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 305)
+
+[node name="fow343" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 305)
+
+[node name="fow344" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 305)
+
+[node name="fow345" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 353)
+
+[node name="fow346" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 353)
+
+[node name="fow347" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 353)
+
+[node name="fow348" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 305)
+
+[node name="fow349" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 305)
+
+[node name="fow350" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 305)
+
+[node name="fow351" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 353)
+
+[node name="fow352" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 353)
+
+[node name="fow353" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 305)
+
+[node name="fow354" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 305)
+
+[node name="fow355" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 353)
+
+[node name="fow356" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 353)
+
+[node name="fow357" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 353)
+
+[node name="fow358" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 161)
+
+[node name="fow359" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 17)
+
+[node name="fow360" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 17)
+
+[node name="fow361" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 65)
+
+[node name="fow362" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 65)
+
+[node name="fow363" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 65)
+
+[node name="fow364" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 113)
+
+[node name="fow365" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-5, 113)
+
+[node name="fow366" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(43, 113)
+
+[node name="fow367" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-53, 17)
+
+[node name="fow368" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 17)
+
+[node name="fow369" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 17)
+
+[node name="fow370" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 65)
+
+[node name="fow371" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 65)
+
+[node name="fow372" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 65)
+
+[node name="fow373" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 113)
+
+[node name="fow374" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-149, 113)
+
+[node name="fow375" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-101, 113)
+
+[node name="fow376" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-197, 17)
+
+[node name="fow377" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 161)
+
+[node name="fow378" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 161)
+
+[node name="fow379" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 17)
+
+[node name="fow380" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 65)
+
+[node name="fow381" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 65)
+
+[node name="fow382" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 113)
+
+[node name="fow383" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-245, 113)
+
+[node name="fow384" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-293, 17)
+
+[node name="fow163" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 686)
+
+[node name="fow166" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 686)
+
+[node name="fow169" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 734)
+
+[node name="fow170" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 734)
+
+[node name="fow171" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 734)
+
+[node name="fow172" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 782)
+
+[node name="fow173" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 782)
+
+[node name="fow176" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 782)
+
+[node name="fow179" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 686)
+
+[node name="fow180" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 686)
+
+[node name="fow183" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 734)
+
+[node name="fow186" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 782)
+
+[node name="fow189" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 830)
+
+[node name="fow190" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 830)
+
+[node name="fow191" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 830)
+
+[node name="fow192" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 878)
+
+[node name="fow204" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 878)
+
+[node name="fow207" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 878)
+
+[node name="fow209" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 830)
+
+[node name="fow210" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 878)
+
+[node name="fow211" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 542)
+
+[node name="fow212" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 542)
+
+[node name="fow220" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 590)
+
+[node name="fow223" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 590)
+
+[node name="fow225" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 590)
+
+[node name="fow226" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 638)
+
+[node name="fow227" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 638)
+
+[node name="fow228" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 638)
+
+[node name="fow230" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 542)
+
+[node name="fow282" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 542)
+
+[node name="fow285" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 590)
+
+[node name="fow288" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 638)
+
+[node name="fow289" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 686)
+
+[node name="fow290" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 686)
+
+[node name="fow291" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 734)
+
+[node name="fow292" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 734)
+
+[node name="fow295" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 782)
+
+[node name="fow298" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 782)
+
+[node name="fow299" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 830)
+
+[node name="fow313" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 830)
+
+[node name="fow314" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 878)
+
+[node name="fow385" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 878)
+
+[node name="fow508" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-964, 877)
+
+[node name="fow509" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1060, 877)
+
+[node name="fow510" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1012, 877)
+
+[node name="fow386" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 542)
+
+[node name="fow387" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 542)
+
+[node name="fow388" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 590)
+
+[node name="fow389" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 590)
+
+[node name="fow390" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 638)
+
+[node name="fow391" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 638)
+
+[node name="fow115" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 734)
+
+[node name="fow392" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 782)
+
+[node name="fow393" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 830)
+
+[node name="fow394" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 878)
+
+[node name="fow458" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-866, 64)
+
+[node name="fow459" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-818, 64)
+
+[node name="fow460" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-770, 64)
+
+[node name="fow461" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-866, 112)
+
+[node name="fow462" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-818, 112)
+
+[node name="fow463" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-770, 112)
+
+[node name="fow464" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-914, 64)
+
+[node name="fow465" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-914, 112)
+
+[node name="fow466" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 64)
+
+[node name="fow467" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 64)
+
+[node name="fow468" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 112)
+
+[node name="fow469" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 112)
+
+[node name="fow470" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-723, 64)
+
+[node name="fow471" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-723, 112)
+
+[node name="fow395" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 686)
+
+[node name="fow396" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 590)
+
+[node name="fow397" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 638)
+
+[node name="fow398" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 542)
+
+[node name="fow399" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 302)
+
+[node name="fow400" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 302)
+
+[node name="fow401" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 350)
+
+[node name="fow402" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 350)
+
+[node name="fow403" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 350)
+
+[node name="fow404" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 398)
+
+[node name="fow405" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 398)
+
+[node name="fow406" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 398)
+
+[node name="fow407" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 302)
+
+[node name="fow408" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 302)
+
+[node name="fow409" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 350)
+
+[node name="fow410" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 398)
+
+[node name="fow411" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 446)
+
+[node name="fow412" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 446)
+
+[node name="fow413" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 446)
+
+[node name="fow414" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 494)
+
+[node name="fow415" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 494)
+
+[node name="fow416" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 494)
+
+[node name="fow417" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 446)
+
+[node name="fow418" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 494)
+
+[node name="fow419" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 158)
+
+[node name="fow420" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 158)
+
+[node name="fow421" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 206)
+
+[node name="fow422" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 206)
+
+[node name="fow423" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 206)
+
+[node name="fow424" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 254)
+
+[node name="fow425" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-724, 254)
+
+[node name="fow426" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-676, 254)
+
+[node name="fow427" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-772, 158)
+
+[node name="fow428" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 158)
+
+[node name="fow429" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 206)
+
+[node name="fow430" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-820, 254)
+
+[node name="fow431" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 302)
+
+[node name="fow432" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 302)
+
+[node name="fow433" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 350)
+
+[node name="fow434" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 350)
+
+[node name="fow435" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 398)
+
+[node name="fow436" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 398)
+
+[node name="fow437" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 446)
+
+[node name="fow438" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 446)
+
+[node name="fow439" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 494)
+
+[node name="fow440" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 494)
+
+[node name="fow472" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 636)
+
+[node name="fow473" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 684)
+
+[node name="fow474" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 732)
+
+[node name="fow475" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 780)
+
+[node name="fow476" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 828)
+
+[node name="fow477" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 492)
+
+[node name="fow478" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 540)
+
+[node name="fow479" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 588)
+
+[node name="fow480" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 636)
+
+[node name="fow481" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 636)
+
+[node name="fow482" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 684)
+
+[node name="fow483" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 684)
+
+[node name="fow484" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 732)
+
+[node name="fow485" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 732)
+
+[node name="fow486" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 780)
+
+[node name="fow487" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 780)
+
+[node name="fow488" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 828)
+
+[node name="fow489" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 828)
+
+[node name="fow490" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 492)
+
+[node name="fow491" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 492)
+
+[node name="fow492" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 540)
+
+[node name="fow493" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 540)
+
+[node name="fow494" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 588)
+
+[node name="fow495" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 588)
+
+[node name="fow496" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 300)
+
+[node name="fow497" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 348)
+
+[node name="fow498" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 396)
+
+[node name="fow499" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-962, 444)
+
+[node name="fow500" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 300)
+
+[node name="fow501" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 300)
+
+[node name="fow502" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 348)
+
+[node name="fow503" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 348)
+
+[node name="fow504" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 396)
+
+[node name="fow505" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 396)
+
+[node name="fow506" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1058, 444)
+
+[node name="fow507" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-1010, 444)
+
+[node name="fow441" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 158)
+
+[node name="fow442" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 158)
+
+[node name="fow443" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-964, 206)
+
+[node name="fow444" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 206)
+
+[node name="fow445" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 206)
+
+[node name="fow446" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-964, 254)
+
+[node name="fow447" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-916, 254)
+
+[node name="fow448" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-868, 254)
+
+[node name="fow449" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-964, 158)
+
+[node name="fow450" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 350)
+
+[node name="fow451" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 398)
+
+[node name="fow452" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 446)
+
+[node name="fow453" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 494)
+
+[node name="fow454" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 302)
+
+[node name="fow455" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 206)
+
+[node name="fow456" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 254)
+
+[node name="fow457" parent="FogOfWar" instance=ExtResource("4_khk3w")]
+position = Vector2(-629, 158)
 
 [node name="UI" parent="." instance=ExtResource("4_6o2hg")]
 
@@ -145,11 +1710,27 @@ position = Vector2(634, 353)
 unitOwner = 1
 
 [node name="meleeAttacker5" parent="meleeAttackers" groups=["units"] instance=ExtResource("10_w24ke")]
-position = Vector2(447, 355)
+position = Vector2(554, 358)
 unitOwner = 1
 
 [node name="meleeAttacker6" parent="meleeAttackers" groups=["units"] instance=ExtResource("10_w24ke")]
-position = Vector2(419, 304)
+position = Vector2(476, 354)
+unitOwner = 1
+
+[node name="meleeAttacker9" parent="meleeAttackers" groups=["units"] instance=ExtResource("10_w24ke")]
+position = Vector2(631, 473)
+unitOwner = 1
+
+[node name="meleeAttacker8" parent="meleeAttackers" groups=["units"] instance=ExtResource("10_w24ke")]
+position = Vector2(459, 474)
+unitOwner = 1
+
+[node name="meleeAttacker7" parent="meleeAttackers" groups=["units"] instance=ExtResource("10_w24ke")]
+position = Vector2(251, 301)
+unitOwner = 1
+
+[node name="meleeAttacker10" parent="meleeAttackers" groups=["units"] instance=ExtResource("10_w24ke")]
+position = Vector2(232, 209)
 unitOwner = 1
 
 [node name="Gatherers" type="Node2D" parent="."]
@@ -161,18 +1742,32 @@ y_sort_enabled = true
 [node name="rangeAttacker" parent="RangeAttackers" groups=["units"] instance=ExtResource("12_kkf6w")]
 position = Vector2(494, 694)
 
-[node name="rangeAttacker2" parent="RangeAttackers" groups=["units"] instance=ExtResource("12_kkf6w")]
-position = Vector2(551, 686)
+[node name="rangeAttacker5" parent="RangeAttackers" groups=["units"] instance=ExtResource("12_kkf6w")]
+position = Vector2(172, 606)
+
+[node name="rangeAttacker6" parent="RangeAttackers" groups=["units"] instance=ExtResource("12_kkf6w")]
+position = Vector2(167, 689)
 
 [node name="rangeAttacker3" parent="RangeAttackers" groups=["units"] instance=ExtResource("12_kkf6w")]
-position = Vector2(606, 281)
-unitOwner = 1
+position = Vector2(173, 525)
+
+[node name="rangeAttacker2" parent="RangeAttackers" groups=["units"] instance=ExtResource("12_kkf6w")]
+position = Vector2(551, 686)
 
 [node name="rangeAttacker4" parent="RangeAttackers" groups=["units"] instance=ExtResource("12_kkf6w")]
 position = Vector2(594, 699)
 
 [node name="FlameRangeCat" parent="RangeAttackers" instance=ExtResource("13_3ibvt")]
-position = Vector2(107, 577)
+position = Vector2(108, 606)
+
+[node name="FlameRangeCat2" parent="RangeAttackers" instance=ExtResource("13_3ibvt")]
+position = Vector2(36, 609)
+
+[node name="dogRange" parent="RangeAttackers" instance=ExtResource("13_wac0c")]
+position = Vector2(558, 257)
+
+[node name="dogRange2" parent="RangeAttackers" instance=ExtResource("13_wac0c")]
+position = Vector2(906, 185)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_e7qru")

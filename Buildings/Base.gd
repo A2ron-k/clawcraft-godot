@@ -74,8 +74,9 @@ func _input(event):
 				
 				for building in buildings:
 					if is_instance_valid(building):
-						if building.get_instance_id() != instanceID:
-							building.setSelected(false)
+						if building.unitOwner == 0:
+							if building.get_instance_id() != instanceID:
+								building.setSelected(false)
 					
 				selected = !selected
 				if selected:

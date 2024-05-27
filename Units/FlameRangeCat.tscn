@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://ck11ftkhc7rqb"]
 
 [ext_resource type="Script" path="res://Units/FlameRangeCat.gd" id="1_jxjjq"]
-[ext_resource type="Texture2D" uid="uid://du7wmcbhyp8tx" path="res://Units/catMarine.png" id="2_ooc3b"]
+[ext_resource type="Texture2D" uid="uid://dwckta3hewqs6" path="res://Units/FlameCat.png" id="2_ua66f"]
 [ext_resource type="PackedScene" uid="uid://v20f2mgdjv5i" path="res://Global/rangeStateMachine.tscn" id="3_ojyta"]
-[ext_resource type="AudioStream" uid="uid://dboao3q0tvlep" path="res://Audio/flame_sound.mp3" id="4_vwv6p"]
+[ext_resource type="AudioStream" uid="uid://wb7pgeanack2" path="res://Audio/trimmed_flame_sound.mp3" id="4_g5gwg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wau8h"]
 radius = 2.99998
@@ -27,7 +27,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("FlameCat:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,7 +44,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("FlameCat:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -61,7 +61,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("FlameCat:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +78,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("FlameCat:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -95,7 +95,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("FlameCat:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -111,14 +111,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("FlameCat:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [17, 16, 17, 16, 17]
+"values": [16, 17, 16, 17]
 }
 
 [sub_resource type="Animation" id="Animation_7rfee"]
@@ -127,14 +127,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("FlameCat:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [29, 28, 29, 28, 29]
+"values": [28, 29, 28, 29]
 }
 
 [sub_resource type="Animation" id="Animation_5rilh"]
@@ -143,14 +143,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("FlameCat:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [25, 24, 25, 24, 25]
+"values": [24, 25]
 }
 
 [sub_resource type="Animation" id="Animation_bmpec"]
@@ -159,14 +159,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatMarine:frame")
+tracks/0/path = NodePath("FlameCat:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [21, 20, 21, 20, 21]
+"values": [20, 21, 20, 21]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iguak"]
@@ -204,6 +204,7 @@ anti_aliasing_size = 0.2
 size = Vector2(20, 6.80418)
 
 [node name="FlameRangeCat" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_jxjjq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -217,11 +218,10 @@ offset_right = 9.0
 offset_bottom = 10.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uaqgl")
 
-[node name="CatMarine" type="Sprite2D" parent="."]
-modulate = Color(0.54902, 0.341176, 0, 1)
-position = Vector2(1, 1)
-scale = Vector2(0.229687, 0.229687)
-texture = ExtResource("2_ooc3b")
+[node name="FlameCat" type="Sprite2D" parent="."]
+position = Vector2(1, -2)
+scale = Vector2(0.26875, 0.26875)
+texture = ExtResource("2_ua66f")
 hframes = 4
 vframes = 8
 frame = 1
@@ -257,17 +257,17 @@ wait_time = 0.1
 autostart = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -8.0
-offset_top = -10.0
-offset_right = 7.0
-offset_bottom = -8.0
+offset_left = -7.0
+offset_top = -16.0
+offset_right = 8.0
+offset_bottom = -14.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ltpar")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ruf1s")
 value = 50.0
 show_percentage = false
 
 [node name="TouchZone" type="Area2D" parent="."]
-position = Vector2(0, -11)
+position = Vector2(1, -13)
 scale = Vector2(1.70103, 3.57692)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TouchZone"]
@@ -276,7 +276,8 @@ scale = Vector2(0.618268, 0.945023)
 shape = SubResource("RectangleShape2D_h15sj")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_vwv6p")
+stream = ExtResource("4_g5gwg")
+volume_db = 23.6
 max_distance = 40.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="RangeStateMachine" method="_on_animation_player_animation_finished"]

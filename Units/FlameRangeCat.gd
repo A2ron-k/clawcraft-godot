@@ -21,7 +21,7 @@ var mouseEntered = false
 
 # Unit Movement
 var followCursor = false
-var speed = 100 
+var speed = 75
 const move_threshold = 100 #How much closer to the target
 var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
@@ -62,16 +62,7 @@ func _input(event):
 	if event.is_action_pressed("LeftClick"):
 		if mouseEntered && unitOwner == 0:
 			setSelected(!selected)
-	
-	# TODO - Remove when finish updating Minimap feature
-	#if(event.is_action_pressed("RightClick")):
-		##var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
-		##MinimapPath._ready()
-		#followCursor = true
-	#
-	#if(event.is_action_released("RightClick")):
-		#followCursor = false
-	#pass
+
 
 # Handles variables that are related to being selected
 func setSelected(value): 
@@ -175,7 +166,15 @@ func takeDamage(attackDamage, bonusModifier, armorModifier, unitType) -> bool:
 func removeNode():
 	var path = get_tree().get_root().get_node("World")
 	path.units.remove_at(path.units.find(self))
-	path.playerUnits.remove_at(path.playerUnits.find(self))
+	path.units.erase(self)
+	
+	if unitOwner == 0:
+		path.playerUnits.remove_at(path.playerUnits.find(self))
+		path.playerUnits.erase(self)
+	
+	if unitOwner == 1:
+		path.enemyUnits.remove_at(path.enemyUnits.find(self))
+		path.enemyUnits.erase(self)
 
 # Prompts unit path recalculation 
 func _on_nav_timer_timeout():

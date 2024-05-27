@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://2nhl36r3044k"]
 
-[ext_resource type="Texture2D" uid="uid://ddwfimryeqkwd" path="res://Units/SwordsmanTemplate.png" id="1_kbn1b"]
 [ext_resource type="Script" path="res://Units/MeleeAttacker.gd" id="1_v8s4w"]
+[ext_resource type="Texture2D" uid="uid://dv5lfvx5eww3q" path="res://Units/Chiwawa.png" id="2_w3tie"]
 [ext_resource type="PackedScene" uid="uid://dwhpy3b35ip4h" path="res://Global/unitStateMachine.tscn" id="3_t8cbd"]
-[ext_resource type="AudioStream" uid="uid://4vnujhru4y4j" path="res://Audio/gun_burst.wav" id="4_5xqgn"]
+[ext_resource type="AudioStream" uid="uid://dvslywi50addb" path="res://Audio/chiwa.mp3" id="4_0dpp1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1cita"]
 radius = 2.99998
@@ -27,48 +27,48 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SwordsmanTemplate:frame")
+tracks/0/path = NodePath("Chiwawa:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
+"update": 0,
+"values": [7]
 }
 
 [sub_resource type="Animation" id="Animation_c7o0i"]
 resource_name = "WalkDown"
-length = 0.5
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SwordsmanTemplate:frame")
+tracks/0/path = NodePath("Chiwawa:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [6, 7, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_xm7aa"]
 resource_name = "WalkLeft"
-length = 0.5
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SwordsmanTemplate:frame")
+tracks/0/path = NodePath("Chiwawa:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [15, 16, 17, 18, 19]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [3, 4, 5, 3]
 }
 
 [sub_resource type="Animation" id="Animation_k1263"]
@@ -78,31 +78,31 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SwordsmanTemplate:frame")
+tracks/0/path = NodePath("Chiwawa:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [11, 12, 13, 14]
+"update": 0,
+"values": [0, 1, 2, 0]
 }
 
 [sub_resource type="Animation" id="Animation_dwg0c"]
 resource_name = "WalkUp"
-length = 0.6
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SwordsmanTemplate:frame")
+tracks/0/path = NodePath("Chiwawa:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [5, 5, 6, 7, 8, 9]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [9, 10, 9, 10]
 }
 
 [sub_resource type="Animation" id="Animation_3bi60"]
@@ -111,14 +111,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SwordsmanTemplate:frame")
+tracks/0/path = NodePath("Chiwawa:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [20, 21, 22, 23]
+"values": [18, 19, 18, 19]
 }
 
 [sub_resource type="Animation" id="Animation_pegfn"]
@@ -127,14 +127,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SwordsmanTemplate:frame")
+tracks/0/path = NodePath("Chiwawa:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.3001),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [35, 36, 37, 38, 38]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [15, 16, 15, 16]
 }
 
 [sub_resource type="Animation" id="Animation_u0fi7"]
@@ -143,14 +143,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SwordsmanTemplate:frame")
+tracks/0/path = NodePath("Chiwawa:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [30, 31, 32, 33]
+"values": [12, 13, 12, 13]
 }
 
 [sub_resource type="Animation" id="Animation_laq7p"]
@@ -159,14 +159,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SwordsmanTemplate:frame")
+tracks/0/path = NodePath("Chiwawa:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [25, 26, 27, 28]
+"values": [21, 22, 21, 22]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m8ukh"]
@@ -208,7 +208,6 @@ collision_layer = 3
 collision_mask = 3
 input_pickable = true
 motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_v8s4w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -223,12 +222,13 @@ offset_bottom = 10.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rruna")
 metadata/_edit_use_anchors_ = true
 
-[node name="SwordsmanTemplate" type="Sprite2D" parent="."]
-texture = ExtResource("1_kbn1b")
-hframes = 5
-vframes = 12
-frame = 1
-metadata/_edit_lock_ = true
+[node name="Chiwawa" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(0.2375, 0.2375)
+texture = ExtResource("2_w3tie")
+hframes = 3
+vframes = 8
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -283,7 +283,7 @@ scale = Vector2(0.618268, 0.945023)
 shape = SubResource("RectangleShape2D_hocqg")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_5xqgn")
+stream = ExtResource("4_0dpp1")
 
 [connection signal="mouse_entered" from="." to="." method="_on_meleeAttacker_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_meleeAttacker_mouse_exited"]

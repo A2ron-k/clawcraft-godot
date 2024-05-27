@@ -2,17 +2,29 @@ extends Node2D
 
 var units = [] # !VERY IMPORTANT - This tracks all the units in the game
 var playerUnits = []
+var enemyBuildings = []
+var enemyUnits = []
 @onready var levelAudioPlayer = get_node("AudioStreamPlayer2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	getUnits() # Whenever game is loaded units are added to array
 	getPlayerUnits()
+	getEnemyBuildings()
+	getEnemyUnits()
 	levelAudioPlayer.play()
 	
 func _process(delta):
+	for object in enemyBuildings:
+		if !is_instance_valid(object):
+			enemyBuildings.erase(object)
+		
 	if playerUnits.size() <= 0:
 		Game.isGameOver = true
+		
+	if enemyBuildings.size() <= 0:
+		get_tree().change_scene_to_file("res://level_three.tscn")
+	
 	
 # Retrieves all the units that are in the entire game that has been pre-spawned
 func getUnits():
@@ -25,6 +37,19 @@ func getPlayerUnits():
 	for unit in units:
 		if unit.unitOwner == 0:
 			playerUnits.append(unit)
+			
+func getEnemyBuildings():
+	var buildings = get_tree().get_nodes_in_group("buildings")
+	
+	for building in buildings:
+		if building.unitOwner == 1:
+			enemyBuildings.append(building)
+
+func getEnemyUnits():
+	for unit in units:
+		if unit.unitOwner == 1:
+			enemyUnits.append(unit)
+		
 
 # Toggles the units's selected variable in an area
 func _onAreaSelected(object):
@@ -62,8 +87,3 @@ func _getUnitsInArea(area) -> Array:
 			units.erase(unit)
 	return unitsInArea
 
-
-
-func _on_teleport_body_entered(body):
-	get_tree().change_scene_to_file("res://world.tscn")
-	pass # Replace with function body.

@@ -27,6 +27,13 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 icon_alignment = 1
 
+[node name="WorkerCostLabel" type="Label" parent="HBoxContainer/Gatherer"]
+offset_top = -42.6109
+offset_right = 307.0
+offset_bottom = -6.61093
+text = "You need 2 Catnips to spawn this"
+horizontal_alignment = 1
+
 [node name="GathererSprite" type="Sprite2D" parent="HBoxContainer"]
 position = Vector2(46.1553, 51.5816)
 scale = Vector2(0.56287, 0.56067)

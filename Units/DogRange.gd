@@ -1,19 +1,18 @@
 extends CharacterBody2D
 
 
-
 # Children
 @onready var box = get_node("Box")
 @onready var movementTarget = position
 @onready var animation = get_node("AnimationPlayer")
-@onready var stateMachine = get_node("UnitStateMachine")
+@onready var stateMachine = get_node("RangeStateMachine")
 @onready var collisionShape = get_node("CollisionShape2D")
 @onready var navAgent = get_node("NavigationNode/NavigationAgent2D")
 @onready var healthBar = get_node("HealthBar")
 @onready var attackAudioPlayer = get_node("AudioStreamPlayer2D")
 
 # Unit Owner
-@export var unitOwner := 0
+@export var unitOwner := 1
 
 # Unit Selection
 var mouseEntered = false
@@ -21,7 +20,7 @@ var mouseEntered = false
 
 # Unit Movement
 var followCursor = false
-var speed = 100 
+var speed = 75
 const move_threshold = 100 #How much closer to the target
 var lastDistanceToTarget = Vector2.ZERO
 var currentDistanceToTarget = Vector2.ZERO
@@ -34,8 +33,8 @@ var navTarget
 var unitType = "lightArmor"
 var typesWeakness = ["lightArmor"]
 var health = 10
-var damage = 2
-var attackRange = 15
+var damage = 4
+var attackRange = 110
 var armor = 2
 var bonusDamage = 1
 
@@ -48,7 +47,7 @@ var attackTarget = null
 func _ready():
 	setSelected(selected)
 	add_to_group("units", true)
-	add_to_group("meleeAttackers", true)
+	add_to_group("rangeAttackers", true)
 	
 	# Sets the enemy units to red
 	if unitOwner == 1:
@@ -62,16 +61,6 @@ func _input(event):
 	if event.is_action_pressed("LeftClick"):
 		if mouseEntered && unitOwner == 0:
 			setSelected(!selected)
-	
-	# TODO - Remove when finish updating Minimap feature
-	#if(event.is_action_pressed("RightClick")):
-		##var MinimapPath = get_tree().get_root().get_node("World/UI/MiniMap/SubViewportContainer/SubViewport")
-		##MinimapPath._ready()
-		#followCursor = true
-	#
-	#if(event.is_action_released("RightClick")):
-		#followCursor = false
-	#pass
 
 # Handles variables that are related to being selected
 func setSelected(value): 
@@ -82,7 +71,6 @@ func setSelected(value):
 # Mouse detection
 func _on_touch_zone_mouse_shape_entered(shape_idx):
 	mouseEntered = true
-
 
 func _on_touch_zone_mouse_shape_exited(shape_idx):
 	mouseEntered = false
@@ -185,10 +173,11 @@ func removeNode():
 	if unitOwner == 1:
 		path.enemyUnits.remove_at(path.enemyUnits.find(self))
 		path.enemyUnits.erase(self)
-
-
+		
 # Prompts unit path recalculation 
 func _on_nav_timer_timeout():
 	if navTarget:
 		navAgent.target_position = navTarget
-	
+
+
+

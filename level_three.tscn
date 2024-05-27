@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxspthsvhkcyc"]
+[gd_scene load_steps=16 format=3 uid="uid://dxspthsvhkcyc"]
 
 [ext_resource type="Script" path="res://level_three.gd" id="1_jluma"]
 [ext_resource type="TileSet" uid="uid://c340tboym8n4s" path="res://level_2.tres" id="2_0ldht"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d3uwrlh7d1cp" path="res://Buildings/Base.tscn" id="8_bmp1x"]
 [ext_resource type="PackedScene" uid="uid://2nhl36r3044k" path="res://Units/MeleeAttacker.tscn" id="9_56jio"]
 [ext_resource type="PackedScene" uid="uid://dtfm5ce0cimoi" path="res://Units/Gatherer.tscn" id="10_c3g4y"]
+[ext_resource type="PackedScene" uid="uid://bn2vxomiq6dna" path="res://Units/DogRange.tscn" id="12_d02rw"]
 [ext_resource type="AudioStream" uid="uid://bvqhmuwp4f2r7" path="res://Audio/level_sound.mp3" id="12_ki35o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xt7ld"]
@@ -102,7 +103,7 @@ position = Vector2(710, 65)
 y_sort_enabled = true
 metadata/_edit_lock_ = true
 
-[node name="ResourceBuilding" parent="Buildings" instance=ExtResource("7_50dwn")]
+[node name="ResourceBuilding" parent="Buildings" groups=["buildings"] instance=ExtResource("7_50dwn")]
 position = Vector2(547, 708)
 
 [node name="Barrack" parent="Buildings" groups=["buildings"] instance=ExtResource("7_ouona")]
@@ -120,51 +121,123 @@ scale = Vector2(2, 2)
 y_sort_enabled = true
 
 [node name="meleeAttacker4" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(638, 592)
+position = Vector2(454, 602)
 unitOwner = 1
 
 [node name="meleeAttacker5" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(441, 596)
+position = Vector2(501, 575)
 unitOwner = 1
 
 [node name="meleeAttacker6" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(544, 527)
+position = Vector2(551, 572)
 unitOwner = 1
 
 [node name="meleeAttacker7" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(642, 631)
+position = Vector2(601, 587)
 unitOwner = 1
 
 [node name="meleeAttacker8" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(445, 635)
+position = Vector2(638, 612)
 unitOwner = 1
 
 [node name="meleeAttacker9" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(548, 566)
+position = Vector2(151, 590)
 unitOwner = 1
 
 [node name="meleeAttacker10" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(638, 560)
+position = Vector2(198, 563)
 unitOwner = 1
 
 [node name="meleeAttacker11" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(441, 564)
+position = Vector2(248, 560)
 unitOwner = 1
 
 [node name="meleeAttacker12" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(544, 495)
+position = Vector2(298, 575)
 unitOwner = 1
 
 [node name="meleeAttacker13" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(643, 661)
+position = Vector2(335, 600)
 unitOwner = 1
 
 [node name="meleeAttacker14" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(446, 665)
+position = Vector2(148, 640)
 unitOwner = 1
 
 [node name="meleeAttacker15" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
-position = Vector2(549, 596)
+position = Vector2(195, 613)
+unitOwner = 1
+
+[node name="meleeAttacker16" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(245, 610)
+unitOwner = 1
+
+[node name="meleeAttacker17" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(295, 625)
+unitOwner = 1
+
+[node name="meleeAttacker18" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(332, 650)
+unitOwner = 1
+
+[node name="meleeAttacker19" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(453, 563)
+unitOwner = 1
+
+[node name="meleeAttacker20" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(500, 536)
+unitOwner = 1
+
+[node name="meleeAttacker21" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(550, 533)
+unitOwner = 1
+
+[node name="meleeAttacker22" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(600, 548)
+unitOwner = 1
+
+[node name="meleeAttacker23" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(637, 573)
+unitOwner = 1
+
+[node name="meleeAttacker24" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(761, 557)
+unitOwner = 1
+
+[node name="meleeAttacker25" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(808, 530)
+unitOwner = 1
+
+[node name="meleeAttacker26" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(858, 527)
+unitOwner = 1
+
+[node name="meleeAttacker27" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(908, 542)
+unitOwner = 1
+
+[node name="meleeAttacker28" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(945, 567)
+unitOwner = 1
+
+[node name="meleeAttacker29" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(762, 609)
+unitOwner = 1
+
+[node name="meleeAttacker30" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(809, 582)
+unitOwner = 1
+
+[node name="meleeAttacker31" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(859, 579)
+unitOwner = 1
+
+[node name="meleeAttacker32" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(909, 594)
+unitOwner = 1
+
+[node name="meleeAttacker33" parent="meleeAttackers" groups=["units"] instance=ExtResource("9_56jio")]
+position = Vector2(946, 619)
 unitOwner = 1
 
 [node name="Gatherers" type="Node2D" parent="."]
@@ -178,6 +251,15 @@ position = Vector2(504, 117)
 
 [node name="RangeAttackers" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="dogRange" parent="RangeAttackers" instance=ExtResource("12_d02rw")]
+position = Vector2(550, 623)
+
+[node name="dogRange2" parent="RangeAttackers" instance=ExtResource("12_d02rw")]
+position = Vector2(240, 645)
+
+[node name="dogRange3" parent="RangeAttackers" instance=ExtResource("12_d02rw")]
+position = Vector2(862, 617)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_ki35o")

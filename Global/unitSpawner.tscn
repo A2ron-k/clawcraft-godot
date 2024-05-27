@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8c7bm2lacnrn"]
+[gd_scene load_steps=7 format=3 uid="uid://b8c7bm2lacnrn"]
 
 [ext_resource type="Script" path="res://Global/unitSpawner.gd" id="1_ymuqi"]
 [ext_resource type="Texture2D" uid="uid://ct2qqqt05p286" path="res://UI/cat-marine.png" id="2_6m5sj"]
+[ext_resource type="Script" path="res://Global/Marine.gd" id="2_uvh7c"]
 [ext_resource type="Texture2D" uid="uid://dmlohdoy01xs1" path="res://UI/chiwawa.png" id="3_ffmv6"]
+[ext_resource type="Script" path="res://Global/Melee.gd" id="4_tc2or"]
+[ext_resource type="Script" path="res://Global/Flame.gd" id="6_ydh2n"]
 
 [node name="UnitSpawner" type="Node2D"]
 position = Vector2(-1, 0)
@@ -27,6 +30,17 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "Marine"
+script = ExtResource("2_uvh7c")
+
+[node name="RangeCostLabel" type="Label" parent="HBoxContainer/Marine"]
+visible = false
+layout_mode = 0
+offset_left = -1.52588e-05
+offset_top = -39.8076
+offset_right = 307.0
+offset_bottom = -3.80758
+text = "You need 5 Catnips to spawn this"
+horizontal_alignment = 1
 
 [node name="CatMarineSprite" type="Sprite2D" parent="HBoxContainer"]
 position = Vector2(51.2211, 51.5817)
@@ -37,11 +51,38 @@ texture = ExtResource("2_6m5sj")
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "Melee"
+script = ExtResource("4_tc2or")
+
+[node name="DogCostLabel" type="Label" parent="HBoxContainer/Melee"]
+visible = false
+layout_mode = 0
+offset_left = -103.437
+offset_top = -43.1716
+offset_right = 203.563
+offset_bottom = -7.1716
+text = "You need 2 Catnips to spawn this"
+horizontal_alignment = 1
 
 [node name="ChiwawaSprite" type="Sprite2D" parent="HBoxContainer"]
 position = Vector2(154.789, 51.5816)
 scale = Vector2(0.129773, 0.129266)
 texture = ExtResource("3_ffmv6")
+
+[node name="Flame" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Flame"
+script = ExtResource("6_ydh2n")
+
+[node name="FlameCostLabel" type="Label" parent="HBoxContainer/Flame"]
+visible = false
+layout_mode = 0
+offset_left = -206.874
+offset_top = -43.1716
+offset_right = 100.126
+offset_bottom = -7.1716
+text = "You need 7 Catnips to spawn this"
+horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -56,7 +97,14 @@ offset_bottom = -2.0
 wait_time = 0.1
 autostart = true
 
+[connection signal="mouse_entered" from="HBoxContainer/Marine" to="HBoxContainer/Marine" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Marine" to="HBoxContainer/Marine" method="_on_mouse_exited"]
 [connection signal="pressed" from="HBoxContainer/Marine" to="." method="_on_marine_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Melee" to="HBoxContainer/Melee" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Melee" to="HBoxContainer/Melee" method="_on_mouse_exited"]
 [connection signal="pressed" from="HBoxContainer/Melee" to="." method="_on_melee_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Flame" to="HBoxContainer/Flame" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Flame" to="HBoxContainer/Flame" method="_on_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Flame" to="." method="_on_flame_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

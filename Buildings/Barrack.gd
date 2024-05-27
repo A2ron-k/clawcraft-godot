@@ -46,8 +46,9 @@ func _input(event):
 					
 					for building in buildings:
 						if is_instance_valid(building):
-							if building.get_instance_id() != instanceID:
-								building.setSelected(false)
+							if building.unitOwner == 0:
+								if building.get_instance_id() != instanceID:
+									building.setSelected(false)
 								
 					selected = !selected
 					if selected:
@@ -94,7 +95,7 @@ func takeDamage(attackDamage, bonusModifier, armorModifier, unitType) -> bool:
 	
 	health -= finalDamage
 
-	# Healthbar animation
+	# Healthbar animxation
 	var tween = get_tree().create_tween()
 	tween.tween_property(healthBar, "value", health,0.1).set_trans(Tween.TRANS_QUAD)
 	
@@ -108,4 +109,8 @@ func takeDamage(attackDamage, bonusModifier, armorModifier, unitType) -> bool:
 func removeNode():
 	var path = get_tree().get_root().get_node("World")
 	path.units.remove_at(path.units.find(self))
+	path.enemyBuildings.remove_at(path.enemyBuildings.find(self))
+	path.units.erase(self)
+	path.enemyBuildings.erase(path.enemyBuildings.find(self))
+	
 
