@@ -73,5 +73,6 @@ func _getUnitsInArea(area) -> Array:
 
 
 func _on_teleport_body_entered(body):
-	get_tree().change_scene_to_file("res://level_two.tscn")
-	pass # Replace with function body.
+	if body.unitOwner == 0:
+		get_tree().change_scene_to_file("res://level_two.tscn")
+	

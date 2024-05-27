@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b3i67c5no0s7y"]
+[gd_scene load_steps=32 format=3 uid="uid://b3i67c5no0s7y"]
 
 [ext_resource type="Script" path="res://Camera.gd" id="1_4lwxk"]
 [ext_resource type="Texture2D" uid="uid://dgneg65ffov8w" path="res://Environment/TopDown/TX Tileset Wall.png" id="1_i287h"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://2nhl36r3044k" path="res://Units/MeleeAttacker.tscn" id="12_exi82"]
 [ext_resource type="PackedScene" uid="uid://crjbg8tqdjbeg" path="res://Buildings/resource_building.tscn" id="12_fo3f1"]
 [ext_resource type="PackedScene" uid="uid://c16xfn7ajuhop" path="res://Units/RangeAttacker.tscn" id="14_65wnm"]
+[ext_resource type="PackedScene" uid="uid://dtfm5ce0cimoi" path="res://Units/Gatherer.tscn" id="15_f8yrc"]
 [ext_resource type="AudioStream" uid="uid://bvqhmuwp4f2r7" path="res://Audio/level_sound.mp3" id="15_x6aer"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y3smv"]
@@ -7400,7 +7401,6 @@ position = Vector2(-245, 113)
 position = Vector2(-293, 17)
 
 [node name="UI" parent="." instance=ExtResource("2_ldsyg")]
-visible = false
 
 [node name="HomeBase" type="Node2D" parent="."]
 
@@ -7428,6 +7428,10 @@ unitOwner = 1
 
 [node name="Gatherers" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Gatherer" parent="Gatherers" instance=ExtResource("15_f8yrc")]
+position = Vector2(839, 76)
+unitOwner = 2
 
 [node name="RangeAttackers" type="Node2D" parent="."]
 y_sort_enabled = true

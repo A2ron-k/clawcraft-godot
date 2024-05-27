@@ -41,7 +41,7 @@ var bonusDamage = 0
 var possibleTargets = []
 var gatherTarget = null
 @export var noOfCatnipCarrying = 0
-@onready var homeBasePosition = get_tree().get_root().get_node("World/HomeBase/Base").position
+@onready var homeBasePosition = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +53,9 @@ func _ready():
 	# Sets the enemy units to red
 	if unitOwner == 1:
 		modulate = Color(1, 0.29, 0.165,1)
+		
+	if unitOwner == 2:
+		modulate = Color(0, 0.463, 0.196)
 	
 	# Sets the healthbar value
 	healthBar.max_value = health
