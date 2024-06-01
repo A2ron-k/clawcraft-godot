@@ -41,7 +41,7 @@ var bonusDamage = 0
 var possibleTargets = []
 var gatherTarget = null
 @export var noOfCatnipCarrying = 0
-@onready var homeBasePosition = null
+@onready var homeBasePosition = get_tree().get_root().get_node("World/HomeBase/Base").position
 
 
 # Called when the node enters the scene tree for the first time.
